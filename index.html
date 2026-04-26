@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One More Agency — Трекер</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',sans-serif;background:#F7F6F3;color:#111;font-size:14px;line-height:1.5;min-height:100vh}
+.topbar{background:#fff;border-bottom:1px solid #EEEEE9;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:52px;position:sticky;top:0;z-index:50}
+.logo{font-size:14px;font-weight:600;letter-spacing:-.2px}.logo em{color:#534AB7;font-style:normal}
+.user-tabs{display:flex;gap:4px;flex-wrap:wrap}
+.utab{height:30px;padding:0 12px;border-radius:6px;border:1px solid transparent;background:transparent;font-size:12px;color:#777;cursor:pointer;font-weight:500;transition:all .15s;display:flex;align-items:center;gap:6px}
+.utab .av{width:18px;height:18px;border-radius:50%;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.utab.active{background:#EEEDFE;border-color:#AFA9EC;color:#3C3489}
+.utab:not(.active):hover{background:#F3F3EF}
+.nav{display:flex;padding:0 24px;background:#fff;border-bottom:1px solid #EEEEE9}
+.nbtn{padding:12px 16px;border:none;background:transparent;font-size:13px;color:#888;cursor:pointer;border-bottom:2px solid transparent;font-weight:500;transition:all .15s}
+.nbtn.active{color:#534AB7;border-bottom-color:#534AB7}
+.page{padding:24px;max-width:880px;margin:0 auto}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
+.mcard{background:#fff;border:1px solid #EEEEE9;border-radius:10px;padding:14px 16px}
+.mlabel{font-size:11px;color:#BBB;font-weight:500;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+.mval{font-size:26px;font-weight:600;color:#111;line-height:1}
+.msub{font-size:11px;color:#CCC;margin-top:4px}
+.sec{font-size:11px;font-weight:600;color:#BBB;letter-spacing:.5px;text-transform:uppercase;margin-bottom:10px}
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
+.pcard{background:#fff;border:1px solid #EEEEE9;border-radius:10px;padding:14px 16px}
+.pcard.cl{border-left:2px solid #1D9E75}
+.pcard.int{border-left:2px solid #AFA9EC}
+.pname{font-size:13px;font-weight:600;color:#111}
+.pclient{font-size:11px;color:#BBB;margin-top:2px}
+.badge{display:inline-flex;align-items:center;font-size:10px;font-weight:600;padding:2px 7px;border-radius:4px;letter-spacing:.2px}
+.ba{background:#E1F5EE;color:#085041}
+.bi{background:#EEEDFE;color:#3C3489}
+.bd{background:#F1F1ED;color:#888}
+.pbar{height:3px;background:#F0F0EA;border-radius:2px;margin-top:10px}
+.pfill{height:100%;border-radius:2px}
+.pft{background:#1D9E75}
+.pfi{background:#AFA9EC}
+.pinfo{display:flex;justify-content:space-between;font-size:11px;color:#BBB;margin-top:4px}
+.av{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
+.av-0{background:#EEEDFE;color:#3C3489}
+.av-1{background:#E1F5EE;color:#085041}
+.av-2{background:#FAEEDA;color:#854F0B}
+.av-3{background:#FAECE7;color:#993C1D}
+.av-x{background:#F1F1ED;color:#888}
+.task-list .ti{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #F3F3EF}
+.task-list .ti:last-child{border-bottom:none}
+.dot{width:7px;height:7px;border-radius:50%;margin-top:5px;flex-shrink:0}
+.dot-wip{background:#1D9E75}
+.tname{font-size:13px;color:#111}
+.tmeta{font-size:11px;color:#BBB;margin-top:2px}
+.fcard{background:#fff;border:1px solid #EEEEE9;border-radius:12px;padding:20px;margin-bottom:12px}
+.flabel{font-size:12px;font-weight:500;color:#777;margin-bottom:6px;display:block}
+.hint{font-size:11px;color:#CCC}
+input[type=date],input[type=text],input[type=number],select,textarea{width:100%;font-size:13px;padding:8px 11px;border:1px solid #E4E4DF;border-radius:7px;background:#FAFAF8;color:#111;outline:none;transition:border-color .15s;font-family:inherit}
+input:focus,select:focus,textarea:focus{border-color:#534AB7;background:#fff;box-shadow:0 0 0 3px rgba(83,74,183,.08)}
+textarea{resize:vertical;min-height:64px}
+.proj-block{background:#FAFAF8;border:1px solid #EEEEE9;border-radius:10px;padding:16px;margin-bottom:10px}
+.pb-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.pb-sel{font-size:13px;font-weight:600;border:none;background:transparent;padding:0;color:#111;outline:none;cursor:pointer;flex:1}
+.pb-remove{background:none;border:none;color:#CCC;cursor:pointer;font-size:18px;width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.pb-remove:hover{background:#FEF0F0;color:#E24B4A}
+.trow{display:grid;grid-template-columns:1fr 80px 110px 28px;gap:8px;margin-bottom:8px;align-items:center}
+.trow-hdr{display:grid;grid-template-columns:1fr 80px 110px 28px;gap:8px;margin-bottom:6px}
+.trow-hdr span{font-size:10px;color:#CCC;font-weight:500;text-transform:uppercase;letter-spacing:.3px}
+.radd{display:flex;align-items:center;justify-content:center;gap:5px;background:none;border:1px dashed #D8D8D3;color:#BBB;padding:7px;border-radius:7px;cursor:pointer;font-size:12px;width:100%;transition:all .15s;margin-top:4px;font-family:inherit}
+.radd:hover{border-color:#AFA9EC;color:#534AB7;background:#EEEDFE}
+.rm{background:none;border:none;color:#CCC;cursor:pointer;font-size:16px;width:28px;height:32px;display:flex;align-items:center;justify-content:center;border-radius:5px;transition:all .15s}
+.rm:hover{background:#FEF0F0;color:#E24B4A}
+.padd-btn{display:flex;align-items:center;justify-content:center;gap:6px;background:none;border:1.5px dashed #D0D0CB;color:#999;padding:10px;border-radius:10px;cursor:pointer;font-size:13px;font-weight:500;width:100%;transition:all .15s;margin-bottom:16px;font-family:inherit}
+.padd-btn:hover{border-color:#534AB7;color:#534AB7;background:#EEEDFE}
+.sbtn{background:#534AB7;color:#fff;border:none;padding:12px;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;width:100%;transition:all .15s;font-family:inherit}
+.sbtn:hover{background:#3C3489}
+.sbtn:active{transform:scale(.98)}
+.sbtn:disabled{background:#C5C2E8;cursor:not-allowed}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{text-align:left;font-weight:500;font-size:11px;color:#BBB;padding:10px 14px;border-bottom:1px solid #EEEEE9;white-space:nowrap;text-transform:uppercase;letter-spacing:.3px}
+td{padding:10px 14px;border-bottom:1px solid #F5F5F1;color:#111;vertical-align:top}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:#FAFAF8}
+.sp{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:2px 8px;border-radius:4px}
+.sp-wip{background:#E1F5EE;color:#085041}
+.sp-done{background:#EEEDFE;color:#3C3489}
+.sp-todo{background:#F1F1ED;color:#888}
+.ogrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.profbar{height:5px;background:#F0F0EA;border-radius:3px;margin-top:8px}
+.proff{height:100%;border-radius:3px}
+.pf-g{background:#1D9E75}.pf-a{background:#EF9F27}.pf-r{background:#E24B4A}
+.empty{text-align:center;padding:60px 20px;color:#CCC;font-size:14px}
+.loading{text-align:center;padding:60px 20px;color:#CCC;font-size:14px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:500;opacity:0;transition:opacity .2s;white-space:nowrap;z-index:999;pointer-events:none}
+.toast.show{opacity:1}
+@media(max-width:620px){
+  .grid4{grid-template-columns:1fr 1fr}
+  .pgrid,.ogrid{grid-template-columns:1fr}
+  .trow,.trow-hdr{grid-template-columns:1fr 70px 90px 28px}
+  .topbar{padding:0 14px}
+  .page{padding:14px}
+  .nav{padding:0 14px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo">One More <em>Agency</em></div>
+  <div class="user-tabs" id="utabs"></div>
+</div>
+<div class="nav">
+  <button class="nbtn active" onclick="switchTab('overview')">Огляд</button>
+  <button class="nbtn" onclick="switchTab('report')">Звіт за день</button>
+  <button class="nbtn" onclick="switchTab('log')">Журнал</button>
+  <button class="nbtn owner-only" onclick="switchTab('owner')" style="display:none">Аналітика</button>
+</div>
+<div class="page" id="page"><div class="loading">Завантаження...</div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const API = 'https://script.google.com/macros/s/AKfycbzJk873o2Z8oUFwXUqwGcfzjBNCtp3jhIoIW46-WUhOucXbY8o2vBHQQwZ7FrHayplo/exec';
+
+let USERS = [], PROJECTS = [], LOGS = [];
+let cur = null, tab = 'overview';
+let blocks = [], bid = 0, rid = 0;
+
+function avClass(uid) {
+  const i = USERS.findIndex(u => u.id === uid);
+  return 'av-' + (i >= 0 && i <= 3 ? i : 'x');
+}
+function ini(name) {
+  if (!name) return '?';
+  const p = name.trim().split(' ');
+  return p.length >= 2 ? p[0][0] + p[1][0] : name.slice(0, 2);
+}
+function today() { return new Date().toISOString().split('T')[0]; }
+function hForP(pid) { return LOGS.filter(l => String(l.project_id) === String(pid)).reduce((s, l) => s + parseFloat(l.hours || 0), 0); }
+function hForUP(uid, pid) { return LOGS.filter(l => String(l.user) === String(uid) && String(l.project_id) === String(pid)).reduce((s, l) => s + parseFloat(l.hours || 0), 0); }
+
+async function init() {
+  try {
+    const data = await apiFetch('getInit');
+    USERS = data.users || [];
+    PROJECTS = data.projects || [];
+    if (USERS.length) cur = USERS[0].id;
+    renderTabs();
+    await loadLogs();
+    renderPage();
+  } catch(e) {
+    document.getElementById('page').innerHTML = `<div class="empty">Помилка завантаження.<br>Перевір підключення.</div>`;
+  }
+}
+
+async function loadLogs() {
+  try {
+    const data = await apiFetch('getAllLogs');
+    LOGS = Array.isArray(data) ? data : [];
+  } catch(e) { LOGS = []; }
+}
+
+async function apiFetch(action) {
+  const r = await fetch(`${API}?action=${action}`);
+  return r.json();
+}
+
+async function apiPost(body) {
+  const r = await fetch(API, { method: 'POST', body: JSON.stringify(body) });
+  return r.json();
+}
+
+function renderTabs() {
+  document.getElementById('utabs').innerHTML = USERS.map(u =>
+    `<button class="utab${u.id === cur ? ' active' : ''}" onclick="switchUser('${u.id}')">
+      <div class="av ${avClass(u.id)}" style="width:18px;height:18px;font-size:9px">${ini(u.name)}</div>${u.name}
+    </button>`
+  ).join('');
+}
+
+function switchUser(uid) {
+  cur = uid;
+  renderTabs();
+  const ob = document.querySelector('.owner-only');
+  if (ob) ob.style.display = (uid === USERS[0]?.id) ? '' : 'none';
+  if (tab === 'owner' && uid !== USERS[0]?.id) tab = 'overview';
+  updateNav();
+  renderPage();
+}
+
+function switchTab(t) { tab = t; updateNav(); renderPage(); }
+
+function updateNav() {
+  const tabs = ['overview', 'report', 'log', 'owner'];
+  document.querySelectorAll('.nbtn').forEach((b, i) => b.classList.toggle('active', tabs[i] === tab));
+}
+
+function renderPage() {
+  const el = document.getElementById('page');
+  if (tab === 'overview') el.innerHTML = renderOverview();
+  else if (tab === 'report') { el.innerHTML = renderReport(); initReport(); }
+  else if (tab === 'log') el.innerHTML = renderLog();
+  else if (tab === 'owner') el.innerHTML = renderOwner();
+}
+
+function renderOverview() {
+  const ml = LOGS.filter(l => String(l.user) === String(cur));
+  const td = today();
+  const hToday = ml.filter(l => String(l.date).slice(0, 10) === td).reduce((s, l) => s + parseFloat(l.hours || 0), 0);
+  const hTotal = ml.reduce((s, l) => s + parseFloat(l.hours || 0), 0);
+  const open = ml.filter(l => l.status === 'wip').length;
+  const active = PROJECTS.filter(p => p.status === 'active');
+
+  let h = `<div class="grid4">
+    <div class="mcard"><div class="mlabel">Проектів</div><div class="mval">${active.length}</div><div class="msub">активних</div></div>
+    <div class="mcard"><div class="mlabel">Сьогодні</div><div class="mval">${hToday.toFixed(1)}</div><div class="msub">год внесено</div></div>
+    <div class="mcard"><div class="mlabel">Всього годин</div><div class="mval">${hTotal.toFixed(1)}</div><div class="msub">в базі</div></div>
+    <div class="mcard"><div class="mlabel">В роботі</div><div class="mval">${open}</div><div class="msub">задач</div></div>
+  </div><div class="sec">Проекти</div><div class="pgrid">`;
+
+  active.forEach(p => {
+    const spent = hForP(p.id), budget = parseFloat(p.hours_budget) || 0;
+    const pct = budget > 0 ? Math.min(100, Math.round(spent / budget * 100)) : 0;
+    const myH = hForUP(cur, p.id);
+    const isInt = p.type === 'internal';
+    h += `<div class="pcard ${isInt ? 'int' : 'cl'}">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+        <div><div class="pname">${p.name}</div><div class="pclient">${p.client}</div></div>
+        <span class="badge ${isInt ? 'bi' : 'ba'}">${isInt ? 'Внутрішній' : 'Активний'}</span>
+      </div>
+      ${budget > 0
+        ? `<div class="pbar"><div class="pfill ${isInt ? 'pfi' : 'pft'}" style="width:${pct}%"></div></div>
+           <div class="pinfo"><span>${spent.toFixed(1)}г / ${budget}г</span><span>Мій: ${myH.toFixed(1)}г</span></div>`
+        : `<div class="pinfo" style="margin-top:8px"><span>Мій внесок: ${myH.toFixed(1)}г</span></div>`}
+    </div>`;
+  });
+  h += `</div>`;
+
+  const wip = ml.filter(l => l.status === 'wip').slice(0, 6);
+  if (wip.length) {
+    h += `<div class="sec">Незавершені задачі</div><div class="fcard" style="padding:0 16px"><div class="task-list">`;
+    wip.forEach(t => {
+      const proj = PROJECTS.find(p => String(p.id) === String(t.project_id));
+      h += `<div class="ti">
+        <div class="dot dot-wip"></div>
+        <div><div class="tname">${t.task}</div>
+        <div class="tmeta">${proj ? proj.name : ''} · ${String(t.date).slice(0, 10)} · ${t.hours}г</div></div>
+      </div>`;
+    });
+    h += `</div></div>`;
+  }
+  return h;
+}
+
+function renderReport() {
+  const opts = PROJECTS.filter(p => p.status === 'active')
+    .map(p => `<option value="${p.id}">${p.name}${p.type === 'internal' ? ' (внутрішній)' : ''}</option>`).join('');
+  return `<div class="fcard">
+    <div style="margin-bottom:16px">
+      <label class="flabel">Дата</label>
+      <input type="date" id="r-date" value="${today()}" style="max-width:170px">
+    </div>
+    <div id="proj-blocks"></div>
+    <button class="padd-btn" onclick="addBlock()">+ ще один проект</button>
+    <div style="margin-bottom:16px">
+      <label class="flabel">Загальний коментар <span class="hint">(необов'язково)</span></label>
+      <textarea id="r-comment" placeholder="Що вийшло, що заблоковано, питання до команди..."></textarea>
+    </div>
+    <button class="sbtn" id="sbtn" onclick="submitReport()">Зберегти звіт</button>
+  </div>`;
+}
+
+function initReport() {
+  blocks = []; bid = 0; rid = 0;
+  addBlock();
+}
+
+function addBlock() {
+  bid++;
+  blocks.push({ id: bid, rows: [] });
+  const opts = PROJECTS.filter(p => p.status === 'active')
+    .map(p => `<option value="${p.id}">${p.name}${p.type === 'internal' ? ' (внутрішній)' : ''}</option>`).join('');
+  const el = document.createElement('div');
+  el.className = 'proj-block'; el.id = 'pb-' + bid;
+  el.innerHTML = `<div class="pb-header">
+    <select class="pb-sel" id="ps-${bid}">
+      <option value="">— обрати проект —</option>${opts}
+    </select>
+    <button class="pb-remove" onclick="removeBlock(${bid})">×</button>
+  </div>
+  <div class="trow-hdr"><span>Задача</span><span>Годин</span><span>Статус</span><span></span></div>
+  <div id="tr-${bid}"></div>
+  <button class="radd" onclick="addRow(${bid})">+ задача</button>`;
+  document.getElementById('proj-blocks').appendChild(el);
+  addRow(bid);
+}
+
+function removeBlock(id) {
+  if (blocks.length <= 1) return;
+  document.getElementById('pb-' + id)?.remove();
+  blocks = blocks.filter(b => b.id !== id);
+}
+
+function addRow(bId) {
+  rid++;
+  const b = blocks.find(b => b.id === bId);
+  if (b) b.rows.push(rid);
+  const row = document.createElement('div');
+  row.className = 'trow'; row.id = 'rr-' + rid;
+  row.innerHTML = `<input type="text" id="rn-${rid}" placeholder="Назва задачі">
+    <input type="number" id="rh-${rid}" min="0.5" max="16" step="0.5" placeholder="год">
+    <select id="rs-${rid}">
+      <option value="wip">В роботі</option>
+      <option value="done">Готово</option>
+      <option value="todo">Заплановано</option>
+    </select>
+    <button class="rm" onclick="removeRow(${bId},${rid})">×</button>`;
+  document.getElementById('tr-' + bId).appendChild(row);
+}
+
+function removeRow(bId, rId) {
+  const b = blocks.find(b => b.id === bId);
+  if (b && b.rows.length <= 1) return;
+  document.getElementById('rr-' + rId)?.remove();
+  if (b) b.rows = b.rows.filter(r => r !== rId);
+}
+
+async function submitReport() {
+  const date = document.getElementById('r-date').value;
+  const comment = document.getElementById('r-comment').value.trim();
+  const rows = [];
+
+  for (const b of blocks) {
+    const pid = document.getElementById('ps-' + b.id)?.value;
+    if (!pid) { showToast('Обери проект для кожного блоку'); return; }
+    for (const rId of b.rows) {
+      const task = document.getElementById('rn-' + rId)?.value.trim();
+      const hours = parseFloat(document.getElementById('rh-' + rId)?.value);
+      const status = document.getElementById('rs-' + rId)?.value;
+      if (task && hours > 0) rows.push({ date, user: cur, project_id: pid, task, hours, status, comment });
+    }
+  }
+
+  if (!rows.length) { showToast('Додай хоча б одну задачу з назвою та часом'); return; }
+
+  const btn = document.getElementById('sbtn');
+  btn.disabled = true; btn.textContent = 'Збереження...';
+
+  try {
+    const res = await apiPost({ action: 'addLogs', rows });
+    if (res.ok) {
+      await loadLogs();
+      showToast(`Збережено: ${res.added} ${res.added === 1 ? 'запис' : 'записи'}`);
+      switchTab('log');
+    } else throw new Error();
+  } catch {
+    showToast('Помилка збереження. Спробуй ще раз.');
+    btn.disabled = false; btn.textContent = 'Зберегти звіт';
+  }
+}
+
+function renderLog() {
+  const ml = LOGS.filter(l => String(l.user) === String(cur))
+    .sort((a, b) => String(b.date).localeCompare(String(a.date)));
+  if (!ml.length) return `<div class="empty">Ще немає записів.<br>Заповни перший звіт за день!</div>`;
+  let h = `<div class="fcard" style="padding:0;overflow:hidden"><div style="overflow-x:auto"><table>
+    <thead><tr><th>Дата</th><th>Проект</th><th>Задача</th><th>Год</th><th>Статус</th></tr></thead><tbody>`;
+  ml.forEach(l => {
+    const proj = PROJECTS.find(p => String(p.id) === String(l.project_id));
+    const sl = { wip: 'В роботі', done: 'Готово', todo: 'Заплановано' }[l.status] || l.status;
+    const sc = { wip: 'sp-wip', done: 'sp-done', todo: 'sp-todo' }[l.status] || 'sp-todo';
+    h += `<tr>
+      <td style="white-space:nowrap;color:#999">${String(l.date).slice(0, 10)}</td>
+      <td style="white-space:nowrap">${proj ? proj.name : l.project_id}</td>
+      <td>${l.task}${l.comment ? `<div style="font-size:11px;color:#CCC;margin-top:2px">${l.comment}</div>` : ''}</td>
+      <td><strong>${parseFloat(l.hours).toFixed(1)}</strong></td>
+      <td><span class="sp ${sc}">${sl}</span></td>
+    </tr>`;
+  });
+  return h + `</tbody></table></div></div>`;
+}
+
+function renderOwner() {
+  const total = LOGS.reduce((s, l) => s + parseFloat(l.hours || 0), 0);
+  const active = PROJECTS.filter(p => p.status === 'active').length;
+  const clients = PROJECTS.filter(p => p.type === 'client' && p.status === 'active').length;
+
+  let h = `<div class="grid4">
+    <div class="mcard"><div class="mlabel">Активних</div><div class="mval">${active}</div><div class="msub">проектів</div></div>
+    <div class="mcard"><div class="mlabel">Клієнтських</div><div class="mval">${clients}</div></div>
+    <div class="mcard"><div class="mlabel">Годин всього</div><div class="mval">${total.toFixed(1)}</div></div>
+    <div class="mcard"><div class="mlabel">Команда</div><div class="mval">${USERS.length}</div><div class="msub">дизайнери</div></div>
+  </div><div class="sec">Рентабельність проектів</div><div class="ogrid">`;
+
+  PROJECTS.filter(p => p.type === 'client').forEach(p => {
+    const spent = hForP(p.id), budget = parseFloat(p.hours_budget) || 0;
+    const pct = budget > 0 ? Math.min(100, Math.round(spent / budget * 100)) : 0;
+    const fc = pct < 70 ? 'pf-g' : pct < 90 ? 'pf-a' : 'pf-r';
+    const sc = pct < 70 ? { c: '#085041', t: 'В нормі' } : pct < 90 ? { c: '#854F0B', t: 'Уважно' } : { c: '#A32D2D', t: 'Перевищення' };
+    const statusBadge = p.status === 'done' ? ' <span class="badge bd">Завершено</span>' : '';
+    h += `<div class="fcard">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div style="font-size:13px;font-weight:600">${p.name}${statusBadge}</div>
+          <div style="font-size:11px;color:#BBB;margin-top:2px">${p.client}</div>
+        </div>
+        ${p.budget_usd ? `<div style="font-size:13px;font-weight:600">$${p.budget_usd}</div>` : ''}
+      </div>
+      ${budget > 0
+        ? `<div class="profbar"><div class="proff ${fc}" style="width:${pct}%"></div></div>
+           <div style="display:flex;justify-content:space-between;font-size:11px;margin-top:4px">
+             <span style="color:#BBB">${spent.toFixed(1)}г / ${budget}г (${pct}%)</span>
+             <span style="color:${sc.c};font-weight:600">${sc.t}</span>
+           </div>`
+        : `<div style="font-size:11px;color:#BBB;margin-top:8px">${spent.toFixed(1)}г витрачено</div>`}
+    </div>`;
+  });
+
+  h += `</div><div class="sec" style="margin-top:20px">Навантаження команди</div>
+  <div class="fcard" style="padding:0;overflow:hidden"><div style="overflow-x:auto"><table>
+  <thead><tr><th>Дизайнер</th><th>Всього год</th><th>Проектів</th></tr></thead><tbody>`;
+
+  USERS.forEach(u => {
+    const ul = LOGS.filter(l => String(l.user) === String(u.id));
+    const ut = ul.reduce((s, l) => s + parseFloat(l.hours || 0), 0);
+    const up = [...new Set(ul.map(l => l.project_id))].length;
+    h += `<tr><td><div style="display:flex;align-items:center;gap:8px">
+      <div class="av ${avClass(u.id)}">${ini(u.name)}</div>${u.name}
+    </div></td><td><strong>${ut.toFixed(1)}</strong></td><td>${up}</td></tr>`;
+  });
+
+  return h + `</tbody></table></div></div>`;
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+init();
+</script>
+</body>
+</html>
