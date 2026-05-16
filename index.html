@@ -6,173 +6,323 @@
 <title>One More Agency — Трекер</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;background:#F2F2F7;color:#1C1C1E;font-size:15px;line-height:1.4;min-height:100vh}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;background:#EBEBEB;color:#1C1C1E;font-size:15px;line-height:1.4;min-height:100vh}
 
-/* TOPBAR */
-.topbar{background:#F2F2F7;padding:16px 24px 0;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{font-size:17px;font-weight:700;letter-spacing:-.4px;color:#1C1C1E;white-space:nowrap}
-.logo span{color:#6366F1}
-.utabs{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
-.utab{display:flex;align-items:center;gap:7px;padding:6px 13px 6px 7px;border-radius:20px;border:none;background:#E5E5EA;font-size:13px;font-weight:500;color:#3C3C43;cursor:pointer;transition:all .18s;font-family:inherit}
-.utab.active{background:#1C1C1E;color:#fff}
-.utab:not(.active):hover{background:#D1D1D6}
-.av{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0}
-.av-0{background:#E8E8FD;color:#4338CA}
-.av-1{background:#D1FAE5;color:#065F46}
-.av-2{background:#FEF3C7;color:#92400E}
-.av-3{background:#FCE7F3;color:#9D174D}
-.av-x{background:#E5E5EA;color:#6B7280}
+/* ── TOPBAR ── */
+.topbar{
+  background:#1C1C1E;
+  padding:0 32px;
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+.logo{
+  font-size:20px;
+  font-weight:700;
+  letter-spacing:-.5px;
+  color:#fff;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.logo span{color:#818CF8}
 
-/* NAV */
-.nav{display:flex;padding:4px 24px 0;gap:0}
-.nbtn{padding:11px 16px;border:none;background:transparent;font-size:14px;font-weight:500;color:#8E8E93;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;font-family:inherit}
+.utabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.utab{
+  display:flex;align-items:center;gap:8px;
+  padding:8px 16px 8px 10px;
+  border-radius:24px;
+  border:1.5px solid rgba(255,255,255,.15);
+  background:transparent;
+  font-size:14px;font-weight:500;
+  color:rgba(255,255,255,.6);
+  cursor:pointer;
+  transition:all .18s;
+  font-family:inherit;
+}
+.utab.active{
+  background:#fff;
+  border-color:#fff;
+  color:#1C1C1E;
+}
+.utab:not(.active):hover{
+  border-color:rgba(255,255,255,.4);
+  color:#fff;
+}
+.av{
+  width:28px;height:28px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:10px;font-weight:700;flex-shrink:0;
+}
+.av-0{background:#818CF8;color:#fff}
+.av-1{background:#34D399;color:#fff}
+.av-2{background:#FBBF24;color:#fff}
+.av-3{background:#F472B6;color:#fff}
+.av-x{background:#6B7280;color:#fff}
+
+/* ── NAV ── */
+.nav{
+  background:#fff;
+  padding:0 32px;
+  display:flex;
+  gap:0;
+  border-bottom:1px solid #E5E5EA;
+  position:sticky;top:0;z-index:40;
+}
+.nbtn{
+  padding:14px 20px;
+  border:none;background:transparent;
+  font-size:15px;font-weight:500;
+  color:#8E8E93;cursor:pointer;
+  border-bottom:2.5px solid transparent;
+  transition:all .15s;
+  font-family:inherit;
+}
 .nbtn.active{color:#1C1C1E;border-bottom-color:#1C1C1E}
 .nbtn:hover:not(.active){color:#3C3C43}
 
-/* PAGE */
-.page{padding:20px 24px 40px;max-width:860px;margin:0 auto}
+/* ── PAGE ── */
+.page{padding:28px 32px 60px;max-width:960px;margin:0 auto}
 
-/* METRIC CARDS */
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:24px}
-.mcard{background:#fff;border-radius:14px;padding:16px;border:1px solid rgba(0,0,0,.06)}
-.mlabel{font-size:11px;font-weight:600;color:#8E8E93;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
-.mval{font-size:28px;font-weight:700;color:#1C1C1E;line-height:1;letter-spacing:-.5px}
-.msub{font-size:12px;color:#C7C7CC;margin-top:4px}
+/* ── METRIC CARDS ── */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
+.mcard{
+  background:#fff;
+  border-radius:16px;
+  padding:20px;
+  border:1px solid #E5E5EA;
+}
+.mlabel{font-size:12px;font-weight:600;color:#8E8E93;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.mval{font-size:32px;font-weight:700;color:#1C1C1E;line-height:1;letter-spacing:-.8px}
+.msub{font-size:13px;color:#8E8E93;margin-top:6px}
 
-/* SECTION LABEL */
-.slbl{font-size:12px;font-weight:600;color:#8E8E93;letter-spacing:.4px;text-transform:uppercase;margin-bottom:10px;padding:0 2px}
+/* ── SECTION LABEL ── */
+.slbl{font-size:13px;font-weight:600;color:#3C3C43;letter-spacing:.3px;text-transform:uppercase;margin-bottom:12px;padding:0 2px}
 
-/* PROJECT CARDS (overview) */
-.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:24px}
-.pcard{background:#fff;border-radius:14px;padding:16px;border:1px solid rgba(0,0,0,.06);cursor:default}
-.pcard.cl{border-left:3px solid #6366F1}
-.pcard.int{border-left:3px solid #A78BFA}
-.pname{font-size:15px;font-weight:600;color:#1C1C1E}
-.pclient{font-size:12px;color:#8E8E93;margin-top:2px}
-.pbadge{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px}
+/* ── PROJECT CARDS ── */
+.pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.pcard{
+  background:#fff;border-radius:16px;
+  padding:20px;border:1px solid #E5E5EA;
+}
+.pcard.cl{border-top:3px solid #6366F1}
+.pcard.int{border-top:3px solid #A78BFA}
+.pname{font-size:16px;font-weight:700;color:#1C1C1E;margin-bottom:4px}
+.pclient{font-size:13px;color:#8E8E93}
+.prow{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.pbadge{display:inline-flex;align-items:center;font-size:12px;font-weight:600;padding:4px 10px;border-radius:8px;flex-shrink:0}
 .pba{background:#EEF2FF;color:#4338CA}
 .pbi{background:#F5F3FF;color:#5B21B6}
-.pbd{background:#F2F2F7;color:#8E8E93}
-.pbar{height:3px;background:#F2F2F7;border-radius:2px;margin-top:12px}
-.pfill{height:100%;border-radius:2px;transition:width .3s}
+.pbd{background:#F2F2F7;color:#6B7280}
+.pbar{height:4px;background:#F2F2F7;border-radius:2px;margin-top:12px}
+.pfill{height:100%;border-radius:2px}
 .pft{background:#6366F1}
 .pfi{background:#A78BFA}
-.pinfo{display:flex;justify-content:space-between;font-size:12px;color:#8E8E93;margin-top:5px}
+.pinfo{display:flex;justify-content:space-between;font-size:13px;color:#8E8E93;margin-top:6px}
 
-/* OPEN TASKS */
-.tcard{background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.06);margin-bottom:24px;overflow:hidden}
-.ti{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:1px solid #F2F2F7}
+/* ── OPEN TASKS ── */
+.tcard{background:#fff;border-radius:16px;border:1px solid #E5E5EA;margin-bottom:28px;overflow:hidden}
+.ti{display:flex;align-items:flex-start;gap:12px;padding:14px 20px;border-bottom:1px solid #F2F2F7}
 .ti:last-child{border-bottom:none}
-.ti-dot{width:8px;height:8px;border-radius:50%;background:#6366F1;margin-top:5px;flex-shrink:0}
-.ti-name{font-size:14px;color:#1C1C1E}
-.ti-meta{font-size:12px;color:#8E8E93;margin-top:2px}
+.ti-dot{width:10px;height:10px;border-radius:50%;background:#6366F1;margin-top:4px;flex-shrink:0}
+.ti-name{font-size:15px;color:#1C1C1E;font-weight:500}
+.ti-meta{font-size:13px;color:#8E8E93;margin-top:3px}
 
-/* ---- REPORT ---- */
-.report-wrap{max-width:600px}
+/* ── REPORT ── */
+.report-wrap{max-width:640px}
 
-/* DATE CHIPS */
-.date-row{display:flex;align-items:center;gap:10px;margin-bottom:22px}
-.date-lbl{font-size:13px;font-weight:500;color:#8E8E93;width:44px;flex-shrink:0}
-.dchips{display:flex;gap:6px;flex-wrap:wrap}
-.dchip{padding:7px 15px;border-radius:20px;border:none;background:#E5E5EA;font-size:14px;font-weight:500;color:#3C3C43;cursor:pointer;transition:all .15s;font-family:inherit}
-.dchip:hover{background:#D1D1D6}
-.dchip.active{background:#1C1C1E;color:#fff}
-.dchip.alt{color:#6366F1}
-.date-inp{padding:7px 15px;border-radius:20px;border:1.5px solid #6366F1;background:#EEF2FF;color:#4338CA;font-size:14px;font-weight:500;outline:none;font-family:inherit;display:none}
+/* date chips */
+.date-section{margin-bottom:24px}
+.date-section-lbl{font-size:13px;font-weight:600;color:#3C3C43;text-transform:uppercase;letter-spacing:.3px;margin-bottom:12px}
+.dchips{display:flex;gap:8px;flex-wrap:wrap}
+.dchip{
+  padding:10px 18px;border-radius:12px;border:1.5px solid #E5E5EA;
+  background:#fff;font-size:15px;font-weight:500;
+  color:#3C3C43;cursor:pointer;transition:all .15s;font-family:inherit;
+}
+.dchip:hover{border-color:#818CF8;color:#4338CA}
+.dchip.active{background:#1C1C1E;border-color:#1C1C1E;color:#fff}
+.dchip.alt{border-color:#E5E5EA;color:#818CF8}
+.dchip.alt:hover{border-color:#818CF8}
+.date-inp-wrap{display:none;margin-top:8px}
+.date-inp{
+  padding:10px 16px;border-radius:12px;
+  border:1.5px solid #818CF8;background:#EEF2FF;
+  color:#4338CA;font-size:15px;font-weight:500;
+  outline:none;font-family:inherit;width:200px;
+}
 
-/* PROJECT CHIPS (report) */
-.proj-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
-.rchip{display:flex;align-items:center;gap:7px;padding:9px 15px;border-radius:12px;border:1.5px solid #E5E5EA;background:#fff;font-size:14px;font-weight:500;color:#3C3C43;cursor:pointer;transition:all .18s;font-family:inherit}
-.rchip:hover{border-color:#C7C7CC}
+/* project chips */
+.proj-section{margin-bottom:20px}
+.rchips{display:flex;gap:8px;flex-wrap:wrap}
+.rchip{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 18px;border-radius:12px;
+  border:1.5px solid #E5E5EA;background:#fff;
+  font-size:15px;font-weight:500;color:#3C3C43;
+  cursor:pointer;transition:all .18s;font-family:inherit;
+}
+.rchip:hover{border-color:#818CF8;color:#4338CA}
 .rchip.sel{border-color:#6366F1;background:#EEF2FF;color:#4338CA}
 .rchip.int.sel{border-color:#7C3AED;background:#F5F3FF;color:#5B21B6}
-.rchip-dot{width:8px;height:8px;border-radius:50%;background:#D1D1D6;flex-shrink:0;transition:background .18s}
+.rchip-dot{width:10px;height:10px;border-radius:50%;background:#D1D1D6;flex-shrink:0;transition:background .18s}
 .rchip.sel .rchip-dot{background:#6366F1}
 .rchip.int.sel .rchip-dot{background:#7C3AED}
 
-/* TASK BLOCKS */
-.tblock{background:#fff;border-radius:16px;border:1px solid rgba(0,0,0,.06);margin-bottom:10px;overflow:hidden}
-.tblock-hdr{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid #F2F2F7}
-.tblock-name{font-size:15px;font-weight:600;color:#1C1C1E;display:flex;align-items:center;gap:8px}
-.tblock-dot{width:8px;height:8px;border-radius:50%;background:#6366F1;flex-shrink:0}
+/* task blocks */
+.tblock{
+  background:#fff;border-radius:16px;
+  border:1.5px solid #E5E5EA;
+  margin-bottom:12px;overflow:hidden;
+}
+.tblock-hdr{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px;
+  background:#FAFAFA;
+  border-bottom:1.5px solid #E5E5EA;
+}
+.tblock-name{
+  font-size:16px;font-weight:700;color:#1C1C1E;
+  display:flex;align-items:center;gap:10px;
+}
+.tblock-dot{width:10px;height:10px;border-radius:50%;background:#6366F1;flex-shrink:0}
 .tblock-dot.int{background:#7C3AED}
-.tblock-x{width:26px;height:26px;border-radius:50%;background:#F2F2F7;border:none;color:#8E8E93;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .15s;font-family:inherit}
+.tblock-x{
+  width:28px;height:28px;border-radius:50%;
+  background:#F2F2F7;border:none;
+  color:#6B7280;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  font-size:16px;transition:all .15s;font-family:inherit;
+}
 .tblock-x:hover{background:#FFE4E4;color:#EF4444}
 
-.task-row{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid #F2F2F7}
-.task-inp{flex:1;border:none;background:transparent;font-size:14px;color:#1C1C1E;outline:none;font-family:inherit;min-width:0}
+.task-row{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 20px;border-bottom:1px solid #F5F5F5;
+}
+.task-inp{
+  flex:1;border:none;background:transparent;
+  font-size:15px;color:#1C1C1E;outline:none;
+  font-family:inherit;min-width:0;
+}
 .task-inp::placeholder{color:#C7C7CC}
-.hrs-ctrl{display:flex;align-items:center;background:#F2F2F7;border-radius:10px;overflow:hidden;flex-shrink:0}
-.hbtn{width:32px;height:32px;border:none;background:transparent;font-size:20px;font-weight:300;color:#1C1C1E;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;font-family:inherit;line-height:1}
+.hrs-ctrl{
+  display:flex;align-items:center;
+  background:#F2F2F7;border-radius:12px;
+  overflow:hidden;flex-shrink:0;
+}
+.hbtn{
+  width:36px;height:36px;border:none;background:transparent;
+  font-size:22px;font-weight:300;color:#1C1C1E;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  transition:background .15s;font-family:inherit;line-height:1;
+}
 .hbtn:hover{background:#E5E5EA}
-.hval{min-width:42px;text-align:center;font-size:14px;font-weight:600;color:#1C1C1E;white-space:nowrap}
-.del-row{width:26px;height:26px;border:none;background:transparent;color:#D1D1D6;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;border-radius:6px;transition:all .15s;flex-shrink:0;font-family:inherit}
+.hval{min-width:52px;text-align:center;font-size:15px;font-weight:700;color:#1C1C1E;white-space:nowrap}
+.del-row{
+  width:28px;height:28px;border:none;background:transparent;
+  color:#C7C7CC;cursor:pointer;font-size:18px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:8px;transition:all .15s;flex-shrink:0;font-family:inherit;
+}
 .del-row:hover{background:#FFE4E4;color:#EF4444}
 
-.add-task-btn{display:flex;align-items:center;gap:8px;padding:11px 16px;cursor:pointer;color:#6366F1;font-size:14px;font-weight:500;background:transparent;border:none;width:100%;font-family:inherit;transition:background .15s}
+.add-task-btn{
+  display:flex;align-items:center;gap:8px;
+  padding:14px 20px;cursor:pointer;
+  color:#6366F1;font-size:15px;font-weight:500;
+  background:transparent;border:none;width:100%;
+  font-family:inherit;transition:background .15s;
+}
 .add-task-btn:hover{background:#F8F8FF}
 
-.total-row{font-size:13px;color:#8E8E93;text-align:right;padding:0 2px;margin-bottom:16px;font-weight:500;min-height:18px}
-.total-row strong{color:#1C1C1E;font-weight:700}
+.total-row{
+  font-size:15px;color:#3C3C43;text-align:right;
+  padding:0 2px;margin-bottom:20px;font-weight:500;min-height:22px;
+}
+.total-row strong{color:#1C1C1E;font-weight:700;font-size:18px}
 
-.comment-wrap{background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.06);margin-bottom:18px;overflow:hidden}
-.comment-wrap textarea{width:100%;border:none;background:transparent;padding:14px 16px;font-size:14px;color:#1C1C1E;resize:none;outline:none;font-family:inherit;min-height:76px}
+.comment-wrap{
+  background:#fff;border-radius:16px;
+  border:1.5px solid #E5E5EA;
+  margin-bottom:20px;overflow:hidden;
+}
+.comment-wrap textarea{
+  width:100%;border:none;background:transparent;
+  padding:16px 20px;font-size:15px;color:#1C1C1E;
+  resize:none;outline:none;font-family:inherit;min-height:88px;
+}
 .comment-wrap textarea::placeholder{color:#C7C7CC}
 
-.save-btn{width:100%;padding:16px;border:none;border-radius:14px;background:#1C1C1E;color:#fff;font-size:16px;font-weight:600;cursor:pointer;transition:all .18s;font-family:inherit;letter-spacing:-.2px}
+.save-btn{
+  width:100%;padding:18px;border:none;border-radius:16px;
+  background:#1C1C1E;color:#fff;
+  font-size:17px;font-weight:700;cursor:pointer;
+  transition:all .18s;font-family:inherit;letter-spacing:-.2px;
+}
 .save-btn:hover{background:#000}
 .save-btn:active{transform:scale(.98)}
 .save-btn:disabled{background:#C7C7CC;cursor:not-allowed;transform:none}
 
-/* LOG */
-.log-card{background:#fff;border-radius:14px;border:1px solid rgba(0,0,0,.06);overflow:hidden}
+/* ── LOG ── */
+.log-card{background:#fff;border-radius:16px;border:1px solid #E5E5EA;overflow:hidden}
 .log-card table{width:100%;border-collapse:collapse}
-.log-card th{font-size:11px;font-weight:600;color:#8E8E93;text-transform:uppercase;letter-spacing:.4px;padding:12px 16px;border-bottom:1px solid #F2F2F7;text-align:left;white-space:nowrap}
-.log-card td{font-size:14px;padding:12px 16px;border-bottom:1px solid #F2F2F7;color:#1C1C1E;vertical-align:top}
+.log-card th{
+  font-size:12px;font-weight:600;color:#8E8E93;
+  text-transform:uppercase;letter-spacing:.4px;
+  padding:14px 20px;border-bottom:1.5px solid #F2F2F7;text-align:left;white-space:nowrap;
+}
+.log-card td{
+  font-size:15px;padding:14px 20px;
+  border-bottom:1px solid #F5F5F5;color:#1C1C1E;vertical-align:top;
+}
 .log-card tr:last-child td{border-bottom:none}
 .log-card tr:hover td{background:#FAFAFA}
-.spill{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px}
-.sp-wip{background:#EEF2FF;color:#4338CA}
-.sp-done{background:#D1FAE5;color:#065F46}
-.sp-todo{background:#F2F2F7;color:#6B7280}
+.log-card td.muted{color:#8E8E93;white-space:nowrap}
 
-/* OWNER */
-.ogrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
-.ocard{background:#fff;border-radius:14px;padding:16px;border:1px solid rgba(0,0,0,.06)}
-.ocard-name{font-size:15px;font-weight:600;color:#1C1C1E}
-.ocard-sub{font-size:12px;color:#8E8E93;margin-top:2px}
-.obar{height:5px;background:#F2F2F7;border-radius:3px;margin-top:10px}
+/* ── OWNER ── */
+.ogrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.ocard{background:#fff;border-radius:16px;padding:20px;border:1px solid #E5E5EA}
+.ocard-name{font-size:16px;font-weight:700;color:#1C1C1E}
+.ocard-sub{font-size:13px;color:#8E8E93;margin-top:3px}
+.obar{height:6px;background:#F2F2F7;border-radius:3px;margin-top:12px}
 .obar-fill{height:100%;border-radius:3px}
 .obf-g{background:#34D399}
 .obf-a{background:#FBBF24}
 .obf-r{background:#F87171}
-.obar-info{display:flex;justify-content:space-between;font-size:12px;margin-top:5px}
+.obar-info{display:flex;justify-content:space-between;font-size:13px;margin-top:6px}
 
-/* STATES */
-.empty{text-align:center;padding:60px 20px;color:#C7C7CC;font-size:15px}
-.loading{text-align:center;padding:60px 20px;color:#C7C7CC;font-size:15px}
+/* ── STATES ── */
+.empty{text-align:center;padding:80px 20px;color:#8E8E93;font-size:16px}
+.loading{text-align:center;padding:80px 20px;color:#8E8E93;font-size:16px}
 
-@media(max-width:640px){
+@media(max-width:680px){
+  .topbar{padding:0 16px;height:auto;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
   .grid4{grid-template-columns:1fr 1fr}
   .pgrid,.ogrid{grid-template-columns:1fr}
-  .topbar{padding:14px 16px 0;flex-wrap:wrap;gap:10px}
-  .page{padding:16px 16px 40px}
+  .page{padding:20px 16px 60px}
   .nav{padding:0 16px}
 }
 </style>
 </head>
 <body>
 
+<!-- TOPBAR -->
 <div class="topbar">
   <div class="logo">One More <span>Agency</span></div>
   <div class="utabs" id="utabs"></div>
 </div>
+
+<!-- NAV -->
 <div class="nav">
   <button class="nbtn active" onclick="switchTab('overview')">Огляд</button>
   <button class="nbtn" onclick="switchTab('report')">Звіт за день</button>
   <button class="nbtn" onclick="switchTab('log')">Журнал</button>
   <button class="nbtn owner-only" onclick="switchTab('owner')" style="display:none">Аналітика</button>
 </div>
+
+<!-- CONTENT -->
 <div class="page" id="page"><div class="loading">Завантаження...</div></div>
 
 <script>
@@ -180,7 +330,8 @@ const API = 'https://script.google.com/macros/s/AKfycbzJk873o2Z8oUFwXUqwGcfzjBNC
 
 let USERS=[], PROJECTS=[], LOGS=[];
 let cur=null, tab='overview';
-let selProjects=new Set(), tasksByProj={}, bid=0;
+let selProjects=new Set(), tasksByProj={};
+let reportDate=todayStr();
 
 function avClass(uid){const i=USERS.findIndex(u=>u.id===uid);return'av-'+(i>=0&&i<=3?i:'x')}
 function ini(n){if(!n)return'?';const p=n.trim().split(' ');return p.length>=2?p[0][0]+p[1][0]:n.slice(0,2)}
@@ -188,6 +339,7 @@ function uid2(){return'_'+Math.random().toString(36).slice(2,8)}
 function todayStr(){return new Date().toISOString().split('T')[0]}
 function hForP(pid){return LOGS.filter(l=>String(l.project_id)===String(pid)).reduce((s,l)=>s+parseFloat(l.hours||0),0)}
 function hForUP(uid,pid){return LOGS.filter(l=>String(l.user)===String(uid)&&String(l.project_id)===String(pid)).reduce((s,l)=>s+parseFloat(l.hours||0),0)}
+function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 
 async function init(){
   try{
@@ -201,11 +353,7 @@ async function init(){
     document.getElementById('page').innerHTML='<div class="empty">Помилка завантаження. Перевір підключення.</div>';
   }
 }
-
-async function loadLogs(){
-  try{const d=await apiFetch('getAllLogs');LOGS=Array.isArray(d)?d:[];}catch(e){LOGS=[];}
-}
-
+async function loadLogs(){try{const d=await apiFetch('getAllLogs');LOGS=Array.isArray(d)?d:[];}catch(e){LOGS=[];}}
 async function apiFetch(action){const r=await fetch(`${API}?action=${action}`);return r.json();}
 async function apiPost(body){const r=await fetch(API,{method:'POST',body:JSON.stringify(body)});return r.json();}
 
@@ -238,7 +386,7 @@ function renderPage(){
   else if(tab==='owner')el.innerHTML=renderOwner();
 }
 
-/* ---- OVERVIEW ---- */
+/* ── OVERVIEW ── */
 function renderOverview(){
   const ml=LOGS.filter(l=>String(l.user)===String(cur));
   const td=todayStr();
@@ -252,21 +400,24 @@ function renderOverview(){
     <div class="mcard"><div class="mlabel">Сьогодні</div><div class="mval">${hToday.toFixed(1)}</div><div class="msub">год внесено</div></div>
     <div class="mcard"><div class="mlabel">Всього годин</div><div class="mval">${hTotal.toFixed(1)}</div><div class="msub">в базі</div></div>
     <div class="mcard"><div class="mlabel">В роботі</div><div class="mval">${open}</div><div class="msub">задач</div></div>
-  </div><div class="slbl">Проекти</div><div class="pgrid">`;
+  </div>
+  <div class="slbl">Проекти</div>
+  <div class="pgrid">`;
 
   active.forEach(p=>{
-    const spent=hForP(p.id),budget=parseFloat(p.hours_budget)||0;
+    const spent=hForP(p.id), budget=parseFloat(p.hours_budget)||0;
     const pct=budget>0?Math.min(100,Math.round(spent/budget*100)):0;
     const myH=hForUP(cur,p.id);
     const isInt=p.type==='internal';
     h+=`<div class="pcard ${isInt?'int':'cl'}">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px">
+      <div class="prow">
         <div><div class="pname">${p.name}</div><div class="pclient">${p.client}</div></div>
         <span class="pbadge ${isInt?'pbi':'pba'}">${isInt?'Внутрішній':'Активний'}</span>
       </div>
-      ${budget>0?`<div class="pbar"><div class="pfill ${isInt?'pfi':'pft'}" style="width:${pct}%"></div></div>
-      <div class="pinfo"><span>${spent.toFixed(1)}г / ${budget}г</span><span>Мій: ${myH.toFixed(1)}г</span></div>`
-      :`<div class="pinfo" style="margin-top:8px"><span>Мій внесок: ${myH.toFixed(1)}г</span></div>`}
+      ${budget>0
+        ?`<div class="pbar"><div class="pfill ${isInt?'pfi':'pft'}" style="width:${pct}%"></div></div>
+          <div class="pinfo"><span>${spent.toFixed(1)}г / ${budget}г</span><span>Мій: ${myH.toFixed(1)}г</span></div>`
+        :`<div class="pinfo"><span>Мій внесок: ${myH.toFixed(1)}г</span></div>`}
     </div>`;
   });
   h+=`</div>`;
@@ -277,7 +428,7 @@ function renderOverview(){
     wip.forEach(t=>{
       const proj=PROJECTS.find(p=>String(p.id)===String(t.project_id));
       h+=`<div class="ti"><div class="ti-dot"></div><div>
-        <div class="ti-name">${t.task}</div>
+        <div class="ti-name">${esc(t.task)}</div>
         <div class="ti-meta">${proj?proj.name:''} · ${String(t.date).slice(0,10)} · ${t.hours}г</div>
       </div></div>`;
     });
@@ -286,46 +437,54 @@ function renderOverview(){
   return h;
 }
 
-/* ---- REPORT ---- */
-let reportDate=todayStr();
-
+/* ── REPORT ── */
 function renderReport(){
+  // build day chips — last 5 weekdays
   const days=[];
-  for(let i=4;i>=0;i--){const d=new Date();d.setDate(d.getDate()-i);days.push(d);}
+  const d=new Date();
+  while(days.length<5){
+    if(d.getDay()!==0&&d.getDay()!==6)days.unshift(new Date(d));
+    d.setDate(d.getDate()-1);
+  }
   const dayNames=['Нд','Пн','Вт','Ср','Чт','Пт','Сб'];
-
-  const chips=days.map((d,idx)=>{
-    const ds=d.toISOString().split('T')[0];
-    const label=idx===days.length-1?'Сьогодні':dayNames[d.getDay()]+' '+d.getDate();
-    const isActive=ds===reportDate;
-    return `<button class="dchip${isActive?' active':''}" data-date="${ds}" onclick="setReportDate(this,'${ds}')">${label}</button>`;
+  const chipHtml=days.map((day,idx)=>{
+    const ds=day.toISOString().split('T')[0];
+    const lbl=idx===days.length-1?'Сьогодні':(dayNames[day.getDay()]+' '+day.getDate());
+    return`<button class="dchip${ds===reportDate?' active':''}" data-date="${ds}" onclick="setReportDate(this,'${ds}')">${lbl}</button>`;
   }).join('');
 
   const projChips=PROJECTS.filter(p=>p.status==='active').map(p=>{
     const isInt=p.type==='internal';
     const isSel=selProjects.has(String(p.id));
-    return `<button class="rchip${isInt?' int':''}${isSel?' sel':''}" data-id="${p.id}" onclick="toggleReportProj(this,'${p.id}')">
+    return`<button class="rchip${isInt?' int':''}${isSel?' sel':''}" data-id="${p.id}" onclick="toggleReportProj(this,'${p.id}')">
       <div class="rchip-dot"></div>${p.name}
     </button>`;
   }).join('');
 
-  return `<div class="report-wrap">
-    <div class="date-row">
-      <div class="date-lbl">Дата</div>
+  return`<div class="report-wrap">
+    <div class="date-section">
+      <div class="date-section-lbl">Дата</div>
       <div class="dchips">
-        ${chips}
+        ${chipHtml}
         <button class="dchip alt" id="btn-other" onclick="openOtherDate()">Інша дата</button>
-        <input type="date" id="other-date-inp" class="date-inp" onchange="setOtherDate(this.value)">
+      </div>
+      <div class="date-inp-wrap" id="date-inp-wrap">
+        <input type="date" class="date-inp" id="other-date-inp" onchange="setOtherDate(this.value)">
       </div>
     </div>
 
-    <div class="slbl">Над чим працював/ла</div>
-    <div class="proj-chips" id="proj-chips">${projChips}</div>
+    <div class="proj-section">
+      <div class="date-section-lbl">Над чим працював/ла</div>
+      <div class="rchips" id="proj-chips">${projChips}</div>
+    </div>
+
     <div id="tblocks"></div>
     <div class="total-row" id="total-row"></div>
 
-    <div class="slbl">Коментар</div>
-    <div class="comment-wrap"><textarea id="r-comment" placeholder="Що вийшло, що заблоковано, питання до команди..."></textarea></div>
+    <div class="date-section-lbl">Коментар</div>
+    <div class="comment-wrap">
+      <textarea id="r-comment" placeholder="Що вийшло, що заблоковано, питання до команди..."></textarea>
+    </div>
     <button class="save-btn" id="save-btn" onclick="submitReport()">Зберегти звіт</button>
   </div>`;
 }
@@ -343,32 +502,27 @@ function setReportDate(el,ds){
   reportDate=ds;
   document.querySelectorAll('.dchip').forEach(c=>c.classList.remove('active'));
   el.classList.add('active');
-  document.getElementById('other-date-inp').style.display='none';
+  document.getElementById('date-inp-wrap').style.display='none';
   document.getElementById('btn-other').style.display='';
 }
 
 function openOtherDate(){
   document.getElementById('btn-other').style.display='none';
+  const wrap=document.getElementById('date-inp-wrap');
+  wrap.style.display='block';
   const inp=document.getElementById('other-date-inp');
-  inp.style.display='';
-  inp.value=reportDate;
-  inp.focus();
+  inp.value=reportDate; inp.focus();
 }
 
 function setOtherDate(val){
-  if(val)reportDate=val;
+  if(val){reportDate=val;}
   document.querySelectorAll('.dchip').forEach(c=>c.classList.remove('active'));
 }
 
 function toggleReportProj(el,pid){
   const key=String(pid);
-  if(selProjects.has(key)){
-    selProjects.delete(key);
-    el.classList.remove('sel');
-  }else{
-    selProjects.add(key);
-    el.classList.add('sel');
-  }
+  if(selProjects.has(key)){selProjects.delete(key);el.classList.remove('sel');}
+  else{selProjects.add(key);el.classList.add('sel');}
   renderTblocks();
 }
 
@@ -386,8 +540,8 @@ function renderTblocks(){
     const isInt=proj.type==='internal';
     const rows=tasksByProj[pid].map(t=>{
       total+=t.hours;
-      return `<div class="task-row" id="tr-${t.id}">
-        <input class="task-inp" id="ti-${t.id}" placeholder="Що робив/ла..." value="${escHtml(t.text)}"
+      return`<div class="task-row" id="tr-${t.id}">
+        <input class="task-inp" id="ti-${t.id}" placeholder="Що робив/ла..." value="${esc(t.text)}"
           oninput="updateTaskText('${pid}','${t.id}',this.value)">
         <div class="hrs-ctrl">
           <button class="hbtn" onclick="chHours('${pid}','${t.id}',-0.5)">−</button>
@@ -402,14 +556,16 @@ function renderTblocks(){
     block.className='tblock'; block.id='tb-'+pid;
     block.innerHTML=`
       <div class="tblock-hdr">
-        <div class="tblock-name"><div class="tblock-dot${isInt?' int':''}"></div>${proj.name}</div>
+        <div class="tblock-name">
+          <div class="tblock-dot${isInt?' int':''}"></div>${proj.name}
+        </div>
         <button class="tblock-x" onclick="deselectProj('${pid}')">×</button>
       </div>
       ${rows}
       <button class="add-task-btn" onclick="addTask('${pid}')">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="flex-shrink:0">
-          <circle cx="8" cy="8" r="7" stroke="#6366F1" stroke-width="1.5"/>
-          <path d="M8 5v6M5 8h6" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round"/>
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0">
+          <circle cx="9" cy="9" r="8" stroke="#6366F1" stroke-width="1.5"/>
+          <path d="M9 6v6M6 9h6" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round"/>
         </svg>
         Додати задачу
       </button>`;
@@ -421,8 +577,7 @@ function renderTblocks(){
 
 function deselectProj(pid){
   selProjects.delete(String(pid));
-  const chip=document.querySelector(`.rchip[data-id="${pid}"]`);
-  if(chip)chip.classList.remove('sel');
+  document.querySelector(`.rchip[data-id="${pid}"]`)?.classList.remove('sel');
   renderTblocks();
 }
 
@@ -463,17 +618,15 @@ function updateTotal(){
 async function submitReport(){
   const comment=document.getElementById('r-comment')?.value.trim()||'';
   const rows=[];
-
   for(const pid of selProjects){
-    for(const t of (tasksByProj[pid]||[])){
+    for(const t of(tasksByProj[pid]||[])){
       if(t.text.trim()&&t.hours>0){
         rows.push({date:reportDate,user:cur,project_id:pid,task:t.text.trim(),hours:t.hours,status:'wip',comment});
       }
     }
   }
-
+  if(!selProjects.size){alert('Обери хоча б один проект');return;}
   if(!rows.length){alert('Додай хоча б одну задачу з описом');return;}
-  if(selProjects.size===0){alert('Обери хоча б один проект');return;}
 
   const btn=document.getElementById('save-btn');
   btn.disabled=true; btn.textContent='Збереження...';
@@ -493,7 +646,7 @@ async function submitReport(){
   }
 }
 
-/* ---- LOG ---- */
+/* ── LOG ── */
 function renderLog(){
   const ml=LOGS.filter(l=>String(l.user)===String(cur)).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
   if(!ml.length)return`<div class="empty">Ще немає записів.<br>Заповни перший звіт за день!</div>`;
@@ -503,16 +656,16 @@ function renderLog(){
   ml.forEach(l=>{
     const proj=PROJECTS.find(p=>String(p.id)===String(l.project_id));
     h+=`<tr>
-      <td style="white-space:nowrap;color:#8E8E93">${String(l.date).slice(0,10)}</td>
-      <td style="white-space:nowrap">${proj?proj.name:l.project_id}</td>
-      <td>${escHtml(l.task)}${l.comment?`<div style="font-size:12px;color:#C7C7CC;margin-top:2px">${escHtml(l.comment)}</div>`:''}</td>
-      <td style="white-space:nowrap"><strong>${parseFloat(l.hours).toFixed(1)}</strong></td>
+      <td class="muted">${String(l.date).slice(0,10)}</td>
+      <td style="white-space:nowrap;font-weight:500">${proj?proj.name:l.project_id}</td>
+      <td>${esc(l.task)}${l.comment?`<div style="font-size:13px;color:#8E8E93;margin-top:3px">${esc(l.comment)}</div>`:''}</td>
+      <td style="white-space:nowrap;font-weight:700">${parseFloat(l.hours).toFixed(1)}</td>
     </tr>`;
   });
   return h+`</tbody></table></div>`;
 }
 
-/* ---- OWNER ---- */
+/* ── OWNER ── */
 function renderOwner(){
   const total=LOGS.reduce((s,l)=>s+parseFloat(l.hours||0),0);
   const active=PROJECTS.filter(p=>p.status==='active').length;
@@ -523,28 +676,36 @@ function renderOwner(){
     <div class="mcard"><div class="mlabel">Клієнтських</div><div class="mval">${clients}</div></div>
     <div class="mcard"><div class="mlabel">Годин всього</div><div class="mval">${total.toFixed(1)}</div></div>
     <div class="mcard"><div class="mlabel">Команда</div><div class="mval">${USERS.length}</div><div class="msub">дизайнери</div></div>
-  </div><div class="slbl">Рентабельність проектів</div><div class="ogrid">`;
+  </div>
+  <div class="slbl">Рентабельність проектів</div>
+  <div class="ogrid">`;
 
   PROJECTS.filter(p=>p.type==='client').forEach(p=>{
     const spent=hForP(p.id),budget=parseFloat(p.hours_budget)||0;
     const pct=budget>0?Math.min(100,Math.round(spent/budget*100)):0;
     const fc=pct<70?'obf-g':pct<90?'obf-a':'obf-r';
-    const sc=pct<70?{c:'#065F46',t:'В нормі'}:pct<90?{c:'#92400E',t:'Уважно'}:{c:'#991B1B',t:'Перевищення'};
-    const done=p.status==='done'?' <span class="pbadge pbd">Завершено</span>':'';
+    const sc=pct<70?{c:'#059669',t:'В нормі'}:pct<90?{c:'#D97706',t:'Уважно'}:{c:'#DC2626',t:'Перевищення'};
+    const done=p.status==='done'?' <span class="pbadge pbd" style="font-size:11px;margin-left:6px">Завершено</span>':'';
     h+=`<div class="ocard">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start">
-        <div><div class="ocard-name">${p.name}${done}</div><div class="ocard-sub">${p.client}</div></div>
-        ${p.budget_usd?`<div style="font-size:14px;font-weight:700">$${p.budget_usd}</div>`:''}
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+        <div>
+          <div class="ocard-name">${p.name}${done}</div>
+          <div class="ocard-sub">${p.client}</div>
+        </div>
+        ${p.budget_usd?`<div style="font-size:16px;font-weight:700">$${p.budget_usd}</div>`:''}
       </div>
-      ${budget>0?`<div class="obar"><div class="obar-fill ${fc}" style="width:${pct}%"></div></div>
-      <div class="obar-info">
-        <span style="color:#8E8E93">${spent.toFixed(1)}г / ${budget}г (${pct}%)</span>
-        <span style="color:${sc.c};font-weight:600">${sc.t}</span>
-      </div>`:`<div style="font-size:12px;color:#8E8E93;margin-top:8px">${spent.toFixed(1)}г витрачено</div>`}
+      ${budget>0
+        ?`<div class="obar"><div class="obar-fill ${fc}" style="width:${pct}%"></div></div>
+          <div class="obar-info">
+            <span style="color:#8E8E93">${spent.toFixed(1)}г / ${budget}г (${pct}%)</span>
+            <span style="color:${sc.c};font-weight:600">${sc.t}</span>
+          </div>`
+        :`<div style="font-size:13px;color:#8E8E93;margin-top:8px">${spent.toFixed(1)}г витрачено</div>`}
     </div>`;
   });
 
-  h+=`</div><div class="slbl" style="margin-top:8px">Навантаження команди</div>
+  h+=`</div>
+  <div class="slbl" style="margin-top:8px">Навантаження команди</div>
   <div class="log-card"><table>
     <thead><tr><th>Дизайнер</th><th>Всього год</th><th>Проектів</th></tr></thead><tbody>`;
 
@@ -552,17 +713,17 @@ function renderOwner(){
     const ul=LOGS.filter(l=>String(l.user)===String(u.id));
     const ut=ul.reduce((s,l)=>s+parseFloat(l.hours||0),0);
     const up=[...new Set(ul.map(l=>l.project_id))].length;
-    h+=`<tr><td><div style="display:flex;align-items:center;gap:8px">
-      <div class="av ${avClass(u.id)}">${ini(u.name)}</div>${u.name}
-    </div></td><td><strong>${ut.toFixed(1)}</strong></td><td>${up}</td></tr>`;
+    h+=`<tr><td>
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="av ${avClass(u.id)}">${ini(u.name)}</div>
+        <span style="font-weight:500">${u.name}</span>
+      </div></td>
+      <td style="font-weight:700">${ut.toFixed(1)}</td>
+      <td>${up}</td>
+    </tr>`;
   });
 
   return h+`</tbody></table></div>`;
-}
-
-function escHtml(s){
-  if(!s)return'';
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
 init();
