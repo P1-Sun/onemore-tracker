@@ -462,7 +462,7 @@ function renderOverview(){
     <div class="mcard"><div class="mlabel">Проектів</div><div class="mval">${visibleP.length}</div><div class="msub">${isDana?'активних':'моїх'}</div></div>
     <div class="mcard"><div class="mlabel">За період</div><div class="mval">${hToday.toFixed(1)}</div><div class="msub">год внесено</div></div>
     <div class="mcard"><div class="mlabel">Всього годин</div><div class="mval">${LOGS.filter(l=>String(l.user)===String(cur)).reduce((s,l)=>s+parseFloat(l.hours||0),0).toFixed(1)}</div><div class="msub">в базі</div></div>
-    <div class="mcard"><div class="mlabel">${isDana?'Команда':'Мій рейтинг'}</div><div class="mval">${isDana?USERS.length:(() => { const myH=LOGS.filter(l=>String(l.user)===String(cur)).reduce((s,l)=>s+parseFloat(l.hours||0),0); const rank=USERS.map(u=>({id:u.id,h:LOGS.filter(l=>String(l.user)===String(u.id)).reduce((s,l)=>s+parseFloat(l.hours||0),0)})).sort((a,b)=>b.h-a.h).findIndex(u=>u.id===cur)+1; return '#'+rank; })()}</div><div class="msub">${isDana?'дизайнери':'за годинами'}</div></div>
+    <div class="mcard"><div class="mlabel">${isDana?'Команда':'Записів'}</div><div class="mval">${isDana?USERS.length:LOGS.filter(l=>String(l.user)===String(cur)).length}</div><div class="msub">${isDana?'дизайнери':'в журналі'}</div></div>
   </div>
   <div class="slbl">${isDana?'Всі проекти':'Мої проекти'}</div>
   <div class="pgrid">`;
@@ -505,7 +505,7 @@ function renderOverview(){
           <div><div class="pname">${projLabel(p)}</div></div>
           <span class="pbadge pbd">Завершено</span>
         </div>
-        <div class="pinfo"><span>${spent.toFixed(1)}г витрачено</span>${p.budget_usd?`<span>$${p.budget_usd}</span>`:''}</div>
+        <div class="pinfo"><span>${spent.toFixed(1)}г витрачено</span></div>
       </div>`;
     });
     h+=`</div></div>`;
@@ -523,45 +523,51 @@ function toggleArchive(){
 function openProjectModal(pid){
   const proj=PROJECTS.find(p=>String(p.id)===String(pid));
   if(!proj)return;
+  const isDana=cur===USERS[0]?.id;
   const projLogs=LOGS.filter(l=>String(l.project_id)===String(pid));
-  const filtLogs=filterLogsByDate(projLogs);
+  // Dana sees all; designers see only their own
+  const filtLogs=filterLogsByDate(isDana ? projLogs : projLogs.filter(l=>String(l.user)===String(cur)));
+  const allFilteredLogs=filterLogsByDate(projLogs); // for overall progress bar
   const totalH=filtLogs.reduce((s,l)=>s+parseFloat(l.hours||0),0);
+  const totalAllH=allFilteredLogs.reduce((s,l)=>s+parseFloat(l.hours||0),0);
   const budget=parseFloat(proj.hours_budget)||0;
-  const pct=budget>0?Math.min(100,Math.round(totalH/budget*100)):0;
+  const pct=budget>0?Math.min(100,Math.round(totalAllH/budget*100)):0;
 
   document.getElementById('modal-title').textContent=projLabel(proj);
-  document.getElementById('modal-sub').textContent=proj.client+(proj.budget_usd?' · $'+proj.budget_usd:'');
+  // Dana sees client+budget; others see just client
+  document.getElementById('modal-sub').textContent=proj.client+(isDana&&proj.budget_usd?' · $'+proj.budget_usd:'');
 
-  // stats
-  const uniqueUsers=[...new Set(filtLogs.map(l=>l.user))];
   let body=`<div class="modal-stats">
-    <div class="modal-stat"><div class="modal-stat-lbl">Годин витрачено</div><div class="modal-stat-val">${totalH.toFixed(1)}</div></div>
+    <div class="modal-stat"><div class="modal-stat-lbl">${isDana?'Годин всіх':'Мої години'}</div><div class="modal-stat-val">${totalH.toFixed(1)}</div></div>
     <div class="modal-stat"><div class="modal-stat-lbl">Бюджет годин</div><div class="modal-stat-val">${budget||'—'}</div></div>
     <div class="modal-stat"><div class="modal-stat-lbl">Виконано</div><div class="modal-stat-val">${budget>0?pct+'%':'—'}</div></div>
   </div>`;
 
-  // by user
-  if(uniqueUsers.length){
-    body+=`<div class="slbl" style="margin-bottom:10px">По дизайнерах</div>
-    <div class="log-card" style="margin-bottom:20px"><table>
-      <thead><tr><th>Дизайнер</th><th>Годин</th><th>Записів</th></tr></thead><tbody>`;
-    uniqueUsers.forEach(uid=>{
-      const u=USERS.find(u=>String(u.id)===String(uid));
-      const uLogs=filtLogs.filter(l=>String(l.user)===String(uid));
-      const uH=uLogs.reduce((s,l)=>s+parseFloat(l.hours||0),0);
-      body+=`<tr>
-        <td><div style="display:flex;align-items:center;gap:8px">
-          <div class="av ${avClass(uid)}">${u?ini(u.name):'?'}</div>
-          <span style="font-weight:500">${u?u.name:uid}</span>
-        </div></td>
-        <td style="font-weight:700">${uH.toFixed(1)}</td>
-        <td style="color:#8E8E93">${uLogs.length}</td>
-      </tr>`;
-    });
-    body+=`</tbody></table></div>`;
+  // by user — only for Dana
+  if(isDana){
+    const uniqueUsers=[...new Set(allFilteredLogs.map(l=>l.user))];
+    if(uniqueUsers.length){
+      body+=`<div class="slbl" style="margin-bottom:10px">По дизайнерах</div>
+      <div class="log-card" style="margin-bottom:20px"><table>
+        <thead><tr><th>Дизайнер</th><th>Годин</th><th>Записів</th></tr></thead><tbody>`;
+      uniqueUsers.forEach(uid=>{
+        const u=USERS.find(u=>String(u.id)===String(uid));
+        const uLogs=allFilteredLogs.filter(l=>String(l.user)===String(uid));
+        const uH=uLogs.reduce((s,l)=>s+parseFloat(l.hours||0),0);
+        body+=`<tr>
+          <td><div style="display:flex;align-items:center;gap:8px">
+            <div class="av ${avClass(uid)}">${u?ini(u.name):'?'}</div>
+            <span style="font-weight:500">${u?u.name:uid}</span>
+          </div></td>
+          <td style="font-weight:700">${uH.toFixed(1)}</td>
+          <td style="color:#8E8E93">${uLogs.length}</td>
+        </tr>`;
+      });
+      body+=`</tbody></table></div>`;
+    }
   }
 
-  // by task type
+  // by task type — personal for designers, all for Dana
   const taskMap={};
   filtLogs.forEach(l=>{
     const k=l.task||'—';
@@ -582,22 +588,24 @@ function openProjectModal(pid){
     body+=`</tbody></table></div>`;
   }
 
-  // log
+  // log entries
   const sorted=[...filtLogs].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
   if(sorted.length){
-    body+=`<div class="slbl" style="margin-bottom:10px">Всі записи</div>
+    body+=`<div class="slbl" style="margin-bottom:10px">Записи</div>
     <div class="log-card"><table>
-      <thead><tr><th>Дата</th><th>Хто</th><th>Задача</th><th>Год</th></tr></thead><tbody>`;
+      <thead><tr><th>Дата</th>${isDana?'<th>Хто</th>':''}<th>Задача</th><th>Год</th></tr></thead><tbody>`;
     sorted.forEach(l=>{
       const u=USERS.find(u=>String(u.id)===String(l.user));
       body+=`<tr>
         <td class="muted">${String(l.date).slice(0,10)}</td>
-        <td style="white-space:nowrap">${u?u.name:l.user}</td>
+        ${isDana?`<td style="white-space:nowrap">${u?u.name:l.user}</td>`:''}
         <td>${esc(l.task)}</td>
         <td style="font-weight:700;white-space:nowrap">${parseFloat(l.hours).toFixed(1)}</td>
       </tr>`;
     });
     body+=`</tbody></table></div>`;
+  } else {
+    body+=`<div style="text-align:center;padding:32px;color:#8E8E93;font-size:15px">Немає записів за цей період</div>`;
   }
 
   document.getElementById('modal-body').innerHTML=body;
