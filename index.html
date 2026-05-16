@@ -91,8 +91,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .rchip.int.sel .rchip-dot{background:#7C3AED}
 
 /* task blocks */
-.tblock{background:#fff;border-radius:16px;border:1.5px solid #E5E5EA;margin-bottom:12px;overflow:hidden}
-.tblock-hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#FAFAFA;border-bottom:1.5px solid #E5E5EA}
+.tblock{background:#fff;border-radius:16px;border:1.5px solid #E5E5EA;margin-bottom:12px;overflow:visible}
+.tblock-hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#FAFAFA;border-bottom:1.5px solid #E5E5EA;border-radius:16px 16px 0 0}
 .tblock-name{font-size:16px;font-weight:700;color:#1C1C1E;display:flex;align-items:center;gap:10px}
 .tblock-dot{width:10px;height:10px;border-radius:50%;background:#6366F1;flex-shrink:0}
 .tblock-dot.int{background:#7C3AED}
@@ -100,13 +100,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .tblock-x:hover{background:#FFE4E4;color:#EF4444}
 
 /* task row */
-.task-row{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid #F5F5F5;position:relative}
+.task-row{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid #F5F5F5;position:static}
 .task-inp-wrap{flex:1;position:relative;min-width:0}
 .task-inp{width:100%;border:none;background:transparent;font-size:15px;color:#1C1C1E;outline:none;font-family:inherit;padding:0;cursor:text}
 .task-inp::placeholder{color:#C7C7CC}
 
 /* dropdown */
-.task-dropdown{position:absolute;top:calc(100% + 6px);left:-20px;right:-20px;background:#fff;border:2px solid #1C1C1E;border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.18);z-index:200;overflow:hidden;display:none;max-height:260px;overflow-y:auto}
+.task-dropdown{position:absolute;top:calc(100% + 2px);left:-12px;right:-12px;background:#fff;border:2px solid #1C1C1E;border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.22);z-index:9999;overflow-y:auto;display:none;max-height:400px}
 .task-dropdown.open{display:block}
 .dd-item{padding:14px 20px;font-size:16px;font-weight:500;color:#1C1C1E;cursor:pointer;transition:background .12s;border-bottom:1px solid #F0F0F0}
 .dd-item:last-child{border-bottom:none}
@@ -121,7 +121,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .del-row{width:28px;height:28px;border:none;background:transparent;color:#C7C7CC;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;border-radius:8px;transition:all .15s;flex-shrink:0;font-family:inherit}
 .del-row:hover{background:#FFE4E4;color:#EF4444}
 
-.add-task-btn{display:flex;align-items:center;gap:8px;padding:14px 20px;cursor:pointer;color:#6366F1;font-size:15px;font-weight:500;background:transparent;border:none;width:100%;font-family:inherit;transition:background .15s}
+.add-task-btn{display:flex;align-items:center;gap:8px;padding:14px 20px;cursor:pointer;color:#6366F1;font-size:15px;font-weight:500;background:transparent;border:none;width:100%;font-family:inherit;transition:background .15s;border-radius:0 0 16px 16px}
 .add-task-btn:hover{background:#F8F8FF}
 
 .total-row{font-size:15px;color:#3C3C43;text-align:right;padding:0 2px;margin-bottom:20px;font-weight:500;min-height:22px}
@@ -333,7 +333,7 @@ function renderReport(){
     <div class="dchips">
       ${chipHtml}
       <button class="dchip alt" id="btn-other" onclick="openOtherDate()">Інша дата</button>
-      <input type="date" class="date-inp" id="other-date-inp" onchange="setOtherDate(this.value)">
+      <input type="date" class="date-inp" id="other-date-inp" onchange="setOtherDate(this.value)" style="display:none">
     </div>
 
     <div class="sec-lbl">Над чим працював/ла</div>
@@ -365,18 +365,35 @@ function setReportDate(el,ds){
   document.querySelectorAll('.dchip').forEach(c=>c.classList.remove('active'));
   el.classList.add('active');
   document.getElementById('other-date-inp').style.display='none';
-  document.getElementById('btn-other').style.display='';
+  const btn=document.getElementById('btn-other');
+  btn.style.display='';
+  btn.textContent='Інша дата';
+  btn.style.color='';
 }
 function openOtherDate(){
-  document.getElementById('btn-other').style.display='none';
+  const btn=document.getElementById('btn-other');
   const inp=document.getElementById('other-date-inp');
-  inp.style.display='';
+  btn.style.display='none';
+  inp.style.display='inline-block';
   inp.value=reportDate;
   inp.focus();
+  inp.click();
 }
 function setOtherDate(val){
-  if(val)reportDate=val;
-  document.querySelectorAll('.dchip').forEach(c=>c.classList.remove('active'));
+  if(val){
+    reportDate=val;
+    const d=new Date(val+'T00:00:00');
+    const dayNames=['Нд','Пн','Вт','Ср','Чт','Пт','Сб'];
+    const lbl=dayNames[d.getDay()]+' '+d.getDate()+'.'+String(d.getMonth()+1).padStart(2,'0');
+    const inp=document.getElementById('other-date-inp');
+    const btn=document.getElementById('btn-other');
+    inp.style.display='none';
+    btn.style.display='';
+    btn.textContent=lbl;
+    btn.classList.add('active');
+    btn.style.color='';
+    document.querySelectorAll('.dchip:not(#btn-other)').forEach(c=>c.classList.remove('active'));
+  }
 }
 
 function toggleReportProj(el,pid){
