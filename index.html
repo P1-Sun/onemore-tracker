@@ -17,11 +17,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .utab.active{background:#fff;border-color:#fff;color:#1C1C1E}
 .utab:not(.active):hover{border-color:rgba(255,255,255,.4);color:#fff}
 .av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
-.av-0{background:#818CF8;color:#fff}
-.av-1{background:#34D399;color:#fff}
-.av-2{background:#FBBF24;color:#fff}
-.av-3{background:#F472B6;color:#fff}
-.av-x{background:#6B7280;color:#fff}
+.av-0{background:#818CF8;color:#fff}.av-1{background:#34D399;color:#fff}
+.av-2{background:#FBBF24;color:#fff}.av-3{background:#F472B6;color:#fff}.av-x{background:#6B7280;color:#fff}
 
 /* NAV */
 .nav{background:#fff;padding:0 32px;display:flex;gap:0;border-bottom:1px solid #E5E5EA;position:sticky;top:0;z-index:40}
@@ -29,7 +26,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .nbtn.active{color:#1C1C1E;border-bottom-color:#1C1C1E}
 .nbtn:hover:not(.active){color:#3C3C43}
 
-/* PAGE — однакова ширина для всіх вкладок */
+/* PAGE */
 .page{padding:28px 32px 60px;max-width:960px;margin:0 auto}
 
 /* METRIC CARDS */
@@ -39,25 +36,33 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .mval{font-size:32px;font-weight:700;color:#1C1C1E;line-height:1;letter-spacing:-.8px}
 .msub{font-size:13px;color:#8E8E93;margin-top:6px}
 
+/* DATE FILTER BAR */
+.dfbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:24px;background:#fff;border-radius:14px;padding:12px 16px;border:1px solid #E5E5EA}
+.dfbtn{padding:7px 14px;border-radius:10px;border:1.5px solid transparent;background:transparent;font-size:13px;font-weight:500;color:#8E8E93;cursor:pointer;transition:all .15s;font-family:inherit}
+.dfbtn:hover{background:#F2F2F7;color:#3C3C43}
+.dfbtn.active{background:#1C1C1E;color:#fff;border-color:#1C1C1E}
+.dfbar-sep{width:1px;height:20px;background:#E5E5EA;margin:0 4px;flex-shrink:0}
+.dfrange{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dfrange input{padding:6px 10px;border-radius:8px;border:1.5px solid #E5E5EA;background:#FAFAFA;font-size:13px;color:#1C1C1E;outline:none;font-family:inherit}
+.dfrange input:focus{border-color:#818CF8}
+.dfrange span{font-size:13px;color:#8E8E93}
+
 /* SECTION LABEL */
 .slbl{font-size:13px;font-weight:600;color:#3C3C43;letter-spacing:.3px;text-transform:uppercase;margin-bottom:12px;padding:0 2px}
 
 /* PROJECT CARDS */
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
-.pcard{background:#fff;border-radius:16px;padding:20px;border:1px solid #E5E5EA}
+.pcard{background:#fff;border-radius:16px;padding:20px;border:1px solid #E5E5EA;cursor:pointer;transition:border-color .15s}
+.pcard:hover{border-color:#818CF8}
 .pcard.cl{border-top:3px solid #6366F1}
 .pcard.int{border-top:3px solid #A78BFA}
 .pname{font-size:16px;font-weight:700;color:#1C1C1E;margin-bottom:4px}
 .pclient{font-size:13px;color:#8E8E93}
 .prow{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
 .pbadge{display:inline-flex;align-items:center;font-size:12px;font-weight:600;padding:4px 10px;border-radius:8px;flex-shrink:0}
-.pba{background:#EEF2FF;color:#4338CA}
-.pbi{background:#F5F3FF;color:#5B21B6}
-.pbd{background:#F2F2F7;color:#6B7280}
+.pba{background:#EEF2FF;color:#4338CA}.pbi{background:#F5F3FF;color:#5B21B6}.pbd{background:#F2F2F7;color:#6B7280}
 .pbar{height:4px;background:#F2F2F7;border-radius:2px;margin-top:12px}
-.pfill{height:100%;border-radius:2px}
-.pft{background:#6366F1}
-.pfi{background:#A78BFA}
+.pfill{height:100%;border-radius:2px}.pft{background:#6366F1}.pfi{background:#A78BFA}
 .pinfo{display:flex;justify-content:space-between;font-size:13px;color:#8E8E93;margin-top:6px}
 
 /* OPEN TASKS */
@@ -68,19 +73,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .ti-name{font-size:15px;color:#1C1C1E;font-weight:500}
 .ti-meta{font-size:13px;color:#8E8E93;margin-top:3px}
 
-/* ── REPORT ── однакова ширина, без report-wrap обмеження */
+/* REPORT */
 .sec-lbl{font-size:13px;font-weight:600;color:#3C3C43;text-transform:uppercase;letter-spacing:.3px;margin-bottom:12px}
-
-/* date chips */
 .dchips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
 .dchip{padding:10px 18px;border-radius:12px;border:1.5px solid #E5E5EA;background:#fff;font-size:15px;font-weight:500;color:#3C3C43;cursor:pointer;transition:all .15s;font-family:inherit}
 .dchip:hover{border-color:#818CF8;color:#4338CA}
 .dchip.active{background:#1C1C1E;border-color:#1C1C1E;color:#fff}
 .dchip.alt{color:#818CF8}
-.dchip.alt:hover{border-color:#818CF8}
 .date-inp{padding:10px 16px;border-radius:12px;border:1.5px solid #818CF8;background:#EEF2FF;color:#4338CA;font-size:15px;font-weight:500;outline:none;font-family:inherit;display:none}
-
-/* project chips */
 .rchips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
 .rchip{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:12px;border:1.5px solid #E5E5EA;background:#fff;font-size:15px;font-weight:500;color:#3C3C43;cursor:pointer;transition:all .18s;font-family:inherit}
 .rchip:hover{border-color:#818CF8;color:#4338CA}
@@ -89,8 +89,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .rchip-dot{width:10px;height:10px;border-radius:50%;background:#D1D1D6;flex-shrink:0;transition:background .18s}
 .rchip.sel .rchip-dot{background:#6366F1}
 .rchip.int.sel .rchip-dot{background:#7C3AED}
-
-/* task blocks */
 .tblock{background:#fff;border-radius:16px;border:1.5px solid #E5E5EA;margin-bottom:12px;overflow:visible}
 .tblock-hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#FAFAFA;border-bottom:1.5px solid #E5E5EA;border-radius:16px 16px 0 0}
 .tblock-name{font-size:16px;font-weight:700;color:#1C1C1E;display:flex;align-items:center;gap:10px}
@@ -98,14 +96,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .tblock-dot.int{background:#7C3AED}
 .tblock-x{width:28px;height:28px;border-radius:50%;background:#F2F2F7;border:none;color:#6B7280;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s;font-family:inherit}
 .tblock-x:hover{background:#FFE4E4;color:#EF4444}
-
-/* task row */
-.task-row{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid #F5F5F5;position:static}
+.task-row{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid #F5F5F5}
 .task-inp-wrap{flex:1;position:relative;min-width:0}
 .task-inp{width:100%;border:none;background:transparent;font-size:15px;color:#1C1C1E;outline:none;font-family:inherit;padding:0;cursor:text}
 .task-inp::placeholder{color:#C7C7CC}
-
-/* dropdown */
 .task-dropdown{position:absolute;top:calc(100% + 2px);left:-12px;right:-12px;background:#fff;border:2px solid #1C1C1E;border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.22);z-index:9999;overflow-y:auto;display:none;max-height:400px}
 .task-dropdown.open{display:block}
 .dd-item{padding:14px 20px;font-size:16px;font-weight:500;color:#1C1C1E;cursor:pointer;transition:background .12s;border-bottom:1px solid #F0F0F0}
@@ -113,24 +107,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .dd-item:hover{background:#1C1C1E;color:#fff}
 .dd-item.custom{color:#6366F1;font-weight:600;background:#F8F8FF}
 .dd-item.custom:hover{background:#6366F1;color:#fff}
-
 .hrs-ctrl{display:flex;align-items:center;background:#F2F2F7;border-radius:12px;overflow:hidden;flex-shrink:0}
 .hbtn{width:36px;height:36px;border:none;background:transparent;font-size:22px;font-weight:300;color:#1C1C1E;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;font-family:inherit;line-height:1}
 .hbtn:hover{background:#E5E5EA}
 .hval{min-width:52px;text-align:center;font-size:15px;font-weight:700;color:#1C1C1E;white-space:nowrap}
 .del-row{width:28px;height:28px;border:none;background:transparent;color:#C7C7CC;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;border-radius:8px;transition:all .15s;flex-shrink:0;font-family:inherit}
 .del-row:hover{background:#FFE4E4;color:#EF4444}
-
 .add-task-btn{display:flex;align-items:center;gap:8px;padding:14px 20px;cursor:pointer;color:#6366F1;font-size:15px;font-weight:500;background:transparent;border:none;width:100%;font-family:inherit;transition:background .15s;border-radius:0 0 16px 16px}
 .add-task-btn:hover{background:#F8F8FF}
-
 .total-row{font-size:15px;color:#3C3C43;text-align:right;padding:0 2px;margin-bottom:20px;font-weight:500;min-height:22px}
 .total-row strong{color:#1C1C1E;font-weight:700;font-size:18px}
-
 .comment-wrap{background:#fff;border-radius:16px;border:1.5px solid #E5E5EA;margin-bottom:20px;overflow:hidden}
 .comment-wrap textarea{width:100%;border:none;background:transparent;padding:16px 20px;font-size:15px;color:#1C1C1E;resize:none;outline:none;font-family:inherit;min-height:88px}
 .comment-wrap textarea::placeholder{color:#C7C7CC}
-
 .save-btn{width:100%;padding:18px;border:none;border-radius:16px;background:#1C1C1E;color:#fff;font-size:17px;font-weight:700;cursor:pointer;transition:all .18s;font-family:inherit;letter-spacing:-.2px}
 .save-btn:hover{background:#000}
 .save-btn:active{transform:scale(.98)}
@@ -145,18 +134,57 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .log-card tr:hover td{background:#FAFAFA}
 .log-card td.muted{color:#8E8E93;white-space:nowrap}
 
-/* OWNER */
+/* OWNER / ANALYTICS */
 .ogrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
-.ocard{background:#fff;border-radius:16px;padding:20px;border:1px solid #E5E5EA}
+.ocard{background:#fff;border-radius:16px;padding:20px;border:1px solid #E5E5EA;cursor:pointer;transition:border-color .15s}
+.ocard:hover{border-color:#818CF8}
 .ocard-name{font-size:16px;font-weight:700;color:#1C1C1E}
 .ocard-sub{font-size:13px;color:#8E8E93;margin-top:3px}
 .obar{height:6px;background:#F2F2F7;border-radius:3px;margin-top:12px}
 .obar-fill{height:100%;border-radius:3px}
-.obf-g{background:#34D399}
-.obf-a{background:#FBBF24}
-.obf-r{background:#F87171}
+.obf-g{background:#34D399}.obf-a{background:#FBBF24}.obf-r{background:#F87171}
 .obar-info{display:flex;justify-content:space-between;font-size:13px;margin-top:6px}
 
+/* ARCHIVE TOGGLE */
+.arch-toggle{display:flex;align-items:center;gap:10px;padding:14px 20px;background:#fff;border-radius:14px;border:1px solid #E5E5EA;cursor:pointer;font-size:15px;font-weight:500;color:#3C3C43;margin-bottom:12px;transition:background .15s;width:100%;font-family:inherit;text-align:left}
+.arch-toggle:hover{background:#F8F8FF}
+.arch-toggle .arrow{font-size:12px;color:#8E8E93;margin-left:auto;transition:transform .2s}
+.arch-toggle.open .arrow{transform:rotate(180deg)}
+.arch-list{display:none;margin-bottom:24px}
+.arch-list.open{display:block}
+
+/* PIN OVERLAY */
+.pin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:500;display:flex;align-items:center;justify-content:center}
+.pin-box{background:#fff;border-radius:24px;padding:40px 48px;text-align:center;max-width:360px;width:90%}
+.pin-title{font-size:22px;font-weight:700;color:#1C1C1E;margin-bottom:8px}
+.pin-sub{font-size:15px;color:#8E8E93;margin-bottom:32px}
+.pin-dots{display:flex;gap:16px;justify-content:center;margin-bottom:32px}
+.pin-dot{width:18px;height:18px;border-radius:50%;background:#E5E5EA;transition:background .2s}
+.pin-dot.filled{background:#1C1C1E}
+.pin-dot.error{background:#F87171}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:240px;margin:0 auto}
+.pin-key{height:56px;border-radius:14px;border:none;background:#F2F2F7;font-size:20px;font-weight:600;color:#1C1C1E;cursor:pointer;transition:all .15s;font-family:inherit}
+.pin-key:hover{background:#E5E5EA}
+.pin-key:active{transform:scale(.95)}
+.pin-key.del{font-size:16px;color:#8E8E93}
+.pin-key.empty{background:transparent;cursor:default}
+.pin-err{font-size:14px;color:#F87171;margin-top:16px;min-height:20px}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;display:flex;align-items:center;justify-content:center;padding:20px}
+.modal{background:#fff;border-radius:24px;width:100%;max-width:700px;max-height:85vh;overflow:hidden;display:flex;flex-direction:column}
+.modal-hdr{display:flex;align-items:flex-start;justify-content:space-between;padding:24px 28px 20px;border-bottom:1px solid #F2F2F7;flex-shrink:0}
+.modal-title{font-size:20px;font-weight:700;color:#1C1C1E}
+.modal-sub{font-size:14px;color:#8E8E93;margin-top:4px}
+.modal-close{width:32px;height:32px;border-radius:50%;background:#F2F2F7;border:none;color:#6B7280;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;font-family:inherit}
+.modal-close:hover{background:#FFE4E4;color:#EF4444}
+.modal-body{overflow-y:auto;padding:20px 28px 28px;flex:1}
+.modal-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.modal-stat{background:#F7F7F7;border-radius:12px;padding:14px}
+.modal-stat-lbl{font-size:11px;font-weight:600;color:#8E8E93;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
+.modal-stat-val{font-size:22px;font-weight:700;color:#1C1C1E}
+
+/* STATES */
 .empty{text-align:center;padding:80px 20px;color:#8E8E93;font-size:16px}
 .loading{text-align:center;padding:80px 20px;color:#8E8E93;font-size:16px}
 
@@ -166,10 +194,55 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
   .pgrid,.ogrid{grid-template-columns:1fr}
   .page{padding:20px 16px 60px}
   .nav{padding:0 16px}
+  .dfbar{gap:6px}
+  .modal{max-height:95vh}
 }
 </style>
 </head>
 <body>
+
+<!-- PIN OVERLAY -->
+<div class="pin-overlay" id="pin-overlay" style="display:none">
+  <div class="pin-box">
+    <div class="pin-title">Аналітика</div>
+    <div class="pin-sub">Введи пін-код для доступу</div>
+    <div class="pin-dots" id="pin-dots">
+      <div class="pin-dot" id="pd0"></div>
+      <div class="pin-dot" id="pd1"></div>
+      <div class="pin-dot" id="pd2"></div>
+      <div class="pin-dot" id="pd3"></div>
+    </div>
+    <div class="pin-pad">
+      <button class="pin-key" onclick="pinKey('1')">1</button>
+      <button class="pin-key" onclick="pinKey('2')">2</button>
+      <button class="pin-key" onclick="pinKey('3')">3</button>
+      <button class="pin-key" onclick="pinKey('4')">4</button>
+      <button class="pin-key" onclick="pinKey('5')">5</button>
+      <button class="pin-key" onclick="pinKey('6')">6</button>
+      <button class="pin-key" onclick="pinKey('7')">7</button>
+      <button class="pin-key" onclick="pinKey('8')">8</button>
+      <button class="pin-key" onclick="pinKey('9')">9</button>
+      <button class="pin-key empty"></button>
+      <button class="pin-key" onclick="pinKey('0')">0</button>
+      <button class="pin-key del" onclick="pinDel()">⌫</button>
+    </div>
+    <div class="pin-err" id="pin-err"></div>
+  </div>
+</div>
+
+<!-- PROJECT MODAL -->
+<div class="modal-overlay" id="modal-overlay" style="display:none" onclick="closeModal(event)">
+  <div class="modal" id="modal">
+    <div class="modal-hdr">
+      <div>
+        <div class="modal-title" id="modal-title"></div>
+        <div class="modal-sub" id="modal-sub"></div>
+      </div>
+      <button class="modal-close" onclick="closeModalDirect()">×</button>
+    </div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
 
 <div class="topbar">
   <div class="logo">One More <span>Agency</span></div>
@@ -179,40 +252,149 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
   <button class="nbtn active" onclick="switchTab('overview')">Огляд</button>
   <button class="nbtn" onclick="switchTab('report')">Звіт за день</button>
   <button class="nbtn" onclick="switchTab('log')">Журнал</button>
-  <button class="nbtn owner-only" onclick="switchTab('owner')" style="display:none">Аналітика</button>
+  <button class="nbtn" onclick="tryOwner()">Аналітика</button>
 </div>
 <div class="page" id="page"><div class="loading">Завантаження...</div></div>
 
 <script>
 const API='https://script.google.com/macros/s/AKfycbzJk873o2Z8oUFwXUqwGcfzjBNCtp3jhIoIW46-WUhOucXbY8o2vBHQQwZ7FrHayplo/exec';
+const PIN='0303';
 
 let USERS=[],PROJECTS=[],LOGS=[],TASKS=[];
-let cur=null,tab='overview';
+let cur=null,tab='overview',pinUnlocked=false;
 let selProjects=new Set(),tasksByProj={};
 let reportDate=todayStr();
-let activeDropdown=null;
+let pinInput='';
+
+// date filter state (shared overview + owner)
+let dfMode='week'; // day|week|month|3m|6m|year|custom
+let dfFrom='',dfTo='';
 
 function avClass(uid){const i=USERS.findIndex(u=>u.id===uid);return'av-'+(i>=0&&i<=3?i:'x')}
 function ini(n){if(!n)return'?';const p=n.trim().split(' ');return p.length>=2?p[0][0]+p[1][0]:n.slice(0,2)}
 function uid2(){return'_'+Math.random().toString(36).slice(2,8)}
 function todayStr(){return new Date().toISOString().split('T')[0]}
-function hForP(pid){return LOGS.filter(l=>String(l.project_id)===String(pid)).reduce((s,l)=>s+parseFloat(l.hours||0),0)}
-function hForUP(uid,pid){return LOGS.filter(l=>String(l.user)===String(uid)&&String(l.project_id)===String(pid)).reduce((s,l)=>s+parseFloat(l.hours||0),0)}
 function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
 function projLabel(p){if(!p)return'';return p.client&&p.client!==p.name?p.client+' — '+p.name:p.name;}
+function hForP(pid,logs){const l=logs||LOGS;return l.filter(x=>String(x.project_id)===String(pid)).reduce((s,x)=>s+parseFloat(x.hours||0),0)}
+function hForUP(uid,pid,logs){const l=logs||LOGS;return l.filter(x=>String(x.user)===String(uid)&&String(x.project_id)===String(pid)).reduce((s,x)=>s+parseFloat(x.hours||0),0)}
+
+/* ── DATE FILTER ── */
+function getDateRange(){
+  const now=new Date();
+  let from,to=todayStr();
+  if(dfMode==='day'){from=todayStr();}
+  else if(dfMode==='week'){
+    const d=new Date(now);
+    d.setDate(d.getDate()-((d.getDay()+6)%7));
+    from=d.toISOString().split('T')[0];
+    const e=new Date(d);e.setDate(e.getDate()+6);
+    to=e.toISOString().split('T')[0];
+  }
+  else if(dfMode==='month'){const d=new Date(now.getFullYear(),now.getMonth(),1);from=d.toISOString().split('T')[0];}
+  else if(dfMode==='3m'){const d=new Date(now);d.setMonth(d.getMonth()-3);from=d.toISOString().split('T')[0];}
+  else if(dfMode==='6m'){const d=new Date(now);d.setMonth(d.getMonth()-6);from=d.toISOString().split('T')[0];}
+  else if(dfMode==='year'){const d=new Date(now);d.setFullYear(d.getFullYear()-1);from=d.toISOString().split('T')[0];}
+  else if(dfMode==='custom'){from=dfFrom||todayStr();to=dfTo||todayStr();}
+  return{from,to};
+}
+
+function filterLogsByDate(logs){
+  const{from,to}=getDateRange();
+  return logs.filter(l=>{const d=String(l.date).slice(0,10);return d>=from&&d<=to;});
+}
+
+function renderDateFilterBar(activeMode){
+  const modes=[
+    {k:'day',l:'Сьогодні'},{k:'week',l:'Тиждень'},{k:'month',l:'Місяць'},
+    {k:'3m',l:'3 місяці'},{k:'6m',l:'6 місяців'},{k:'year',l:'Рік'}
+  ];
+  const btns=modes.map(m=>`<button class="dfbtn${activeMode===m.k?' active':''}" onclick="setDfMode('${m.k}')">${m.l}</button>`).join('');
+  const customActive=activeMode==='custom';
+  return`<div class="dfbar">
+    ${btns}
+    <div class="dfbar-sep"></div>
+    <div class="dfrange">
+      <input type="date" id="df-from" value="${dfFrom}" onchange="setDfCustom()" placeholder="Від">
+      <span>—</span>
+      <input type="date" id="df-to" value="${dfTo}" onchange="setDfCustom()" placeholder="До">
+    </div>
+  </div>`;
+}
+
+function setDfMode(mode){
+  dfMode=mode;
+  renderPage();
+}
+
+function setDfCustom(){
+  const f=document.getElementById('df-from')?.value;
+  const t=document.getElementById('df-to')?.value;
+  if(f)dfFrom=f;
+  if(t)dfTo=t;
+  if(dfFrom||dfTo){dfMode='custom';renderPage();}
+}
+
+/* ── PIN ── */
+function tryOwner(){
+  if(pinUnlocked){tab='owner';updateNav();renderPage();}
+  else{showPin();}
+}
+
+function showPin(){
+  pinInput='';
+  updatePinDots();
+  document.getElementById('pin-err').textContent='';
+  document.getElementById('pin-overlay').style.display='flex';
+}
+
+function pinKey(k){
+  if(pinInput.length>=4)return;
+  pinInput+=k;
+  updatePinDots();
+  if(pinInput.length===4){
+    if(pinInput===PIN){
+      pinUnlocked=true;
+      document.getElementById('pin-overlay').style.display='none';
+      tab='owner';updateNav();renderPage();
+    }else{
+      document.querySelectorAll('.pin-dot').forEach(d=>d.classList.add('error'));
+      document.getElementById('pin-err').textContent='Невірний пін-код';
+      setTimeout(()=>{
+        pinInput='';
+        updatePinDots();
+        document.querySelectorAll('.pin-dot').forEach(d=>d.classList.remove('error'));
+        document.getElementById('pin-err').textContent='';
+      },800);
+    }
+  }
+}
+
+function pinDel(){
+  pinInput=pinInput.slice(0,-1);
+  updatePinDots();
+}
+
+function updatePinDots(){
+  for(let i=0;i<4;i++){
+    const d=document.getElementById('pd'+i);
+    if(d){d.classList.toggle('filled',i<pinInput.length);d.classList.remove('error');}
+  }
+}
 
 async function init(){
   try{
-    const [initData,logsData,tasksData]=await Promise.all([
-      apiFetch('getInit'),
-      apiFetch('getAllLogs'),
-      apiFetch('getTasks')
+    const[initData,logsData,tasksData]=await Promise.all([
+      apiFetch('getInit'),apiFetch('getAllLogs'),apiFetch('getTasks')
     ]);
     USERS=initData.users||[];
     PROJECTS=initData.projects||[];
     LOGS=Array.isArray(logsData)?logsData:[];
     TASKS=Array.isArray(tasksData)?tasksData:[];
     if(USERS.length)cur=USERS[0].id;
+    // init dfFrom/dfTo to current week
+    const{from,to}=getDateRange();
+    dfFrom=from;dfTo=to;
     renderTabs();
     renderPage();
   }catch(e){
@@ -235,16 +417,20 @@ function renderTabs(){
 
 function switchUser(uid){
   cur=uid;renderTabs();
-  const ob=document.querySelector('.owner-only');
-  if(ob)ob.style.display=(uid===USERS[0]?.id)?'':'none';
-  if(tab==='owner'&&uid!==USERS[0]?.id)tab='overview';
+  if(tab==='owner'&&!pinUnlocked)tab='overview';
   updateNav();renderPage();
 }
-function switchTab(t){tab=t;updateNav();renderPage();}
+
+function switchTab(t){
+  if(t==='owner'){tryOwner();return;}
+  tab=t;updateNav();renderPage();
+}
+
 function updateNav(){
   const tabs=['overview','report','log','owner'];
   document.querySelectorAll('.nbtn').forEach((b,i)=>b.classList.toggle('active',tabs[i]===tab));
 }
+
 function renderPage(){
   const el=document.getElementById('page');
   if(tab==='overview')el.innerHTML=renderOverview();
@@ -255,28 +441,29 @@ function renderPage(){
 
 /* ── OVERVIEW ── */
 function renderOverview(){
-  const ml=LOGS.filter(l=>String(l.user)===String(cur));
-  const td=todayStr();
-  const hToday=ml.filter(l=>String(l.date).slice(0,10)===td).reduce((s,l)=>s+parseFloat(l.hours||0),0);
-  const hTotal=ml.reduce((s,l)=>s+parseFloat(l.hours||0),0);
-  const open=ml.filter(l=>l.status==='wip').length;
-  const active=PROJECTS.filter(p=>p.status==='active');
+  const filtered=filterLogsByDate(LOGS);
+  const ml=filtered.filter(l=>String(l.user)===String(cur));
+  const allFiltered=filtered;
+  const hToday=ml.reduce((s,l)=>s+parseFloat(l.hours||0),0);
+  const open=LOGS.filter(l=>String(l.user)===String(cur)&&l.status==='wip').length;
+  const activeP=PROJECTS.filter(p=>p.status!=='done');
 
-  let h=`<div class="grid4">
-    <div class="mcard"><div class="mlabel">Проектів</div><div class="mval">${active.length}</div><div class="msub">активних</div></div>
-    <div class="mcard"><div class="mlabel">Сьогодні</div><div class="mval">${hToday.toFixed(1)}</div><div class="msub">год внесено</div></div>
-    <div class="mcard"><div class="mlabel">Всього годин</div><div class="mval">${hTotal.toFixed(1)}</div><div class="msub">в базі</div></div>
+  let h=renderDateFilterBar(dfMode);
+  h+=`<div class="grid4">
+    <div class="mcard"><div class="mlabel">Проектів</div><div class="mval">${activeP.length}</div><div class="msub">активних</div></div>
+    <div class="mcard"><div class="mlabel">За період</div><div class="mval">${hToday.toFixed(1)}</div><div class="msub">год внесено</div></div>
+    <div class="mcard"><div class="mlabel">Всього годин</div><div class="mval">${LOGS.filter(l=>String(l.user)===String(cur)).reduce((s,l)=>s+parseFloat(l.hours||0),0).toFixed(1)}</div><div class="msub">в базі</div></div>
     <div class="mcard"><div class="mlabel">В роботі</div><div class="mval">${open}</div><div class="msub">задач</div></div>
   </div>
   <div class="slbl">Проекти</div>
   <div class="pgrid">`;
 
-  active.forEach(p=>{
-    const spent=hForP(p.id),budget=parseFloat(p.hours_budget)||0;
+  activeP.forEach(p=>{
+    const spent=hForP(p.id,filtered),budget=parseFloat(p.hours_budget)||0;
     const pct=budget>0?Math.min(100,Math.round(spent/budget*100)):0;
-    const myH=hForUP(cur,p.id);
+    const myH=hForUP(cur,p.id,filtered);
     const isInt=p.type==='internal';
-    h+=`<div class="pcard ${isInt?'int':'cl'}">
+    h+=`<div class="pcard ${isInt?'int':'cl'}" onclick="openProjectModal('${p.id}')">
       <div class="prow">
         <div><div class="pname">${projLabel(p)}</div></div>
         <span class="pbadge ${isInt?'pbi':'pba'}">${isInt?'Внутрішній':'Активний'}</span>
@@ -289,7 +476,7 @@ function renderOverview(){
   });
   h+=`</div>`;
 
-  const wip=ml.filter(l=>l.status==='wip').slice(0,6);
+  const wip=LOGS.filter(l=>String(l.user)===String(cur)&&l.status==='wip').slice(0,6);
   if(wip.length){
     h+=`<div class="slbl">Незавершені задачі</div><div class="tcard">`;
     wip.forEach(t=>{
@@ -301,14 +488,134 @@ function renderOverview(){
     });
     h+=`</div>`;
   }
+
+  // Archive
+  const doneP=PROJECTS.filter(p=>p.status==='done');
+  if(doneP.length){
+    h+=`<button class="arch-toggle" id="arch-btn" onclick="toggleArchive()">
+      <span>📁</span> Завершені проекти (${doneP.length})
+      <span class="arrow">▼</span>
+    </button>
+    <div class="arch-list" id="arch-list"><div class="pgrid">`;
+    doneP.forEach(p=>{
+      const spent=hForP(p.id);
+      h+=`<div class="pcard" onclick="openProjectModal('${p.id}')" style="border-top:3px solid #D1D1D6;opacity:.85">
+        <div class="prow">
+          <div><div class="pname">${projLabel(p)}</div></div>
+          <span class="pbadge pbd">Завершено</span>
+        </div>
+        <div class="pinfo"><span>${spent.toFixed(1)}г витрачено</span>${p.budget_usd?`<span>$${p.budget_usd}</span>`:''}</div>
+      </div>`;
+    });
+    h+=`</div></div>`;
+  }
   return h;
+}
+
+function toggleArchive(){
+  const btn=document.getElementById('arch-btn');
+  const list=document.getElementById('arch-list');
+  if(btn&&list){btn.classList.toggle('open');list.classList.toggle('open');}
+}
+
+/* ── PROJECT MODAL ── */
+function openProjectModal(pid){
+  const proj=PROJECTS.find(p=>String(p.id)===String(pid));
+  if(!proj)return;
+  const projLogs=LOGS.filter(l=>String(l.project_id)===String(pid));
+  const filtLogs=filterLogsByDate(projLogs);
+  const totalH=filtLogs.reduce((s,l)=>s+parseFloat(l.hours||0),0);
+  const budget=parseFloat(proj.hours_budget)||0;
+  const pct=budget>0?Math.min(100,Math.round(totalH/budget*100)):0;
+
+  document.getElementById('modal-title').textContent=projLabel(proj);
+  document.getElementById('modal-sub').textContent=proj.client+(proj.budget_usd?' · $'+proj.budget_usd:'');
+
+  // stats
+  const uniqueUsers=[...new Set(filtLogs.map(l=>l.user))];
+  let body=`<div class="modal-stats">
+    <div class="modal-stat"><div class="modal-stat-lbl">Годин витрачено</div><div class="modal-stat-val">${totalH.toFixed(1)}</div></div>
+    <div class="modal-stat"><div class="modal-stat-lbl">Бюджет годин</div><div class="modal-stat-val">${budget||'—'}</div></div>
+    <div class="modal-stat"><div class="modal-stat-lbl">Виконано</div><div class="modal-stat-val">${budget>0?pct+'%':'—'}</div></div>
+  </div>`;
+
+  // by user
+  if(uniqueUsers.length){
+    body+=`<div class="slbl" style="margin-bottom:10px">По дизайнерах</div>
+    <div class="log-card" style="margin-bottom:20px"><table>
+      <thead><tr><th>Дизайнер</th><th>Годин</th><th>Записів</th></tr></thead><tbody>`;
+    uniqueUsers.forEach(uid=>{
+      const u=USERS.find(u=>String(u.id)===String(uid));
+      const uLogs=filtLogs.filter(l=>String(l.user)===String(uid));
+      const uH=uLogs.reduce((s,l)=>s+parseFloat(l.hours||0),0);
+      body+=`<tr>
+        <td><div style="display:flex;align-items:center;gap:8px">
+          <div class="av ${avClass(uid)}">${u?ini(u.name):'?'}</div>
+          <span style="font-weight:500">${u?u.name:uid}</span>
+        </div></td>
+        <td style="font-weight:700">${uH.toFixed(1)}</td>
+        <td style="color:#8E8E93">${uLogs.length}</td>
+      </tr>`;
+    });
+    body+=`</tbody></table></div>`;
+  }
+
+  // by task type
+  const taskMap={};
+  filtLogs.forEach(l=>{
+    const k=l.task||'—';
+    if(!taskMap[k])taskMap[k]=0;
+    taskMap[k]+=parseFloat(l.hours||0);
+  });
+  const taskArr=Object.entries(taskMap).sort((a,b)=>b[1]-a[1]);
+  if(taskArr.length){
+    body+=`<div class="slbl" style="margin-bottom:10px">По роботах</div>
+    <div class="log-card" style="margin-bottom:20px"><table>
+      <thead><tr><th>Робота</th><th>Годин</th></tr></thead><tbody>`;
+    taskArr.forEach(([task,h])=>{
+      body+=`<tr>
+        <td>${esc(task)}</td>
+        <td style="font-weight:700">${h.toFixed(1)}</td>
+      </tr>`;
+    });
+    body+=`</tbody></table></div>`;
+  }
+
+  // log
+  const sorted=[...filtLogs].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+  if(sorted.length){
+    body+=`<div class="slbl" style="margin-bottom:10px">Всі записи</div>
+    <div class="log-card"><table>
+      <thead><tr><th>Дата</th><th>Хто</th><th>Задача</th><th>Год</th></tr></thead><tbody>`;
+    sorted.forEach(l=>{
+      const u=USERS.find(u=>String(u.id)===String(l.user));
+      body+=`<tr>
+        <td class="muted">${String(l.date).slice(0,10)}</td>
+        <td style="white-space:nowrap">${u?u.name:l.user}</td>
+        <td>${esc(l.task)}</td>
+        <td style="font-weight:700;white-space:nowrap">${parseFloat(l.hours).toFixed(1)}</td>
+      </tr>`;
+    });
+    body+=`</tbody></table></div>`;
+  }
+
+  document.getElementById('modal-body').innerHTML=body;
+  document.getElementById('modal-overlay').style.display='flex';
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(e){
+  if(e.target===document.getElementById('modal-overlay'))closeModalDirect();
+}
+function closeModalDirect(){
+  document.getElementById('modal-overlay').style.display='none';
+  document.body.style.overflow='';
 }
 
 /* ── REPORT ── */
 function renderReport(){
   const days=[];
-  const d=new Date();
-  const tmp=new Date(d);
+  const tmp=new Date();
   while(days.length<5){
     if(tmp.getDay()!==0&&tmp.getDay()!==6)days.unshift(new Date(tmp));
     tmp.setDate(tmp.getDate()-1);
@@ -320,7 +627,7 @@ function renderReport(){
     return`<button class="dchip${ds===reportDate?' active':''}" data-date="${ds}" onclick="setReportDate(this,'${ds}')">${lbl}</button>`;
   }).join('');
 
-  const projChips=PROJECTS.filter(p=>p.status==='active').map(p=>{
+  const projChips=PROJECTS.filter(p=>p.status!=='done').map(p=>{
     const isInt=p.type==='internal';
     const isSel=selProjects.has(String(p.id));
     return`<button class="rchip${isInt?' int':''}${isSel?' sel':''}" data-id="${p.id}" onclick="toggleReportProj(this,'${p.id}')">
@@ -335,13 +642,10 @@ function renderReport(){
       <button class="dchip alt" id="btn-other" onclick="openOtherDate()">Інша дата</button>
       <input type="date" class="date-inp" id="other-date-inp" onchange="setOtherDate(this.value)" style="display:none">
     </div>
-
     <div class="sec-lbl">Над чим працював/ла</div>
     <div class="rchips" id="proj-chips">${projChips}</div>
-
     <div id="tblocks"></div>
     <div class="total-row" id="total-row"></div>
-
     <div class="sec-lbl">Коментар</div>
     <div class="comment-wrap">
       <textarea id="r-comment" placeholder="Що вийшло, що заблоковано, питання до команди..."></textarea>
@@ -352,11 +656,10 @@ function renderReport(){
 function initReport(){
   selProjects=new Set();
   tasksByProj={};
-  PROJECTS.filter(p=>p.status==='active').forEach(p=>{
+  PROJECTS.filter(p=>p.status!=='done').forEach(p=>{
     tasksByProj[String(p.id)]=[{id:uid2(),text:'',hours:1}];
   });
   renderTblocks();
-  // close dropdowns on outside click
   document.addEventListener('click',closeDropdownsOutside,{capture:true});
 }
 
@@ -366,9 +669,7 @@ function setReportDate(el,ds){
   el.classList.add('active');
   document.getElementById('other-date-inp').style.display='none';
   const btn=document.getElementById('btn-other');
-  btn.style.display='';
-  btn.textContent='Інша дата';
-  btn.style.color='';
+  if(btn){btn.style.display='';btn.textContent='Інша дата';btn.classList.remove('active');}
 }
 function openOtherDate(){
   const btn=document.getElementById('btn-other');
@@ -376,8 +677,7 @@ function openOtherDate(){
   btn.style.display='none';
   inp.style.display='inline-block';
   inp.value=reportDate;
-  inp.focus();
-  inp.click();
+  inp.focus();inp.click();
 }
 function setOtherDate(val){
   if(val){
@@ -391,38 +691,32 @@ function setOtherDate(val){
     btn.style.display='';
     btn.textContent=lbl;
     btn.classList.add('active');
-    btn.style.color='';
     document.querySelectorAll('.dchip:not(#btn-other)').forEach(c=>c.classList.remove('active'));
   }
 }
-
 function toggleReportProj(el,pid){
   const key=String(pid);
   if(selProjects.has(key)){selProjects.delete(key);el.classList.remove('sel');}
   else{selProjects.add(key);el.classList.add('sel');}
   renderTblocks();
 }
-
 function renderTblocks(){
   const area=document.getElementById('tblocks');
   if(!area)return;
   area.innerHTML='';
   let total=0;
-
   selProjects.forEach(pid=>{
     const proj=PROJECTS.find(p=>String(p.id)===String(pid));
     if(!proj)return;
     if(!tasksByProj[pid])tasksByProj[pid]=[{id:uid2(),text:'',hours:1}];
     const isInt=proj.type==='internal';
-
     const rows=tasksByProj[pid].map(t=>{
       total+=t.hours;
       return`<div class="task-row" id="tr-${t.id}">
         <div class="task-inp-wrap">
           <input class="task-inp" id="ti-${t.id}" placeholder="Почни вводити або обери зі списку..." value="${esc(t.text)}"
             oninput="onTaskInput('${pid}','${t.id}',this)"
-            onfocus="openDropdown('${pid}','${t.id}')"
-            autocomplete="off">
+            onfocus="openDropdown('${pid}','${t.id}')" autocomplete="off">
           <div class="task-dropdown" id="dd-${t.id}"></div>
         </div>
         <div class="hrs-ctrl">
@@ -433,7 +727,6 @@ function renderTblocks(){
         <button class="del-row" onclick="delTask('${pid}','${t.id}')">×</button>
       </div>`;
     }).join('');
-
     const block=document.createElement('div');
     block.className='tblock';block.id='tb-'+pid;
     block.innerHTML=`
@@ -446,48 +739,54 @@ function renderTblocks(){
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style="flex-shrink:0">
           <circle cx="9" cy="9" r="8" stroke="#6366F1" stroke-width="1.5"/>
           <path d="M9 6v6M6 9h6" stroke="#6366F1" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        Додати задачу
+        </svg>Додати задачу
       </button>`;
     area.appendChild(block);
   });
-
   updateTotal();
 }
-
-/* dropdown logic */
+function deselectProj(pid){
+  selProjects.delete(String(pid));
+  document.querySelector(`.rchip[data-id="${pid}"]`)?.classList.remove('sel');
+  renderTblocks();
+}
+function addTask(pid){
+  const t={id:uid2(),text:'',hours:1};
+  tasksByProj[pid].push(t);
+  renderTblocks();
+  setTimeout(()=>document.getElementById('ti-'+t.id)?.focus(),30);
+}
+function delTask(pid,tid){
+  if(tasksByProj[pid]?.length<=1)return;
+  tasksByProj[pid]=tasksByProj[pid].filter(t=>t.id!==tid);
+  renderTblocks();
+}
+let activeDropdown=null;
 function openDropdown(pid,tid){
   closeAllDropdowns();
   const dd=document.getElementById('dd-'+tid);
   if(!dd)return;
-  const inp=document.getElementById('ti-'+tid);
-  const q=(inp?.value||'').toLowerCase();
+  const q=(document.getElementById('ti-'+tid)?.value||'').toLowerCase();
   populateDropdown(dd,pid,tid,q);
   dd.classList.add('open');
   activeDropdown=tid;
 }
-
 function populateDropdown(dd,pid,tid,q){
   const filtered=q?TASKS.filter(t=>t.toLowerCase().includes(q)):TASKS;
   let html=filtered.map(t=>`<div class="dd-item" onmousedown="pickTask('${pid}','${tid}','${esc(t)}')">${esc(t)}</div>`).join('');
   if(q&&!TASKS.some(t=>t.toLowerCase()===q)){
-    html+=`<div class="dd-item custom" onmousedown="pickTask('${pid}','${tid}','${esc(document.getElementById('ti-'+tid)?.value||'')}',true)">+ Ввести вручну: "${esc(document.getElementById('ti-'+tid)?.value||'')}"</div>`;
+    const cur=document.getElementById('ti-'+tid)?.value||'';
+    html+=`<div class="dd-item custom" onmousedown="pickTask('${pid}','${tid}','${esc(cur)}',true)">+ Ввести вручну: "${esc(cur)}"</div>`;
   }
   if(!html)html='<div class="dd-item" style="color:#C7C7CC;cursor:default">Нічого не знайдено</div>';
   dd.innerHTML=html;
 }
-
 function onTaskInput(pid,tid,inp){
   const t=tasksByProj[pid]?.find(t=>t.id===tid);
   if(t)t.text=inp.value;
   const dd=document.getElementById('dd-'+tid);
-  if(dd){
-    populateDropdown(dd,pid,tid,inp.value.toLowerCase());
-    dd.classList.add('open');
-    activeDropdown=tid;
-  }
+  if(dd){populateDropdown(dd,pid,tid,inp.value.toLowerCase());dd.classList.add('open');activeDropdown=tid;}
 }
-
 function pickTask(pid,tid,val,manual){
   const t=tasksByProj[pid]?.find(t=>t.id===tid);
   if(t)t.text=val;
@@ -496,38 +795,13 @@ function pickTask(pid,tid,val,manual){
   closeAllDropdowns();
   if(manual)inp?.focus();
 }
-
 function closeAllDropdowns(){
   document.querySelectorAll('.task-dropdown').forEach(d=>d.classList.remove('open'));
   activeDropdown=null;
 }
-
 function closeDropdownsOutside(e){
   if(!e.target.closest('.task-inp-wrap'))closeAllDropdowns();
 }
-
-function deselectProj(pid){
-  selProjects.delete(String(pid));
-  document.querySelector(`.rchip[data-id="${pid}"]`)?.classList.remove('sel');
-  renderTblocks();
-}
-
-function addTask(pid){
-  const t={id:uid2(),text:'',hours:1};
-  tasksByProj[pid].push(t);
-  renderTblocks();
-  setTimeout(()=>{
-    const inp=document.getElementById('ti-'+t.id);
-    inp?.focus();
-  },30);
-}
-
-function delTask(pid,tid){
-  if(tasksByProj[pid]?.length<=1)return;
-  tasksByProj[pid]=tasksByProj[pid].filter(t=>t.id!==tid);
-  renderTblocks();
-}
-
 function chHours(pid,tid,delta){
   const t=tasksByProj[pid]?.find(t=>t.id===tid);
   if(!t)return;
@@ -536,36 +810,30 @@ function chHours(pid,tid,delta){
   if(hv)hv.textContent=t.hours+'г';
   updateTotal();
 }
-
 function updateTotal(){
   let total=0;
   selProjects.forEach(pid=>tasksByProj[pid]?.forEach(t=>total+=t.hours));
   const el=document.getElementById('total-row');
   if(el)el.innerHTML=selProjects.size>0?`Всього за день: <strong>${total.toFixed(1)} год</strong>`:'';
 }
-
 async function submitReport(){
   const comment=document.getElementById('r-comment')?.value.trim()||'';
   const rows=[];
   for(const pid of selProjects){
     for(const t of(tasksByProj[pid]||[])){
-      if(t.text.trim()&&t.hours>0){
+      if(t.text.trim()&&t.hours>0)
         rows.push({date:reportDate,user:cur,project_id:pid,task:t.text.trim(),hours:t.hours,status:'wip',comment});
-      }
     }
   }
   if(!selProjects.size){alert('Обери хоча б один проект');return;}
   if(!rows.length){alert('Додай хоча б одну задачу з описом');return;}
-
   const btn=document.getElementById('save-btn');
   btn.disabled=true;btn.textContent='Збереження...';
-
   try{
     const res=await apiPost({action:'addLogs',rows});
     if(res.ok){
       await loadLogs();
-      btn.textContent='Збережено ✓';
-      btn.style.background='#22C55E';
+      btn.textContent='Збережено ✓';btn.style.background='#22C55E';
       document.removeEventListener('click',closeDropdownsOutside,{capture:true});
       setTimeout(()=>switchTab('log'),1200);
     }else throw new Error();
@@ -595,28 +863,30 @@ function renderLog(){
 
 /* ── OWNER ── */
 function renderOwner(){
-  const total=LOGS.reduce((s,l)=>s+parseFloat(l.hours||0),0);
-  const active=PROJECTS.filter(p=>p.status==='active').length;
-  const clients=PROJECTS.filter(p=>p.type==='client'&&p.status==='active').length;
+  const filtered=filterLogsByDate(LOGS);
+  const total=filtered.reduce((s,l)=>s+parseFloat(l.hours||0),0);
+  const activeP=PROJECTS.filter(p=>p.status!=='done');
+  const clients=activeP.filter(p=>p.type==='client').length;
 
-  let h=`<div class="grid4">
-    <div class="mcard"><div class="mlabel">Активних</div><div class="mval">${active}</div><div class="msub">проектів</div></div>
+  let h=renderDateFilterBar(dfMode);
+  h+=`<div class="grid4">
+    <div class="mcard"><div class="mlabel">Активних</div><div class="mval">${activeP.length}</div><div class="msub">проектів</div></div>
     <div class="mcard"><div class="mlabel">Клієнтських</div><div class="mval">${clients}</div></div>
-    <div class="mcard"><div class="mlabel">Годин всього</div><div class="mval">${total.toFixed(1)}</div></div>
+    <div class="mcard"><div class="mlabel">Годин за період</div><div class="mval">${total.toFixed(1)}</div></div>
     <div class="mcard"><div class="mlabel">Команда</div><div class="mval">${USERS.length}</div><div class="msub">дизайнери</div></div>
   </div>
+
   <div class="slbl">Рентабельність проектів</div>
   <div class="ogrid">`;
 
-  PROJECTS.filter(p=>p.type==='client').forEach(p=>{
-    const spent=hForP(p.id),budget=parseFloat(p.hours_budget)||0;
+  activeP.filter(p=>p.type==='client').forEach(p=>{
+    const spent=hForP(p.id,filtered),budget=parseFloat(p.hours_budget)||0;
     const pct=budget>0?Math.min(100,Math.round(spent/budget*100)):0;
     const fc=pct<70?'obf-g':pct<90?'obf-a':'obf-r';
     const sc=pct<70?{c:'#059669',t:'В нормі'}:pct<90?{c:'#D97706',t:'Уважно'}:{c:'#DC2626',t:'Перевищення'};
-    const done=p.status==='done'?' <span class="pbadge pbd" style="font-size:11px;margin-left:6px">Завершено</span>':'';
-    h+=`<div class="ocard">
+    h+=`<div class="ocard" onclick="openProjectModal('${p.id}')">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
-        <div><div class="ocard-name">${p.name}${done}</div><div class="ocard-sub">${p.client}</div></div>
+        <div><div class="ocard-name">${projLabel(p)}</div><div class="ocard-sub">${p.client}</div></div>
         ${p.budget_usd?`<div style="font-size:16px;font-weight:700">$${p.budget_usd}</div>`:''}
       </div>
       ${budget>0
@@ -626,29 +896,88 @@ function renderOwner(){
             <span style="color:${sc.c};font-weight:600">${sc.t}</span>
           </div>`
         :`<div style="font-size:13px;color:#8E8E93;margin-top:8px">${spent.toFixed(1)}г витрачено</div>`}
+      <div style="font-size:12px;color:#818CF8;margin-top:8px;font-weight:500">Натисни для деталей →</div>
     </div>`;
   });
+  h+=`</div>`;
 
-  h+=`</div>
-  <div class="slbl" style="margin-top:8px">Навантаження команди</div>
-  <div class="log-card"><table>
-    <thead><tr><th>Дизайнер</th><th>Всього год</th><th>Проектів</th></tr></thead><tbody>`;
-
-  USERS.forEach(u=>{
-    const ul=LOGS.filter(l=>String(l.user)===String(u.id));
-    const ut=ul.reduce((s,l)=>s+parseFloat(l.hours||0),0);
-    const up=[...new Set(ul.map(l=>l.project_id))].length;
-    h+=`<tr><td>
-      <div style="display:flex;align-items:center;gap:10px">
-        <div class="av ${avClass(u.id)}">${ini(u.name)}</div>
-        <span style="font-weight:500">${u.name}</span>
-      </div></td>
-      <td style="font-weight:700">${ut.toFixed(1)}</td>
-      <td>${up}</td>
-    </tr>`;
+  // Analytics by task type
+  const taskMap={};
+  filtered.forEach(l=>{
+    const k=l.task||'—';
+    if(!taskMap[k]){taskMap[k]={hours:0,count:0,projects:new Set()};}
+    taskMap[k].hours+=parseFloat(l.hours||0);
+    taskMap[k].count++;
+    taskMap[k].projects.add(l.project_id);
   });
+  const taskArr=Object.entries(taskMap).sort((a,b)=>b[1].hours-a[1].hours);
+  const maxH=taskArr[0]?.[1]?.hours||1;
 
-  return h+`</tbody></table></div>`;
+  if(taskArr.length){
+    h+=`<div class="slbl" style="margin-top:8px">Аналітика по роботах</div>
+    <div class="log-card" style="margin-bottom:24px"><table>
+      <thead><tr><th>Тип роботи</th><th>Годин</th><th>Записів</th><th>Проектів</th><th style="width:160px">Частка</th></tr></thead><tbody>`;
+    taskArr.forEach(([task,d])=>{
+      const pct=Math.round(d.hours/maxH*100);
+      h+=`<tr>
+        <td style="font-weight:500">${esc(task)}</td>
+        <td style="font-weight:700">${d.hours.toFixed(1)}</td>
+        <td style="color:#8E8E93">${d.count}</td>
+        <td style="color:#8E8E93">${d.projects.size}</td>
+        <td><div style="height:6px;background:#F2F2F7;border-radius:3px"><div style="height:100%;width:${pct}%;background:#6366F1;border-radius:3px"></div></div></td>
+      </tr>`;
+    });
+    h+=`</tbody></table></div>`;
+  }
+
+  // Team workload
+  h+=`<div class="slbl">Навантаження команди</div>
+  <div class="log-card"><table>
+    <thead><tr><th>Дизайнер</th><th>Годин за період</th><th>Всього годин</th><th>Проектів</th></tr></thead><tbody>`;
+  USERS.forEach(u=>{
+    const ul=filtered.filter(l=>String(l.user)===String(u.id));
+    const ut=ul.reduce((s,l)=>s+parseFloat(l.hours||0),0);
+    const utAll=LOGS.filter(l=>String(l.user)===String(u.id)).reduce((s,l)=>s+parseFloat(l.hours||0),0);
+    const up=[...new Set(ul.map(l=>l.project_id))].length;
+    h+=`<tr><td><div style="display:flex;align-items:center;gap:10px">
+      <div class="av ${avClass(u.id)}">${ini(u.name)}</div>
+      <span style="font-weight:500">${u.name}</span>
+    </div></td>
+    <td style="font-weight:700">${ut.toFixed(1)}</td>
+    <td style="color:#8E8E93">${utAll.toFixed(1)}</td>
+    <td>${up}</td></tr>`;
+  });
+  h+=`</tbody></table></div>`;
+
+  // Archive
+  const doneP=PROJECTS.filter(p=>p.status==='done');
+  if(doneP.length){
+    h+=`<div style="margin-top:24px"></div>
+    <button class="arch-toggle" id="arch-btn2" onclick="toggleArchive2()">
+      <span>📁</span> Завершені проекти (${doneP.length})
+      <span class="arrow">▼</span>
+    </button>
+    <div class="arch-list" id="arch-list2"><div class="ogrid">`;
+    doneP.forEach(p=>{
+      const spent=hForP(p.id,filtered);
+      h+=`<div class="ocard" onclick="openProjectModal('${p.id}')" style="opacity:.85">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
+          <div><div class="ocard-name">${projLabel(p)}</div><div class="ocard-sub">${p.client}</div></div>
+          ${p.budget_usd?`<div style="font-size:16px;font-weight:700">$${p.budget_usd}</div>`:''}
+        </div>
+        <div style="font-size:13px;color:#8E8E93;margin-top:8px">${spent.toFixed(1)}г за період · <span class="pbadge pbd">Завершено</span></div>
+        <div style="font-size:12px;color:#818CF8;margin-top:6px;font-weight:500">Натисни для деталей →</div>
+      </div>`;
+    });
+    h+=`</div></div>`;
+  }
+  return h;
+}
+
+function toggleArchive2(){
+  const btn=document.getElementById('arch-btn2');
+  const list=document.getElementById('arch-list2');
+  if(btn&&list){btn.classList.toggle('open');list.classList.toggle('open');}
 }
 
 init();
