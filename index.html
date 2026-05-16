@@ -203,7 +203,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 
 <!-- PIN OVERLAY -->
 <div class="pin-overlay" id="pin-overlay" style="display:none">
-  <div class="pin-box">
+  <div class="pin-box" style="position:relative">
+    <button onclick="document.getElementById('pin-overlay').style.display='none'" style="position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;background:#F2F2F7;border:none;color:#6B7280;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;font-family:inherit">×</button>
     <div class="pin-title">Аналітика</div>
     <div class="pin-sub">Введи пін-код для доступу</div>
     <div class="pin-dots" id="pin-dots">
@@ -252,7 +253,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
   <button class="nbtn active" onclick="switchTab('overview')">Огляд</button>
   <button class="nbtn" onclick="switchTab('report')">Звіт за день</button>
   <button class="nbtn" onclick="switchTab('log')">Журнал</button>
-  <button class="nbtn" onclick="tryOwner()">Аналітика</button>
+  <button class="nbtn owner-only" onclick="tryOwner()" style="display:none">Аналітика</button>
 </div>
 <div class="page" id="page"><div class="loading">Завантаження...</div></div>
 
@@ -396,6 +397,8 @@ async function init(){
     const{from,to}=getDateRange();
     dfFrom=from;dfTo=to;
     renderTabs();
+    const ob=document.querySelector('.owner-only');
+    if(ob)ob.style.display=(cur===USERS[0]?.id)?'':'none';
     renderPage();
   }catch(e){
     document.getElementById('page').innerHTML='<div class="empty">Помилка завантаження. Перевір підключення.</div>';
@@ -417,7 +420,9 @@ function renderTabs(){
 
 function switchUser(uid){
   cur=uid;renderTabs();
-  if(tab==='owner'&&!pinUnlocked)tab='overview';
+  const ob=document.querySelector('.owner-only');
+  if(ob)ob.style.display=(uid===USERS[0]?.id)?'':'none';
+  if(tab==='owner'&&uid!==USERS[0]?.id){tab='overview';}
   updateNav();renderPage();
 }
 
@@ -448,20 +453,27 @@ function renderOverview(){
   const open=LOGS.filter(l=>String(l.user)===String(cur)&&l.status==='wip').length;
   const activeP=PROJECTS.filter(p=>p.status!=='done');
 
+  const isDana = cur===USERS[0]?.id;
+  // designers see only projects they have logs on; Dana sees all
+  const visibleP = isDana ? activeP : activeP.filter(p=>LOGS.some(l=>String(l.user)===String(cur)&&String(l.project_id)===String(p.id)));
+
   let h=renderDateFilterBar(dfMode);
   h+=`<div class="grid4">
-    <div class="mcard"><div class="mlabel">Проектів</div><div class="mval">${activeP.length}</div><div class="msub">активних</div></div>
+    <div class="mcard"><div class="mlabel">Проектів</div><div class="mval">${visibleP.length}</div><div class="msub">${isDana?'активних':'моїх'}</div></div>
     <div class="mcard"><div class="mlabel">За період</div><div class="mval">${hToday.toFixed(1)}</div><div class="msub">год внесено</div></div>
     <div class="mcard"><div class="mlabel">Всього годин</div><div class="mval">${LOGS.filter(l=>String(l.user)===String(cur)).reduce((s,l)=>s+parseFloat(l.hours||0),0).toFixed(1)}</div><div class="msub">в базі</div></div>
-    <div class="mcard"><div class="mlabel">В роботі</div><div class="mval">${open}</div><div class="msub">задач</div></div>
+    <div class="mcard"><div class="mlabel">${isDana?'Команда':'Мій рейтинг'}</div><div class="mval">${isDana?USERS.length:(() => { const myH=LOGS.filter(l=>String(l.user)===String(cur)).reduce((s,l)=>s+parseFloat(l.hours||0),0); const rank=USERS.map(u=>({id:u.id,h:LOGS.filter(l=>String(l.user)===String(u.id)).reduce((s,l)=>s+parseFloat(l.hours||0),0)})).sort((a,b)=>b.h-a.h).findIndex(u=>u.id===cur)+1; return '#'+rank; })()}</div><div class="msub">${isDana?'дизайнери':'за годинами'}</div></div>
   </div>
-  <div class="slbl">Проекти</div>
+  <div class="slbl">${isDana?'Всі проекти':'Мої проекти'}</div>
   <div class="pgrid">`;
 
-  activeP.forEach(p=>{
-    const spent=hForP(p.id,filtered),budget=parseFloat(p.hours_budget)||0;
-    const pct=budget>0?Math.min(100,Math.round(spent/budget*100)):0;
+  visibleP.forEach(p=>{
+    const spentAll=hForP(p.id,LOGS); // total hours all designers
+    const spentFiltered=hForP(p.id,filtered);
+    const budget=parseFloat(p.hours_budget)||0;
+    const pct=budget>0?Math.min(100,Math.round(spentAll/budget*100)):0;
     const myH=hForUP(cur,p.id,filtered);
+    const myHAll=hForUP(cur,p.id,LOGS);
     const isInt=p.type==='internal';
     h+=`<div class="pcard ${isInt?'int':'cl'}" onclick="openProjectModal('${p.id}')">
       <div class="prow">
@@ -470,24 +482,13 @@ function renderOverview(){
       </div>
       ${budget>0
         ?`<div class="pbar"><div class="pfill ${isInt?'pfi':'pft'}" style="width:${pct}%"></div></div>
-          <div class="pinfo"><span>${spent.toFixed(1)}г / ${budget}г</span><span>Мій: ${myH.toFixed(1)}г</span></div>`
-        :`<div class="pinfo"><span>Мій внесок: ${myH.toFixed(1)}г</span></div>`}
+          <div class="pinfo"><span>${spentAll.toFixed(1)}г / ${budget}г</span><span>${isDana?'За період: '+spentFiltered.toFixed(1)+'г':'Мій внесок: '+myHAll.toFixed(1)+'г'}</span></div>`
+        :`<div class="pinfo"><span>${isDana?'За період: '+spentFiltered.toFixed(1)+'г':'Мій внесок: '+myHAll.toFixed(1)+'г'}</span></div>`}
     </div>`;
   });
   h+=`</div>`;
 
-  const wip=LOGS.filter(l=>String(l.user)===String(cur)&&l.status==='wip').slice(0,6);
-  if(wip.length){
-    h+=`<div class="slbl">Незавершені задачі</div><div class="tcard">`;
-    wip.forEach(t=>{
-      const proj=PROJECTS.find(p=>String(p.id)===String(t.project_id));
-      h+=`<div class="ti"><div class="ti-dot"></div><div>
-        <div class="ti-name">${esc(t.task)}</div>
-        <div class="ti-meta">${proj?projLabel(proj):''} · ${String(t.date).slice(0,10)} · ${t.hours}г</div>
-      </div></div>`;
-    });
-    h+=`</div>`;
-  }
+
 
   // Archive
   const doneP=PROJECTS.filter(p=>p.status==='done');
