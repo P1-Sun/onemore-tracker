@@ -8,104 +8,43 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue',Arial,sans-serif;background:#EBEBEB;color:#1C1C1E;font-size:15px;line-height:1.4;min-height:100vh}
 
-/* ── TOPBAR ── */
-.topbar{
-  background:#1C1C1E;
-  padding:0 32px;
-  height:64px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-}
-.logo{
-  font-size:20px;
-  font-weight:700;
-  letter-spacing:-.5px;
-  color:#fff;
-  white-space:nowrap;
-  flex-shrink:0;
-}
+/* TOPBAR */
+.topbar{background:#1C1C1E;padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-size:20px;font-weight:700;letter-spacing:-.5px;color:#fff;white-space:nowrap;flex-shrink:0}
 .logo span{color:#818CF8}
-
 .utabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
-.utab{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 16px 8px 10px;
-  border-radius:24px;
-  border:1.5px solid rgba(255,255,255,.15);
-  background:transparent;
-  font-size:14px;font-weight:500;
-  color:rgba(255,255,255,.6);
-  cursor:pointer;
-  transition:all .18s;
-  font-family:inherit;
-}
-.utab.active{
-  background:#fff;
-  border-color:#fff;
-  color:#1C1C1E;
-}
-.utab:not(.active):hover{
-  border-color:rgba(255,255,255,.4);
-  color:#fff;
-}
-.av{
-  width:28px;height:28px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:10px;font-weight:700;flex-shrink:0;
-}
+.utab{display:flex;align-items:center;gap:8px;padding:8px 16px 8px 10px;border-radius:24px;border:1.5px solid rgba(255,255,255,.15);background:transparent;font-size:14px;font-weight:500;color:rgba(255,255,255,.6);cursor:pointer;transition:all .18s;font-family:inherit}
+.utab.active{background:#fff;border-color:#fff;color:#1C1C1E}
+.utab:not(.active):hover{border-color:rgba(255,255,255,.4);color:#fff}
+.av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
 .av-0{background:#818CF8;color:#fff}
 .av-1{background:#34D399;color:#fff}
 .av-2{background:#FBBF24;color:#fff}
 .av-3{background:#F472B6;color:#fff}
 .av-x{background:#6B7280;color:#fff}
 
-/* ── NAV ── */
-.nav{
-  background:#fff;
-  padding:0 32px;
-  display:flex;
-  gap:0;
-  border-bottom:1px solid #E5E5EA;
-  position:sticky;top:0;z-index:40;
-}
-.nbtn{
-  padding:14px 20px;
-  border:none;background:transparent;
-  font-size:15px;font-weight:500;
-  color:#8E8E93;cursor:pointer;
-  border-bottom:2.5px solid transparent;
-  transition:all .15s;
-  font-family:inherit;
-}
+/* NAV */
+.nav{background:#fff;padding:0 32px;display:flex;gap:0;border-bottom:1px solid #E5E5EA;position:sticky;top:0;z-index:40}
+.nbtn{padding:14px 20px;border:none;background:transparent;font-size:15px;font-weight:500;color:#8E8E93;cursor:pointer;border-bottom:2.5px solid transparent;transition:all .15s;font-family:inherit}
 .nbtn.active{color:#1C1C1E;border-bottom-color:#1C1C1E}
 .nbtn:hover:not(.active){color:#3C3C43}
 
-/* ── PAGE ── */
+/* PAGE — однакова ширина для всіх вкладок */
 .page{padding:28px 32px 60px;max-width:960px;margin:0 auto}
 
-/* ── METRIC CARDS ── */
+/* METRIC CARDS */
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
-.mcard{
-  background:#fff;
-  border-radius:16px;
-  padding:20px;
-  border:1px solid #E5E5EA;
-}
+.mcard{background:#fff;border-radius:16px;padding:20px;border:1px solid #E5E5EA}
 .mlabel{font-size:12px;font-weight:600;color:#8E8E93;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
 .mval{font-size:32px;font-weight:700;color:#1C1C1E;line-height:1;letter-spacing:-.8px}
 .msub{font-size:13px;color:#8E8E93;margin-top:6px}
 
-/* ── SECTION LABEL ── */
+/* SECTION LABEL */
 .slbl{font-size:13px;font-weight:600;color:#3C3C43;letter-spacing:.3px;text-transform:uppercase;margin-bottom:12px;padding:0 2px}
 
-/* ── PROJECT CARDS ── */
+/* PROJECT CARDS */
 .pgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
-.pcard{
-  background:#fff;border-radius:16px;
-  padding:20px;border:1px solid #E5E5EA;
-}
+.pcard{background:#fff;border-radius:16px;padding:20px;border:1px solid #E5E5EA}
 .pcard.cl{border-top:3px solid #6366F1}
 .pcard.int{border-top:3px solid #A78BFA}
 .pname{font-size:16px;font-weight:700;color:#1C1C1E;margin-bottom:4px}
@@ -121,7 +60,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .pfi{background:#A78BFA}
 .pinfo{display:flex;justify-content:space-between;font-size:13px;color:#8E8E93;margin-top:6px}
 
-/* ── OPEN TASKS ── */
+/* OPEN TASKS */
 .tcard{background:#fff;border-radius:16px;border:1px solid #E5E5EA;margin-bottom:28px;overflow:hidden}
 .ti{display:flex;align-items:flex-start;gap:12px;padding:14px 20px;border-bottom:1px solid #F2F2F7}
 .ti:last-child{border-bottom:none}
@@ -129,40 +68,21 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .ti-name{font-size:15px;color:#1C1C1E;font-weight:500}
 .ti-meta{font-size:13px;color:#8E8E93;margin-top:3px}
 
-/* ── REPORT ── */
-.report-wrap{max-width:640px}
+/* ── REPORT ── однакова ширина, без report-wrap обмеження */
+.sec-lbl{font-size:13px;font-weight:600;color:#3C3C43;text-transform:uppercase;letter-spacing:.3px;margin-bottom:12px}
 
 /* date chips */
-.date-section{margin-bottom:24px}
-.date-section-lbl{font-size:13px;font-weight:600;color:#3C3C43;text-transform:uppercase;letter-spacing:.3px;margin-bottom:12px}
-.dchips{display:flex;gap:8px;flex-wrap:wrap}
-.dchip{
-  padding:10px 18px;border-radius:12px;border:1.5px solid #E5E5EA;
-  background:#fff;font-size:15px;font-weight:500;
-  color:#3C3C43;cursor:pointer;transition:all .15s;font-family:inherit;
-}
+.dchips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
+.dchip{padding:10px 18px;border-radius:12px;border:1.5px solid #E5E5EA;background:#fff;font-size:15px;font-weight:500;color:#3C3C43;cursor:pointer;transition:all .15s;font-family:inherit}
 .dchip:hover{border-color:#818CF8;color:#4338CA}
 .dchip.active{background:#1C1C1E;border-color:#1C1C1E;color:#fff}
-.dchip.alt{border-color:#E5E5EA;color:#818CF8}
+.dchip.alt{color:#818CF8}
 .dchip.alt:hover{border-color:#818CF8}
-.date-inp-wrap{display:none;margin-top:8px}
-.date-inp{
-  padding:10px 16px;border-radius:12px;
-  border:1.5px solid #818CF8;background:#EEF2FF;
-  color:#4338CA;font-size:15px;font-weight:500;
-  outline:none;font-family:inherit;width:200px;
-}
+.date-inp{padding:10px 16px;border-radius:12px;border:1.5px solid #818CF8;background:#EEF2FF;color:#4338CA;font-size:15px;font-weight:500;outline:none;font-family:inherit;display:none}
 
 /* project chips */
-.proj-section{margin-bottom:20px}
-.rchips{display:flex;gap:8px;flex-wrap:wrap}
-.rchip{
-  display:flex;align-items:center;gap:8px;
-  padding:10px 18px;border-radius:12px;
-  border:1.5px solid #E5E5EA;background:#fff;
-  font-size:15px;font-weight:500;color:#3C3C43;
-  cursor:pointer;transition:all .18s;font-family:inherit;
-}
+.rchips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.rchip{display:flex;align-items:center;gap:8px;padding:10px 18px;border-radius:12px;border:1.5px solid #E5E5EA;background:#fff;font-size:15px;font-weight:500;color:#3C3C43;cursor:pointer;transition:all .18s;font-family:inherit}
 .rchip:hover{border-color:#818CF8;color:#4338CA}
 .rchip.sel{border-color:#6366F1;background:#EEF2FF;color:#4338CA}
 .rchip.int.sel{border-color:#7C3AED;background:#F5F3FF;color:#5B21B6}
@@ -171,117 +91,60 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .rchip.int.sel .rchip-dot{background:#7C3AED}
 
 /* task blocks */
-.tblock{
-  background:#fff;border-radius:16px;
-  border:1.5px solid #E5E5EA;
-  margin-bottom:12px;overflow:hidden;
-}
-.tblock-hdr{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:16px 20px;
-  background:#FAFAFA;
-  border-bottom:1.5px solid #E5E5EA;
-}
-.tblock-name{
-  font-size:16px;font-weight:700;color:#1C1C1E;
-  display:flex;align-items:center;gap:10px;
-}
+.tblock{background:#fff;border-radius:16px;border:1.5px solid #E5E5EA;margin-bottom:12px;overflow:hidden}
+.tblock-hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#FAFAFA;border-bottom:1.5px solid #E5E5EA}
+.tblock-name{font-size:16px;font-weight:700;color:#1C1C1E;display:flex;align-items:center;gap:10px}
 .tblock-dot{width:10px;height:10px;border-radius:50%;background:#6366F1;flex-shrink:0}
 .tblock-dot.int{background:#7C3AED}
-.tblock-x{
-  width:28px;height:28px;border-radius:50%;
-  background:#F2F2F7;border:none;
-  color:#6B7280;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  font-size:16px;transition:all .15s;font-family:inherit;
-}
+.tblock-x{width:28px;height:28px;border-radius:50%;background:#F2F2F7;border:none;color:#6B7280;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s;font-family:inherit}
 .tblock-x:hover{background:#FFE4E4;color:#EF4444}
 
-.task-row{
-  display:flex;align-items:center;gap:12px;
-  padding:14px 20px;border-bottom:1px solid #F5F5F5;
-}
-.task-inp{
-  flex:1;border:none;background:transparent;
-  font-size:15px;color:#1C1C1E;outline:none;
-  font-family:inherit;min-width:0;
-}
+/* task row */
+.task-row{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid #F5F5F5;position:relative}
+.task-inp-wrap{flex:1;position:relative;min-width:0}
+.task-inp{width:100%;border:none;background:transparent;font-size:15px;color:#1C1C1E;outline:none;font-family:inherit;padding:0;cursor:text}
 .task-inp::placeholder{color:#C7C7CC}
-.hrs-ctrl{
-  display:flex;align-items:center;
-  background:#F2F2F7;border-radius:12px;
-  overflow:hidden;flex-shrink:0;
-}
-.hbtn{
-  width:36px;height:36px;border:none;background:transparent;
-  font-size:22px;font-weight:300;color:#1C1C1E;
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:background .15s;font-family:inherit;line-height:1;
-}
+
+/* dropdown */
+.task-dropdown{position:absolute;top:calc(100% + 4px);left:0;right:0;background:#fff;border:1.5px solid #E5E5EA;border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:100;overflow:hidden;display:none;max-height:220px;overflow-y:auto}
+.task-dropdown.open{display:block}
+.dd-item{padding:11px 16px;font-size:14px;color:#1C1C1E;cursor:pointer;transition:background .12s;border-bottom:1px solid #F5F5F5}
+.dd-item:last-child{border-bottom:none}
+.dd-item:hover{background:#EEF2FF;color:#4338CA}
+.dd-item.custom{color:#6366F1;font-weight:500}
+
+.hrs-ctrl{display:flex;align-items:center;background:#F2F2F7;border-radius:12px;overflow:hidden;flex-shrink:0}
+.hbtn{width:36px;height:36px;border:none;background:transparent;font-size:22px;font-weight:300;color:#1C1C1E;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;font-family:inherit;line-height:1}
 .hbtn:hover{background:#E5E5EA}
 .hval{min-width:52px;text-align:center;font-size:15px;font-weight:700;color:#1C1C1E;white-space:nowrap}
-.del-row{
-  width:28px;height:28px;border:none;background:transparent;
-  color:#C7C7CC;cursor:pointer;font-size:18px;
-  display:flex;align-items:center;justify-content:center;
-  border-radius:8px;transition:all .15s;flex-shrink:0;font-family:inherit;
-}
+.del-row{width:28px;height:28px;border:none;background:transparent;color:#C7C7CC;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;border-radius:8px;transition:all .15s;flex-shrink:0;font-family:inherit}
 .del-row:hover{background:#FFE4E4;color:#EF4444}
 
-.add-task-btn{
-  display:flex;align-items:center;gap:8px;
-  padding:14px 20px;cursor:pointer;
-  color:#6366F1;font-size:15px;font-weight:500;
-  background:transparent;border:none;width:100%;
-  font-family:inherit;transition:background .15s;
-}
+.add-task-btn{display:flex;align-items:center;gap:8px;padding:14px 20px;cursor:pointer;color:#6366F1;font-size:15px;font-weight:500;background:transparent;border:none;width:100%;font-family:inherit;transition:background .15s}
 .add-task-btn:hover{background:#F8F8FF}
 
-.total-row{
-  font-size:15px;color:#3C3C43;text-align:right;
-  padding:0 2px;margin-bottom:20px;font-weight:500;min-height:22px;
-}
+.total-row{font-size:15px;color:#3C3C43;text-align:right;padding:0 2px;margin-bottom:20px;font-weight:500;min-height:22px}
 .total-row strong{color:#1C1C1E;font-weight:700;font-size:18px}
 
-.comment-wrap{
-  background:#fff;border-radius:16px;
-  border:1.5px solid #E5E5EA;
-  margin-bottom:20px;overflow:hidden;
-}
-.comment-wrap textarea{
-  width:100%;border:none;background:transparent;
-  padding:16px 20px;font-size:15px;color:#1C1C1E;
-  resize:none;outline:none;font-family:inherit;min-height:88px;
-}
+.comment-wrap{background:#fff;border-radius:16px;border:1.5px solid #E5E5EA;margin-bottom:20px;overflow:hidden}
+.comment-wrap textarea{width:100%;border:none;background:transparent;padding:16px 20px;font-size:15px;color:#1C1C1E;resize:none;outline:none;font-family:inherit;min-height:88px}
 .comment-wrap textarea::placeholder{color:#C7C7CC}
 
-.save-btn{
-  width:100%;padding:18px;border:none;border-radius:16px;
-  background:#1C1C1E;color:#fff;
-  font-size:17px;font-weight:700;cursor:pointer;
-  transition:all .18s;font-family:inherit;letter-spacing:-.2px;
-}
+.save-btn{width:100%;padding:18px;border:none;border-radius:16px;background:#1C1C1E;color:#fff;font-size:17px;font-weight:700;cursor:pointer;transition:all .18s;font-family:inherit;letter-spacing:-.2px}
 .save-btn:hover{background:#000}
 .save-btn:active{transform:scale(.98)}
 .save-btn:disabled{background:#C7C7CC;cursor:not-allowed;transform:none}
 
-/* ── LOG ── */
+/* LOG */
 .log-card{background:#fff;border-radius:16px;border:1px solid #E5E5EA;overflow:hidden}
 .log-card table{width:100%;border-collapse:collapse}
-.log-card th{
-  font-size:12px;font-weight:600;color:#8E8E93;
-  text-transform:uppercase;letter-spacing:.4px;
-  padding:14px 20px;border-bottom:1.5px solid #F2F2F7;text-align:left;white-space:nowrap;
-}
-.log-card td{
-  font-size:15px;padding:14px 20px;
-  border-bottom:1px solid #F5F5F5;color:#1C1C1E;vertical-align:top;
-}
+.log-card th{font-size:12px;font-weight:600;color:#8E8E93;text-transform:uppercase;letter-spacing:.4px;padding:14px 20px;border-bottom:1.5px solid #F2F2F7;text-align:left;white-space:nowrap}
+.log-card td{font-size:15px;padding:14px 20px;border-bottom:1px solid #F5F5F5;color:#1C1C1E;vertical-align:top}
 .log-card tr:last-child td{border-bottom:none}
 .log-card tr:hover td{background:#FAFAFA}
 .log-card td.muted{color:#8E8E93;white-space:nowrap}
 
-/* ── OWNER ── */
+/* OWNER */
 .ogrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
 .ocard{background:#fff;border-radius:16px;padding:20px;border:1px solid #E5E5EA}
 .ocard-name{font-size:16px;font-weight:700;color:#1C1C1E}
@@ -293,7 +156,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .obf-r{background:#F87171}
 .obar-info{display:flex;justify-content:space-between;font-size:13px;margin-top:6px}
 
-/* ── STATES ── */
 .empty{text-align:center;padding:80px 20px;color:#8E8E93;font-size:16px}
 .loading{text-align:center;padding:80px 20px;color:#8E8E93;font-size:16px}
 
@@ -308,30 +170,26 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 </head>
 <body>
 
-<!-- TOPBAR -->
 <div class="topbar">
   <div class="logo">One More <span>Agency</span></div>
   <div class="utabs" id="utabs"></div>
 </div>
-
-<!-- NAV -->
 <div class="nav">
   <button class="nbtn active" onclick="switchTab('overview')">Огляд</button>
   <button class="nbtn" onclick="switchTab('report')">Звіт за день</button>
   <button class="nbtn" onclick="switchTab('log')">Журнал</button>
   <button class="nbtn owner-only" onclick="switchTab('owner')" style="display:none">Аналітика</button>
 </div>
-
-<!-- CONTENT -->
 <div class="page" id="page"><div class="loading">Завантаження...</div></div>
 
 <script>
-const API = 'https://script.google.com/macros/s/AKfycbzJk873o2Z8oUFwXUqwGcfzjBNCtp3jhIoIW46-WUhOucXbY8o2vBHQQwZ7FrHayplo/exec';
+const API='https://script.google.com/macros/s/AKfycbzJk873o2Z8oUFwXUqwGcfzjBNCtp3jhIoIW46-WUhOucXbY8o2vBHQQwZ7FrHayplo/exec';
 
-let USERS=[], PROJECTS=[], LOGS=[];
-let cur=null, tab='overview';
-let selProjects=new Set(), tasksByProj={};
+let USERS=[],PROJECTS=[],LOGS=[],TASKS=[];
+let cur=null,tab='overview';
+let selProjects=new Set(),tasksByProj={};
 let reportDate=todayStr();
+let activeDropdown=null;
 
 function avClass(uid){const i=USERS.findIndex(u=>u.id===uid);return'av-'+(i>=0&&i<=3?i:'x')}
 function ini(n){if(!n)return'?';const p=n.trim().split(' ');return p.length>=2?p[0][0]+p[1][0]:n.slice(0,2)}
@@ -343,17 +201,26 @@ function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/<
 
 async function init(){
   try{
-    const d=await apiFetch('getInit');
-    USERS=d.users||[]; PROJECTS=d.projects||[];
+    const [initData,logsData,tasksData]=await Promise.all([
+      apiFetch('getInit'),
+      apiFetch('getAllLogs'),
+      apiFetch('getTasks')
+    ]);
+    USERS=initData.users||[];
+    PROJECTS=initData.projects||[];
+    LOGS=Array.isArray(logsData)?logsData:[];
+    TASKS=Array.isArray(tasksData)?tasksData:[];
     if(USERS.length)cur=USERS[0].id;
     renderTabs();
-    await loadLogs();
     renderPage();
   }catch(e){
     document.getElementById('page').innerHTML='<div class="empty">Помилка завантаження. Перевір підключення.</div>';
   }
 }
-async function loadLogs(){try{const d=await apiFetch('getAllLogs');LOGS=Array.isArray(d)?d:[];}catch(e){LOGS=[];}}
+
+async function loadLogs(){
+  try{const d=await apiFetch('getAllLogs');LOGS=Array.isArray(d)?d:[];}catch(e){LOGS=[];}
+}
 async function apiFetch(action){const r=await fetch(`${API}?action=${action}`);return r.json();}
 async function apiPost(body){const r=await fetch(API,{method:'POST',body:JSON.stringify(body)});return r.json();}
 
@@ -365,19 +232,17 @@ function renderTabs(){
 }
 
 function switchUser(uid){
-  cur=uid; renderTabs();
+  cur=uid;renderTabs();
   const ob=document.querySelector('.owner-only');
   if(ob)ob.style.display=(uid===USERS[0]?.id)?'':'none';
   if(tab==='owner'&&uid!==USERS[0]?.id)tab='overview';
-  updateNav(); renderPage();
+  updateNav();renderPage();
 }
-
 function switchTab(t){tab=t;updateNav();renderPage();}
 function updateNav(){
   const tabs=['overview','report','log','owner'];
   document.querySelectorAll('.nbtn').forEach((b,i)=>b.classList.toggle('active',tabs[i]===tab));
 }
-
 function renderPage(){
   const el=document.getElementById('page');
   if(tab==='overview')el.innerHTML=renderOverview();
@@ -405,7 +270,7 @@ function renderOverview(){
   <div class="pgrid">`;
 
   active.forEach(p=>{
-    const spent=hForP(p.id), budget=parseFloat(p.hours_budget)||0;
+    const spent=hForP(p.id),budget=parseFloat(p.hours_budget)||0;
     const pct=budget>0?Math.min(100,Math.round(spent/budget*100)):0;
     const myH=hForUP(cur,p.id);
     const isInt=p.type==='internal';
@@ -439,12 +304,12 @@ function renderOverview(){
 
 /* ── REPORT ── */
 function renderReport(){
-  // build day chips — last 5 weekdays
   const days=[];
   const d=new Date();
+  const tmp=new Date(d);
   while(days.length<5){
-    if(d.getDay()!==0&&d.getDay()!==6)days.unshift(new Date(d));
-    d.setDate(d.getDate()-1);
+    if(tmp.getDay()!==0&&tmp.getDay()!==6)days.unshift(new Date(tmp));
+    tmp.setDate(tmp.getDate()-1);
   }
   const dayNames=['Нд','Пн','Вт','Ср','Чт','Пт','Сб'];
   const chipHtml=days.map((day,idx)=>{
@@ -461,32 +326,25 @@ function renderReport(){
     </button>`;
   }).join('');
 
-  return`<div class="report-wrap">
-    <div class="date-section">
-      <div class="date-section-lbl">Дата</div>
-      <div class="dchips">
-        ${chipHtml}
-        <button class="dchip alt" id="btn-other" onclick="openOtherDate()">Інша дата</button>
-      </div>
-      <div class="date-inp-wrap" id="date-inp-wrap">
-        <input type="date" class="date-inp" id="other-date-inp" onchange="setOtherDate(this.value)">
-      </div>
+  return`
+    <div class="sec-lbl">Дата</div>
+    <div class="dchips">
+      ${chipHtml}
+      <button class="dchip alt" id="btn-other" onclick="openOtherDate()">Інша дата</button>
+      <input type="date" class="date-inp" id="other-date-inp" onchange="setOtherDate(this.value)">
     </div>
 
-    <div class="proj-section">
-      <div class="date-section-lbl">Над чим працював/ла</div>
-      <div class="rchips" id="proj-chips">${projChips}</div>
-    </div>
+    <div class="sec-lbl">Над чим працював/ла</div>
+    <div class="rchips" id="proj-chips">${projChips}</div>
 
     <div id="tblocks"></div>
     <div class="total-row" id="total-row"></div>
 
-    <div class="date-section-lbl">Коментар</div>
+    <div class="sec-lbl">Коментар</div>
     <div class="comment-wrap">
       <textarea id="r-comment" placeholder="Що вийшло, що заблоковано, питання до команди..."></textarea>
     </div>
-    <button class="save-btn" id="save-btn" onclick="submitReport()">Зберегти звіт</button>
-  </div>`;
+    <button class="save-btn" id="save-btn" onclick="submitReport()">Зберегти звіт</button>`;
 }
 
 function initReport(){
@@ -496,26 +354,26 @@ function initReport(){
     tasksByProj[String(p.id)]=[{id:uid2(),text:'',hours:1}];
   });
   renderTblocks();
+  // close dropdowns on outside click
+  document.addEventListener('click',closeDropdownsOutside,{capture:true});
 }
 
 function setReportDate(el,ds){
   reportDate=ds;
   document.querySelectorAll('.dchip').forEach(c=>c.classList.remove('active'));
   el.classList.add('active');
-  document.getElementById('date-inp-wrap').style.display='none';
+  document.getElementById('other-date-inp').style.display='none';
   document.getElementById('btn-other').style.display='';
 }
-
 function openOtherDate(){
   document.getElementById('btn-other').style.display='none';
-  const wrap=document.getElementById('date-inp-wrap');
-  wrap.style.display='block';
   const inp=document.getElementById('other-date-inp');
-  inp.value=reportDate; inp.focus();
+  inp.style.display='';
+  inp.value=reportDate;
+  inp.focus();
 }
-
 function setOtherDate(val){
-  if(val){reportDate=val;}
+  if(val)reportDate=val;
   document.querySelectorAll('.dchip').forEach(c=>c.classList.remove('active'));
 }
 
@@ -536,13 +394,18 @@ function renderTblocks(){
     const proj=PROJECTS.find(p=>String(p.id)===String(pid));
     if(!proj)return;
     if(!tasksByProj[pid])tasksByProj[pid]=[{id:uid2(),text:'',hours:1}];
-
     const isInt=proj.type==='internal';
+
     const rows=tasksByProj[pid].map(t=>{
       total+=t.hours;
       return`<div class="task-row" id="tr-${t.id}">
-        <input class="task-inp" id="ti-${t.id}" placeholder="Що робив/ла..." value="${esc(t.text)}"
-          oninput="updateTaskText('${pid}','${t.id}',this.value)">
+        <div class="task-inp-wrap">
+          <input class="task-inp" id="ti-${t.id}" placeholder="Почни вводити або обери зі списку..." value="${esc(t.text)}"
+            oninput="onTaskInput('${pid}','${t.id}',this)"
+            onfocus="openDropdown('${pid}','${t.id}')"
+            autocomplete="off">
+          <div class="task-dropdown" id="dd-${t.id}"></div>
+        </div>
         <div class="hrs-ctrl">
           <button class="hbtn" onclick="chHours('${pid}','${t.id}',-0.5)">−</button>
           <div class="hval" id="hv-${t.id}">${t.hours}г</div>
@@ -553,12 +416,10 @@ function renderTblocks(){
     }).join('');
 
     const block=document.createElement('div');
-    block.className='tblock'; block.id='tb-'+pid;
+    block.className='tblock';block.id='tb-'+pid;
     block.innerHTML=`
       <div class="tblock-hdr">
-        <div class="tblock-name">
-          <div class="tblock-dot${isInt?' int':''}"></div>${proj.name}
-        </div>
+        <div class="tblock-name"><div class="tblock-dot${isInt?' int':''}"></div>${proj.name}</div>
         <button class="tblock-x" onclick="deselectProj('${pid}')">×</button>
       </div>
       ${rows}
@@ -575,6 +436,57 @@ function renderTblocks(){
   updateTotal();
 }
 
+/* dropdown logic */
+function openDropdown(pid,tid){
+  closeAllDropdowns();
+  const dd=document.getElementById('dd-'+tid);
+  if(!dd)return;
+  const inp=document.getElementById('ti-'+tid);
+  const q=(inp?.value||'').toLowerCase();
+  populateDropdown(dd,pid,tid,q);
+  dd.classList.add('open');
+  activeDropdown=tid;
+}
+
+function populateDropdown(dd,pid,tid,q){
+  const filtered=q?TASKS.filter(t=>t.toLowerCase().includes(q)):TASKS;
+  let html=filtered.map(t=>`<div class="dd-item" onmousedown="pickTask('${pid}','${tid}','${esc(t)}')">${esc(t)}</div>`).join('');
+  if(q&&!TASKS.some(t=>t.toLowerCase()===q)){
+    html+=`<div class="dd-item custom" onmousedown="pickTask('${pid}','${tid}','${esc(document.getElementById('ti-'+tid)?.value||'')}',true)">+ Ввести вручну: "${esc(document.getElementById('ti-'+tid)?.value||'')}"</div>`;
+  }
+  if(!html)html='<div class="dd-item" style="color:#C7C7CC;cursor:default">Нічого не знайдено</div>';
+  dd.innerHTML=html;
+}
+
+function onTaskInput(pid,tid,inp){
+  const t=tasksByProj[pid]?.find(t=>t.id===tid);
+  if(t)t.text=inp.value;
+  const dd=document.getElementById('dd-'+tid);
+  if(dd){
+    populateDropdown(dd,pid,tid,inp.value.toLowerCase());
+    dd.classList.add('open');
+    activeDropdown=tid;
+  }
+}
+
+function pickTask(pid,tid,val,manual){
+  const t=tasksByProj[pid]?.find(t=>t.id===tid);
+  if(t)t.text=val;
+  const inp=document.getElementById('ti-'+tid);
+  if(inp)inp.value=val;
+  closeAllDropdowns();
+  if(manual)inp?.focus();
+}
+
+function closeAllDropdowns(){
+  document.querySelectorAll('.task-dropdown').forEach(d=>d.classList.remove('open'));
+  activeDropdown=null;
+}
+
+function closeDropdownsOutside(e){
+  if(!e.target.closest('.task-inp-wrap'))closeAllDropdowns();
+}
+
 function deselectProj(pid){
   selProjects.delete(String(pid));
   document.querySelector(`.rchip[data-id="${pid}"]`)?.classList.remove('sel');
@@ -585,18 +497,16 @@ function addTask(pid){
   const t={id:uid2(),text:'',hours:1};
   tasksByProj[pid].push(t);
   renderTblocks();
-  setTimeout(()=>document.getElementById('ti-'+t.id)?.focus(),30);
+  setTimeout(()=>{
+    const inp=document.getElementById('ti-'+t.id);
+    inp?.focus();
+  },30);
 }
 
 function delTask(pid,tid){
   if(tasksByProj[pid]?.length<=1)return;
   tasksByProj[pid]=tasksByProj[pid].filter(t=>t.id!==tid);
   renderTblocks();
-}
-
-function updateTaskText(pid,tid,val){
-  const t=tasksByProj[pid]?.find(t=>t.id===tid);
-  if(t)t.text=val;
 }
 
 function chHours(pid,tid,delta){
@@ -629,7 +539,7 @@ async function submitReport(){
   if(!rows.length){alert('Додай хоча б одну задачу з описом');return;}
 
   const btn=document.getElementById('save-btn');
-  btn.disabled=true; btn.textContent='Збереження...';
+  btn.disabled=true;btn.textContent='Збереження...';
 
   try{
     const res=await apiPost({action:'addLogs',rows});
@@ -637,11 +547,11 @@ async function submitReport(){
       await loadLogs();
       btn.textContent='Збережено ✓';
       btn.style.background='#22C55E';
+      document.removeEventListener('click',closeDropdownsOutside,{capture:true});
       setTimeout(()=>switchTab('log'),1200);
     }else throw new Error();
   }catch{
-    btn.disabled=false; btn.textContent='Зберегти звіт';
-    btn.style.background='';
+    btn.disabled=false;btn.textContent='Зберегти звіт';btn.style.background='';
     alert('Помилка збереження. Спробуй ще раз.');
   }
 }
@@ -650,7 +560,6 @@ async function submitReport(){
 function renderLog(){
   const ml=LOGS.filter(l=>String(l.user)===String(cur)).sort((a,b)=>String(b.date).localeCompare(String(a.date)));
   if(!ml.length)return`<div class="empty">Ще немає записів.<br>Заповни перший звіт за день!</div>`;
-
   let h=`<div class="log-card"><table>
     <thead><tr><th>Дата</th><th>Проект</th><th>Задача</th><th>Год</th></tr></thead><tbody>`;
   ml.forEach(l=>{
@@ -688,10 +597,7 @@ function renderOwner(){
     const done=p.status==='done'?' <span class="pbadge pbd" style="font-size:11px;margin-left:6px">Завершено</span>':'';
     h+=`<div class="ocard">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
-        <div>
-          <div class="ocard-name">${p.name}${done}</div>
-          <div class="ocard-sub">${p.client}</div>
-        </div>
+        <div><div class="ocard-name">${p.name}${done}</div><div class="ocard-sub">${p.client}</div></div>
         ${p.budget_usd?`<div style="font-size:16px;font-weight:700">$${p.budget_usd}</div>`:''}
       </div>
       ${budget>0
