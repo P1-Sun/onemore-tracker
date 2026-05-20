@@ -21,7 +21,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .av-2{background:#FBBF24;color:#fff}.av-3{background:#F472B6;color:#fff}.av-x{background:#6B7280;color:#fff}
 
 /* NAV */
-.nav{background:#fff;padding:0 32px;display:flex;gap:0;border-bottom:1px solid #E5E5EA;position:sticky;top:0;z-index:40}
+.nav{background:#fff;padding:0 32px;display:flex;border-bottom:1px solid #E5E5EA;position:sticky;top:0;z-index:40}
 .nbtn{padding:14px 20px;border:none;background:transparent;font-size:15px;font-weight:500;color:#8E8E93;cursor:pointer;border-bottom:2.5px solid transparent;transition:all .15s;font-family:inherit}
 .nbtn.active{color:#1C1C1E;border-bottom-color:#1C1C1E}
 .nbtn:hover:not(.active){color:#3C3C43}
@@ -29,25 +29,25 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 /* PAGE */
 .page{padding:28px 32px 60px;max-width:960px;margin:0 auto}
 
-/* METRIC CARDS */
+/* METRICS */
 .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:28px}
 .mcard{background:#fff;border-radius:16px;padding:20px;border:1px solid #E5E5EA}
 .mlabel{font-size:12px;font-weight:600;color:#8E8E93;text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
 .mval{font-size:32px;font-weight:700;color:#1C1C1E;line-height:1;letter-spacing:-.8px}
 .msub{font-size:13px;color:#8E8E93;margin-top:6px}
 
-/* DATE FILTER BAR */
+/* DATE FILTER */
 .dfbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:24px;background:#fff;border-radius:14px;padding:12px 16px;border:1px solid #E5E5EA}
 .dfbtn{padding:7px 14px;border-radius:10px;border:1.5px solid transparent;background:transparent;font-size:13px;font-weight:500;color:#8E8E93;cursor:pointer;transition:all .15s;font-family:inherit}
 .dfbtn:hover{background:#F2F2F7;color:#3C3C43}
 .dfbtn.active{background:#1C1C1E;color:#fff;border-color:#1C1C1E}
 .dfbar-sep{width:1px;height:20px;background:#E5E5EA;margin:0 4px;flex-shrink:0}
-.dfrange{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.dfrange{display:flex;align-items:center;gap:8px}
 .dfrange input{padding:6px 10px;border-radius:8px;border:1.5px solid #E5E5EA;background:#FAFAFA;font-size:13px;color:#1C1C1E;outline:none;font-family:inherit}
 .dfrange input:focus{border-color:#818CF8}
 .dfrange span{font-size:13px;color:#8E8E93}
 
-/* SECTION LABEL */
+/* SECTION */
 .slbl{font-size:13px;font-weight:600;color:#3C3C43;letter-spacing:.3px;text-transform:uppercase;margin-bottom:12px;padding:0 2px}
 
 /* PROJECT CARDS */
@@ -57,7 +57,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .pcard.cl{border-top:3px solid #6366F1}
 .pcard.int{border-top:3px solid #A78BFA}
 .pname{font-size:16px;font-weight:700;color:#1C1C1E;margin-bottom:4px}
-.pclient{font-size:13px;color:#8E8E93}
 .prow{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
 .pbadge{display:inline-flex;align-items:center;font-size:12px;font-weight:600;padding:4px 10px;border-radius:8px;flex-shrink:0}
 .pba{background:#EEF2FF;color:#4338CA}.pbi{background:#F5F3FF;color:#5B21B6}.pbd{background:#F2F2F7;color:#6B7280}
@@ -65,15 +64,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .pfill{height:100%;border-radius:2px}.pft{background:#6366F1}.pfi{background:#A78BFA}
 .pinfo{display:flex;justify-content:space-between;font-size:13px;color:#8E8E93;margin-top:6px}
 
-/* OPEN TASKS */
-.tcard{background:#fff;border-radius:16px;border:1px solid #E5E5EA;margin-bottom:28px;overflow:hidden}
-.ti{display:flex;align-items:flex-start;gap:12px;padding:14px 20px;border-bottom:1px solid #F2F2F7}
-.ti:last-child{border-bottom:none}
-.ti-dot{width:10px;height:10px;border-radius:50%;background:#6366F1;margin-top:4px;flex-shrink:0}
-.ti-name{font-size:15px;color:#1C1C1E;font-weight:500}
-.ti-meta{font-size:13px;color:#8E8E93;margin-top:3px}
+/* ARCHIVE */
+.arch-toggle{display:flex;align-items:center;gap:10px;padding:14px 20px;background:#fff;border-radius:14px;border:1px solid #E5E5EA;cursor:pointer;font-size:15px;font-weight:500;color:#3C3C43;margin-bottom:12px;transition:background .15s;width:100%;font-family:inherit;text-align:left}
+.arch-toggle:hover{background:#F8F8FF}
+.arch-toggle .arrow{font-size:12px;color:#8E8E93;margin-left:auto;transition:transform .2s}
+.arch-toggle.open .arrow{transform:rotate(180deg)}
+.arch-list{display:none;margin-bottom:24px}
+.arch-list.open{display:block}
 
-/* REPORT */
+/* ── REPORT ── */
 .sec-lbl{font-size:13px;font-weight:600;color:#3C3C43;text-transform:uppercase;letter-spacing:.3px;margin-bottom:12px}
 .dchips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
 .dchip{padding:10px 18px;border-radius:12px;border:1.5px solid #E5E5EA;background:#fff;font-size:15px;font-weight:500;color:#3C3C43;cursor:pointer;transition:all .15s;font-family:inherit}
@@ -89,6 +88,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .rchip-dot{width:10px;height:10px;border-radius:50%;background:#D1D1D6;flex-shrink:0;transition:background .18s}
 .rchip.sel .rchip-dot{background:#6366F1}
 .rchip.int.sel .rchip-dot{background:#7C3AED}
+
+/* TASK BLOCK */
 .tblock{background:#fff;border-radius:16px;border:1.5px solid #E5E5EA;margin-bottom:12px;overflow:visible}
 .tblock-hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:#FAFAFA;border-bottom:1.5px solid #E5E5EA;border-radius:16px 16px 0 0}
 .tblock-name{font-size:16px;font-weight:700;color:#1C1C1E;display:flex;align-items:center;gap:10px}
@@ -96,17 +97,30 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .tblock-dot.int{background:#7C3AED}
 .tblock-x{width:28px;height:28px;border-radius:50%;background:#F2F2F7;border:none;color:#6B7280;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all .15s;font-family:inherit}
 .tblock-x:hover{background:#FFE4E4;color:#EF4444}
-.task-row{display:flex;align-items:center;gap:12px;padding:12px 20px;border-bottom:1px solid #F5F5F5}
+
+/* TASK ROW */
+.task-row{padding:14px 20px;border-bottom:1px solid #F5F5F5}
+.task-row:last-of-type{border-bottom:none}
+.task-row-top{display:flex;align-items:center;gap:10px}
 .task-inp-wrap{flex:1;position:relative;min-width:0}
-.task-inp{width:100%;border:none;background:transparent;font-size:15px;color:#1C1C1E;outline:none;font-family:inherit;padding:0;cursor:text}
+
+/* GROUP PICKER */
+.group-picker{padding:10px 20px 0;border-bottom:1px solid #F5F5F5}
+.gp-label{font-size:11px;font-weight:600;color:#8E8E93;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
+.gp-groups{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.gp-chip{padding:6px 12px;border-radius:8px;border:1.5px solid #E5E5EA;background:#fff;font-size:13px;font-weight:500;color:#3C3C43;cursor:pointer;transition:all .15s;font-family:inherit;white-space:nowrap}
+.gp-chip:hover{border-color:#818CF8;color:#4338CA}
+.gp-chip.active{background:#1C1C1E;border-color:#1C1C1E;color:#fff}
+.gp-subs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;display:none}
+.gp-subs.show{display:flex}
+.gp-sub{padding:6px 12px;border-radius:8px;border:1.5px solid #E5E5EA;background:#FAFAFA;font-size:13px;font-weight:500;color:#3C3C43;cursor:pointer;transition:all .15s;font-family:inherit;white-space:nowrap}
+.gp-sub:hover{border-color:#6366F1;color:#4338CA;background:#EEF2FF}
+.gp-sub.active{background:#6366F1;border-color:#6366F1;color:#fff}
+
+.task-inp{width:100%;border:none;background:transparent;font-size:15px;color:#1C1C1E;outline:none;font-family:inherit;padding:0}
 .task-inp::placeholder{color:#C7C7CC}
-.task-dropdown{position:absolute;top:calc(100% + 2px);left:-12px;right:-12px;background:#fff;border:2px solid #1C1C1E;border-radius:16px;box-shadow:0 16px 40px rgba(0,0,0,.22);z-index:9999;overflow-y:auto;display:none;max-height:400px}
-.task-dropdown.open{display:block}
-.dd-item{padding:14px 20px;font-size:16px;font-weight:500;color:#1C1C1E;cursor:pointer;transition:background .12s;border-bottom:1px solid #F0F0F0}
-.dd-item:last-child{border-bottom:none}
-.dd-item:hover{background:#1C1C1E;color:#fff}
-.dd-item.custom{color:#6366F1;font-weight:600;background:#F8F8FF}
-.dd-item.custom:hover{background:#6366F1;color:#fff}
+.task-note-inp{width:100%;border:none;background:#FFFBEB;font-size:13px;color:#92400E;outline:none;font-family:inherit;padding:6px 0 0;border-top:1px dashed #FDE68A;margin-top:6px}
+.task-note-inp::placeholder{color:#D97706}
 .hrs-ctrl{display:flex;align-items:center;background:#F2F2F7;border-radius:12px;overflow:hidden;flex-shrink:0}
 .hbtn{width:36px;height:36px;border:none;background:transparent;font-size:22px;font-weight:300;color:#1C1C1E;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s;font-family:inherit;line-height:1}
 .hbtn:hover{background:#E5E5EA}
@@ -134,7 +148,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .log-card tr:hover td{background:#FAFAFA}
 .log-card td.muted{color:#8E8E93;white-space:nowrap}
 
-/* OWNER / ANALYTICS */
+/* OWNER */
 .ogrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
 .ocard{background:#fff;border-radius:16px;padding:20px;border:1px solid #E5E5EA;cursor:pointer;transition:border-color .15s}
 .ocard:hover{border-color:#818CF8}
@@ -145,17 +159,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .obf-g{background:#34D399}.obf-a{background:#FBBF24}.obf-r{background:#F87171}
 .obar-info{display:flex;justify-content:space-between;font-size:13px;margin-top:6px}
 
-/* ARCHIVE TOGGLE */
-.arch-toggle{display:flex;align-items:center;gap:10px;padding:14px 20px;background:#fff;border-radius:14px;border:1px solid #E5E5EA;cursor:pointer;font-size:15px;font-weight:500;color:#3C3C43;margin-bottom:12px;transition:background .15s;width:100%;font-family:inherit;text-align:left}
-.arch-toggle:hover{background:#F8F8FF}
-.arch-toggle .arrow{font-size:12px;color:#8E8E93;margin-left:auto;transition:transform .2s}
-.arch-toggle.open .arrow{transform:rotate(180deg)}
-.arch-list{display:none;margin-bottom:24px}
-.arch-list.open{display:block}
-
-/* PIN OVERLAY */
+/* PIN */
 .pin-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px);z-index:500;display:flex;align-items:center;justify-content:center}
-.pin-box{background:#fff;border-radius:24px;padding:40px 48px;text-align:center;max-width:360px;width:90%}
+.pin-box{background:#fff;border-radius:24px;padding:40px 48px;text-align:center;max-width:360px;width:90%;position:relative}
 .pin-title{font-size:22px;font-weight:700;color:#1C1C1E;margin-bottom:8px}
 .pin-sub{font-size:15px;color:#8E8E93;margin-bottom:32px}
 .pin-dots{display:flex;gap:16px;justify-content:center;margin-bottom:32px}
@@ -169,6 +175,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .pin-key.del{font-size:16px;color:#8E8E93}
 .pin-key.empty{background:transparent;cursor:default}
 .pin-err{font-size:14px;color:#F87171;margin-top:16px;min-height:20px}
+.pin-close{position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;background:#F2F2F7;border:none;color:#6B7280;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;font-family:inherit}
+.pin-close:hover{background:#FFE4E4;color:#EF4444}
 
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;display:flex;align-items:center;justify-content:center;padding:20px}
@@ -184,7 +192,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .modal-stat-lbl{font-size:11px;font-weight:600;color:#8E8E93;text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px}
 .modal-stat-val{font-size:22px;font-weight:700;color:#1C1C1E}
 
-/* STATES */
 .empty{text-align:center;padding:80px 20px;color:#8E8E93;font-size:16px}
 .loading{text-align:center;padding:80px 20px;color:#8E8E93;font-size:16px}
 
@@ -194,24 +201,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
   .pgrid,.ogrid{grid-template-columns:1fr}
   .page{padding:20px 16px 60px}
   .nav{padding:0 16px}
-  .dfbar{gap:6px}
-  .modal{max-height:95vh}
 }
 </style>
 </head>
 <body>
 
-<!-- PIN OVERLAY -->
+<!-- PIN -->
 <div class="pin-overlay" id="pin-overlay" style="display:none">
-  <div class="pin-box" style="position:relative">
-    <button onclick="document.getElementById('pin-overlay').style.display='none'" style="position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;background:#F2F2F7;border:none;color:#6B7280;cursor:pointer;font-size:16px;display:flex;align-items:center;justify-content:center;font-family:inherit">×</button>
+  <div class="pin-box">
+    <button class="pin-close" onclick="document.getElementById('pin-overlay').style.display='none'">×</button>
     <div class="pin-title">Аналітика</div>
     <div class="pin-sub">Введи пін-код для доступу</div>
-    <div class="pin-dots" id="pin-dots">
-      <div class="pin-dot" id="pd0"></div>
-      <div class="pin-dot" id="pd1"></div>
-      <div class="pin-dot" id="pd2"></div>
-      <div class="pin-dot" id="pd3"></div>
+    <div class="pin-dots">
+      <div class="pin-dot" id="pd0"></div><div class="pin-dot" id="pd1"></div>
+      <div class="pin-dot" id="pd2"></div><div class="pin-dot" id="pd3"></div>
     </div>
     <div class="pin-pad">
       <button class="pin-key" onclick="pinKey('1')">1</button>
@@ -231,9 +234,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
   </div>
 </div>
 
-<!-- PROJECT MODAL -->
+<!-- MODAL -->
 <div class="modal-overlay" id="modal-overlay" style="display:none" onclick="closeModal(event)">
-  <div class="modal" id="modal">
+  <div class="modal">
     <div class="modal-hdr">
       <div>
         <div class="modal-title" id="modal-title"></div>
@@ -264,21 +267,24 @@ const PIN='0303';
 let USERS=[],PROJECTS=[],LOGS=[],TASKS=[];
 let cur=null,tab='overview',pinUnlocked=false;
 let selProjects=new Set(),tasksByProj={};
-let reportDate=todayStr();
-let pinInput='';
+let reportDate=todayStr(),pinInput='';
+let dfMode='week',dfFrom='',dfTo='';
 
-// date filter state (shared overview + owner)
-let dfMode='week'; // day|week|month|3m|6m|year|custom
-let dfFrom='',dfTo='';
-
+/* ── UTILS ── */
 function avClass(uid){const i=USERS.findIndex(u=>u.id===uid);return'av-'+(i>=0&&i<=3?i:'x')}
 function ini(n){if(!n)return'?';const p=n.trim().split(' ');return p.length>=2?p[0][0]+p[1][0]:n.slice(0,2)}
 function uid2(){return'_'+Math.random().toString(36).slice(2,8)}
 function todayStr(){return new Date().toISOString().split('T')[0]}
 function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
-function projLabel(p){if(!p)return'';return p.client&&p.client!==p.name?p.client+' — '+p.name:p.name;}
-function hForP(pid,logs){const l=logs||LOGS;return l.filter(x=>String(x.project_id)===String(pid)).reduce((s,x)=>s+parseFloat(x.hours||0),0)}
-function hForUP(uid,pid,logs){const l=logs||LOGS;return l.filter(x=>String(x.user)===String(uid)&&String(x.project_id)===String(pid)).reduce((s,x)=>s+parseFloat(x.hours||0),0)}
+function projLabel(p){if(!p)return'';return p.client&&p.client!==p.name?p.client+' — '+p.name:p.name}
+function hForP(pid,logs){return(logs||LOGS).filter(l=>String(l.project_id)===String(pid)).reduce((s,l)=>s+parseFloat(l.hours||0),0)}
+function hForUP(uid,pid,logs){return(logs||LOGS).filter(l=>String(l.user)===String(uid)&&String(l.project_id)===String(pid)).reduce((s,l)=>s+parseFloat(l.hours||0),0)}
+
+/* ── TASKS grouped ── */
+function getGroups(){return[...new Set(TASKS.map(t=>t.group).filter(Boolean))]}
+function getSubgroups(group){return TASKS.filter(t=>t.group===group&&t.subgroup)}
+function getNoteForSub(group,subgroup){const t=TASKS.find(t=>t.group===group&&t.subgroup===subgroup);return t?t.note:''}
+function getNoteForGroup(group){const t=TASKS.find(t=>t.group===group&&!t.subgroup);return t?t.note:''}
 
 /* ── DATE FILTER ── */
 function getDateRange(){
@@ -286,73 +292,54 @@ function getDateRange(){
   let from,to=todayStr();
   if(dfMode==='day'){from=todayStr();}
   else if(dfMode==='week'){
-    const d=new Date(now);
-    d.setDate(d.getDate()-((d.getDay()+6)%7));
+    const d=new Date(now);d.setDate(d.getDate()-((d.getDay()+6)%7));
     from=d.toISOString().split('T')[0];
-    const e=new Date(d);e.setDate(e.getDate()+6);
-    to=e.toISOString().split('T')[0];
+    const e=new Date(d);e.setDate(e.getDate()+6);to=e.toISOString().split('T')[0];
   }
-  else if(dfMode==='month'){const d=new Date(now.getFullYear(),now.getMonth(),1);from=d.toISOString().split('T')[0];}
+  else if(dfMode==='month'){from=new Date(now.getFullYear(),now.getMonth(),1).toISOString().split('T')[0];}
   else if(dfMode==='3m'){const d=new Date(now);d.setMonth(d.getMonth()-3);from=d.toISOString().split('T')[0];}
   else if(dfMode==='6m'){const d=new Date(now);d.setMonth(d.getMonth()-6);from=d.toISOString().split('T')[0];}
   else if(dfMode==='year'){const d=new Date(now);d.setFullYear(d.getFullYear()-1);from=d.toISOString().split('T')[0];}
   else if(dfMode==='custom'){from=dfFrom||todayStr();to=dfTo||todayStr();}
   return{from,to};
 }
-
 function filterLogsByDate(logs){
   const{from,to}=getDateRange();
   return logs.filter(l=>{const d=String(l.date).slice(0,10);return d>=from&&d<=to;});
 }
-
-function renderDateFilterBar(activeMode){
-  const modes=[
-    {k:'day',l:'Сьогодні'},{k:'week',l:'Тиждень'},{k:'month',l:'Місяць'},
-    {k:'3m',l:'3 місяці'},{k:'6m',l:'6 місяців'},{k:'year',l:'Рік'}
-  ];
-  const btns=modes.map(m=>`<button class="dfbtn${activeMode===m.k?' active':''}" onclick="setDfMode('${m.k}')">${m.l}</button>`).join('');
-  const customActive=activeMode==='custom';
+function renderDateFilterBar(){
+  const modes=[{k:'day',l:'Сьогодні'},{k:'week',l:'Тиждень'},{k:'month',l:'Місяць'},{k:'3m',l:'3 місяці'},{k:'6m',l:'6 місяців'},{k:'year',l:'Рік'}];
   return`<div class="dfbar">
-    ${btns}
+    ${modes.map(m=>`<button class="dfbtn${dfMode===m.k?' active':''}" onclick="setDfMode('${m.k}')">${m.l}</button>`).join('')}
     <div class="dfbar-sep"></div>
     <div class="dfrange">
-      <input type="date" id="df-from" value="${dfFrom}" onchange="setDfCustom()" placeholder="Від">
+      <input type="date" id="df-from" value="${dfFrom}" onchange="setDfCustom()">
       <span>—</span>
-      <input type="date" id="df-to" value="${dfTo}" onchange="setDfCustom()" placeholder="До">
+      <input type="date" id="df-to" value="${dfTo}" onchange="setDfCustom()">
     </div>
   </div>`;
 }
-
-function setDfMode(mode){
-  dfMode=mode;
-  renderPage();
-}
-
+function setDfMode(m){dfMode=m;renderPage()}
 function setDfCustom(){
   const f=document.getElementById('df-from')?.value;
   const t=document.getElementById('df-to')?.value;
-  if(f)dfFrom=f;
-  if(t)dfTo=t;
+  if(f)dfFrom=f;if(t)dfTo=t;
   if(dfFrom||dfTo){dfMode='custom';renderPage();}
 }
 
 /* ── PIN ── */
 function tryOwner(){
   if(pinUnlocked){tab='owner';updateNav();renderPage();}
-  else{showPin();}
+  else showPin();
 }
-
 function showPin(){
-  pinInput='';
-  updatePinDots();
+  pinInput='';updatePinDots();
   document.getElementById('pin-err').textContent='';
   document.getElementById('pin-overlay').style.display='flex';
 }
-
 function pinKey(k){
   if(pinInput.length>=4)return;
-  pinInput+=k;
-  updatePinDots();
+  pinInput+=k;updatePinDots();
   if(pinInput.length===4){
     if(pinInput===PIN){
       pinUnlocked=true;
@@ -361,41 +348,22 @@ function pinKey(k){
     }else{
       document.querySelectorAll('.pin-dot').forEach(d=>d.classList.add('error'));
       document.getElementById('pin-err').textContent='Невірний пін-код';
-      setTimeout(()=>{
-        pinInput='';
-        updatePinDots();
-        document.querySelectorAll('.pin-dot').forEach(d=>d.classList.remove('error'));
-        document.getElementById('pin-err').textContent='';
-      },800);
+      setTimeout(()=>{pinInput='';updatePinDots();document.querySelectorAll('.pin-dot').forEach(d=>d.classList.remove('error'));document.getElementById('pin-err').textContent='';},800);
     }
   }
 }
+function pinDel(){pinInput=pinInput.slice(0,-1);updatePinDots()}
+function updatePinDots(){for(let i=0;i<4;i++){const d=document.getElementById('pd'+i);if(d){d.classList.toggle('filled',i<pinInput.length);d.classList.remove('error');}}}
 
-function pinDel(){
-  pinInput=pinInput.slice(0,-1);
-  updatePinDots();
-}
-
-function updatePinDots(){
-  for(let i=0;i<4;i++){
-    const d=document.getElementById('pd'+i);
-    if(d){d.classList.toggle('filled',i<pinInput.length);d.classList.remove('error');}
-  }
-}
-
+/* ── INIT ── */
 async function init(){
   try{
-    const[initData,logsData,tasksData]=await Promise.all([
-      apiFetch('getInit'),apiFetch('getAllLogs'),apiFetch('getTasks')
-    ]);
-    USERS=initData.users||[];
-    PROJECTS=initData.projects||[];
+    const[initData,logsData,tasksData]=await Promise.all([apiFetch('getInit'),apiFetch('getAllLogs'),apiFetch('getTasks')]);
+    USERS=initData.users||[];PROJECTS=initData.projects||[];
     LOGS=Array.isArray(logsData)?logsData:[];
     TASKS=Array.isArray(tasksData)?tasksData:[];
     if(USERS.length)cur=USERS[0].id;
-    // init dfFrom/dfTo to current week
-    const{from,to}=getDateRange();
-    dfFrom=from;dfTo=to;
+    const{from,to}=getDateRange();dfFrom=from;dfTo=to;
     renderTabs();
     const ob=document.querySelector('.owner-only');
     if(ob)ob.style.display=(cur===USERS[0]?.id)?'':'none';
@@ -404,12 +372,9 @@ async function init(){
     document.getElementById('page').innerHTML='<div class="empty">Помилка завантаження. Перевір підключення.</div>';
   }
 }
-
-async function loadLogs(){
-  try{const d=await apiFetch('getAllLogs');LOGS=Array.isArray(d)?d:[];}catch(e){LOGS=[];}
-}
-async function apiFetch(action){const r=await fetch(`${API}?action=${action}`);return r.json();}
-async function apiPost(body){const r=await fetch(API,{method:'POST',body:JSON.stringify(body)});return r.json();}
+async function loadLogs(){try{const d=await apiFetch('getAllLogs');LOGS=Array.isArray(d)?d:[];}catch(e){LOGS=[];}}
+async function apiFetch(a){const r=await fetch(`${API}?action=${a}`);return r.json()}
+async function apiPost(b){const r=await fetch(API,{method:'POST',body:JSON.stringify(b)});return r.json()}
 
 function renderTabs(){
   document.getElementById('utabs').innerHTML=USERS.map(u=>
@@ -417,25 +382,18 @@ function renderTabs(){
       <div class="av ${avClass(u.id)}">${ini(u.name)}</div>${u.name}
     </button>`).join('');
 }
-
 function switchUser(uid){
   cur=uid;renderTabs();
   const ob=document.querySelector('.owner-only');
   if(ob)ob.style.display=(uid===USERS[0]?.id)?'':'none';
-  if(tab==='owner'&&uid!==USERS[0]?.id){tab='overview';}
+  if(tab==='owner'&&uid!==USERS[0]?.id)tab='overview';
   updateNav();renderPage();
 }
-
-function switchTab(t){
-  if(t==='owner'){tryOwner();return;}
-  tab=t;updateNav();renderPage();
-}
-
+function switchTab(t){if(t==='owner'){tryOwner();return;}tab=t;updateNav();renderPage()}
 function updateNav(){
   const tabs=['overview','report','log','owner'];
   document.querySelectorAll('.nbtn').forEach((b,i)=>b.classList.toggle('active',tabs[i]===tab));
 }
-
 function renderPage(){
   const el=document.getElementById('page');
   if(tab==='overview')el.innerHTML=renderOverview();
@@ -446,33 +404,29 @@ function renderPage(){
 
 /* ── OVERVIEW ── */
 function renderOverview(){
+  const isDana=cur===USERS[0]?.id;
   const filtered=filterLogsByDate(LOGS);
   const ml=filtered.filter(l=>String(l.user)===String(cur));
-  const allFiltered=filtered;
-  const hToday=ml.reduce((s,l)=>s+parseFloat(l.hours||0),0);
-  const open=LOGS.filter(l=>String(l.user)===String(cur)&&l.status==='wip').length;
+  const hPeriod=ml.reduce((s,l)=>s+parseFloat(l.hours||0),0);
+  const hAll=LOGS.filter(l=>String(l.user)===String(cur)).reduce((s,l)=>s+parseFloat(l.hours||0),0);
   const activeP=PROJECTS.filter(p=>p.status!=='done');
+  const visibleP=isDana?activeP:activeP.filter(p=>LOGS.some(l=>String(l.user)===String(cur)&&String(l.project_id)===String(p.id)));
 
-  const isDana = cur===USERS[0]?.id;
-  // designers see only projects they have logs on; Dana sees all
-  const visibleP = isDana ? activeP : activeP.filter(p=>LOGS.some(l=>String(l.user)===String(cur)&&String(l.project_id)===String(p.id)));
-
-  let h=renderDateFilterBar(dfMode);
+  let h=renderDateFilterBar();
   h+=`<div class="grid4">
     <div class="mcard"><div class="mlabel">Проектів</div><div class="mval">${visibleP.length}</div><div class="msub">${isDana?'активних':'моїх'}</div></div>
-    <div class="mcard"><div class="mlabel">За період</div><div class="mval">${hToday.toFixed(1)}</div><div class="msub">год внесено</div></div>
-    <div class="mcard"><div class="mlabel">Всього годин</div><div class="mval">${LOGS.filter(l=>String(l.user)===String(cur)).reduce((s,l)=>s+parseFloat(l.hours||0),0).toFixed(1)}</div><div class="msub">в базі</div></div>
+    <div class="mcard"><div class="mlabel">За період</div><div class="mval">${hPeriod.toFixed(1)}</div><div class="msub">год внесено</div></div>
+    <div class="mcard"><div class="mlabel">Всього годин</div><div class="mval">${hAll.toFixed(1)}</div><div class="msub">в базі</div></div>
     <div class="mcard"><div class="mlabel">${isDana?'Команда':'Записів'}</div><div class="mval">${isDana?USERS.length:LOGS.filter(l=>String(l.user)===String(cur)).length}</div><div class="msub">${isDana?'дизайнери':'в журналі'}</div></div>
   </div>
   <div class="slbl">${isDana?'Всі проекти':'Мої проекти'}</div>
   <div class="pgrid">`;
 
   visibleP.forEach(p=>{
-    const spentAll=hForP(p.id,LOGS); // total hours all designers
-    const spentFiltered=hForP(p.id,filtered);
+    const spentAll=hForP(p.id,LOGS);
+    const spentF=hForP(p.id,filtered);
     const budget=parseFloat(p.hours_budget)||0;
     const pct=budget>0?Math.min(100,Math.round(spentAll/budget*100)):0;
-    const myH=hForUP(cur,p.id,filtered);
     const myHAll=hForUP(cur,p.id,LOGS);
     const isInt=p.type==='internal';
     h+=`<div class="pcard ${isInt?'int':'cl'}" onclick="openProjectModal('${p.id}')">
@@ -482,29 +436,22 @@ function renderOverview(){
       </div>
       ${budget>0
         ?`<div class="pbar"><div class="pfill ${isInt?'pfi':'pft'}" style="width:${pct}%"></div></div>
-          <div class="pinfo"><span>${spentAll.toFixed(1)}г / ${budget}г</span><span>${isDana?'За період: '+spentFiltered.toFixed(1)+'г':'Мій внесок: '+myHAll.toFixed(1)+'г'}</span></div>`
-        :`<div class="pinfo"><span>${isDana?'За період: '+spentFiltered.toFixed(1)+'г':'Мій внесок: '+myHAll.toFixed(1)+'г'}</span></div>`}
+          <div class="pinfo"><span>${spentAll.toFixed(1)}г / ${budget}г</span><span>${isDana?'За період: '+spentF.toFixed(1)+'г':'Мій внесок: '+myHAll.toFixed(1)+'г'}</span></div>`
+        :`<div class="pinfo"><span>${isDana?'За період: '+spentF.toFixed(1)+'г':'Мій внесок: '+myHAll.toFixed(1)+'г'}</span></div>`}
     </div>`;
   });
   h+=`</div>`;
 
-
-
-  // Archive
   const doneP=PROJECTS.filter(p=>p.status==='done');
   if(doneP.length){
-    h+=`<button class="arch-toggle" id="arch-btn" onclick="toggleArchive()">
-      <span>📁</span> Завершені проекти (${doneP.length})
-      <span class="arrow">▼</span>
+    h+=`<button class="arch-toggle" id="arch-btn" onclick="toggleArch('arch-btn','arch-list')">
+      <span>📁</span> Завершені проекти (${doneP.length}) <span class="arrow">▼</span>
     </button>
     <div class="arch-list" id="arch-list"><div class="pgrid">`;
     doneP.forEach(p=>{
-      const spent=hForP(p.id);
+      const spent=hForP(p.id,LOGS);
       h+=`<div class="pcard" onclick="openProjectModal('${p.id}')" style="border-top:3px solid #D1D1D6;opacity:.85">
-        <div class="prow">
-          <div><div class="pname">${projLabel(p)}</div></div>
-          <span class="pbadge pbd">Завершено</span>
-        </div>
+        <div class="prow"><div><div class="pname">${projLabel(p)}</div></div><span class="pbadge pbd">Завершено</span></div>
         <div class="pinfo"><span>${spent.toFixed(1)}г витрачено</span></div>
       </div>`;
     });
@@ -512,11 +459,9 @@ function renderOverview(){
   }
   return h;
 }
-
-function toggleArchive(){
-  const btn=document.getElementById('arch-btn');
-  const list=document.getElementById('arch-list');
-  if(btn&&list){btn.classList.toggle('open');list.classList.toggle('open');}
+function toggleArch(btnId,listId){
+  document.getElementById(btnId)?.classList.toggle('open');
+  document.getElementById(listId)?.classList.toggle('open');
 }
 
 /* ── PROJECT MODAL ── */
@@ -525,16 +470,15 @@ function openProjectModal(pid){
   if(!proj)return;
   const isDana=cur===USERS[0]?.id;
   const projLogs=LOGS.filter(l=>String(l.project_id)===String(pid));
-  // Dana sees all; designers see only their own
-  const filtLogs=filterLogsByDate(isDana ? projLogs : projLogs.filter(l=>String(l.user)===String(cur)));
-  const allFilteredLogs=filterLogsByDate(projLogs); // for overall progress bar
-  const totalH=filtLogs.reduce((s,l)=>s+parseFloat(l.hours||0),0);
-  const totalAllH=allFilteredLogs.reduce((s,l)=>s+parseFloat(l.hours||0),0);
+  const myLogs=filterLogsByDate(projLogs.filter(l=>String(l.user)===String(cur)));
+  const allFilt=filterLogsByDate(projLogs);
+  const viewLogs=isDana?allFilt:myLogs;
+  const totalH=viewLogs.reduce((s,l)=>s+parseFloat(l.hours||0),0);
+  const totalAllH=allFilt.reduce((s,l)=>s+parseFloat(l.hours||0),0);
   const budget=parseFloat(proj.hours_budget)||0;
   const pct=budget>0?Math.min(100,Math.round(totalAllH/budget*100)):0;
 
   document.getElementById('modal-title').textContent=projLabel(proj);
-  // Dana sees client+budget; others see just client
   document.getElementById('modal-sub').textContent=proj.client+(isDana&&proj.budget_usd?' · $'+proj.budget_usd:'');
 
   let body=`<div class="modal-stats">
@@ -543,199 +487,126 @@ function openProjectModal(pid){
     <div class="modal-stat"><div class="modal-stat-lbl">Виконано</div><div class="modal-stat-val">${budget>0?pct+'%':'—'}</div></div>
   </div>`;
 
-  // by user — only for Dana
   if(isDana){
-    const uniqueUsers=[...new Set(allFilteredLogs.map(l=>l.user))];
-    if(uniqueUsers.length){
+    const uniqU=[...new Set(allFilt.map(l=>l.user))];
+    if(uniqU.length){
       body+=`<div class="slbl" style="margin-bottom:10px">По дизайнерах</div>
       <div class="log-card" style="margin-bottom:20px"><table>
         <thead><tr><th>Дизайнер</th><th>Годин</th><th>Записів</th></tr></thead><tbody>`;
-      uniqueUsers.forEach(uid=>{
+      uniqU.forEach(uid=>{
         const u=USERS.find(u=>String(u.id)===String(uid));
-        const uLogs=allFilteredLogs.filter(l=>String(l.user)===String(uid));
-        const uH=uLogs.reduce((s,l)=>s+parseFloat(l.hours||0),0);
-        body+=`<tr>
-          <td><div style="display:flex;align-items:center;gap:8px">
-            <div class="av ${avClass(uid)}">${u?ini(u.name):'?'}</div>
-            <span style="font-weight:500">${u?u.name:uid}</span>
-          </div></td>
-          <td style="font-weight:700">${uH.toFixed(1)}</td>
-          <td style="color:#8E8E93">${uLogs.length}</td>
-        </tr>`;
+        const ul=allFilt.filter(l=>String(l.user)===String(uid));
+        const uh=ul.reduce((s,l)=>s+parseFloat(l.hours||0),0);
+        body+=`<tr><td><div style="display:flex;align-items:center;gap:8px">
+          <div class="av ${avClass(uid)}">${u?ini(u.name):'?'}</div>
+          <span style="font-weight:500">${u?u.name:uid}</span>
+        </div></td><td style="font-weight:700">${uh.toFixed(1)}</td><td style="color:#8E8E93">${ul.length}</td></tr>`;
       });
       body+=`</tbody></table></div>`;
     }
   }
 
-  // by task type — personal for designers, all for Dana
   const taskMap={};
-  filtLogs.forEach(l=>{
-    const k=l.task||'—';
-    if(!taskMap[k])taskMap[k]=0;
-    taskMap[k]+=parseFloat(l.hours||0);
-  });
+  viewLogs.forEach(l=>{const k=l.task||'—';if(!taskMap[k])taskMap[k]=0;taskMap[k]+=parseFloat(l.hours||0);});
   const taskArr=Object.entries(taskMap).sort((a,b)=>b[1]-a[1]);
   if(taskArr.length){
     body+=`<div class="slbl" style="margin-bottom:10px">По роботах</div>
     <div class="log-card" style="margin-bottom:20px"><table>
       <thead><tr><th>Робота</th><th>Годин</th></tr></thead><tbody>`;
-    taskArr.forEach(([task,h])=>{
-      body+=`<tr>
-        <td>${esc(task)}</td>
-        <td style="font-weight:700">${h.toFixed(1)}</td>
-      </tr>`;
-    });
+    taskArr.forEach(([t,h])=>{body+=`<tr><td>${esc(t)}</td><td style="font-weight:700">${h.toFixed(1)}</td></tr>`;});
     body+=`</tbody></table></div>`;
   }
 
-  // log entries
-  const sorted=[...filtLogs].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
+  const sorted=[...viewLogs].sort((a,b)=>String(b.date).localeCompare(String(a.date)));
   if(sorted.length){
     body+=`<div class="slbl" style="margin-bottom:10px">Записи</div>
     <div class="log-card"><table>
       <thead><tr><th>Дата</th>${isDana?'<th>Хто</th>':''}<th>Задача</th><th>Год</th></tr></thead><tbody>`;
     sorted.forEach(l=>{
       const u=USERS.find(u=>String(u.id)===String(l.user));
-      body+=`<tr>
-        <td class="muted">${String(l.date).slice(0,10)}</td>
+      body+=`<tr><td class="muted">${String(l.date).slice(0,10)}</td>
         ${isDana?`<td style="white-space:nowrap">${u?u.name:l.user}</td>`:''}
-        <td>${esc(l.task)}</td>
-        <td style="font-weight:700;white-space:nowrap">${parseFloat(l.hours).toFixed(1)}</td>
-      </tr>`;
+        <td>${esc(l.task)}</td><td style="font-weight:700;white-space:nowrap">${parseFloat(l.hours).toFixed(1)}</td></tr>`;
     });
     body+=`</tbody></table></div>`;
-  } else {
-    body+=`<div style="text-align:center;padding:32px;color:#8E8E93;font-size:15px">Немає записів за цей період</div>`;
+  }else{
+    body+=`<div style="text-align:center;padding:32px;color:#8E8E93">Немає записів за цей період</div>`;
   }
 
   document.getElementById('modal-body').innerHTML=body;
   document.getElementById('modal-overlay').style.display='flex';
   document.body.style.overflow='hidden';
 }
-
-function closeModal(e){
-  if(e.target===document.getElementById('modal-overlay'))closeModalDirect();
-}
-function closeModalDirect(){
-  document.getElementById('modal-overlay').style.display='none';
-  document.body.style.overflow='';
-}
+function closeModal(e){if(e.target===document.getElementById('modal-overlay'))closeModalDirect()}
+function closeModalDirect(){document.getElementById('modal-overlay').style.display='none';document.body.style.overflow='';}
 
 /* ── REPORT ── */
 function renderReport(){
-  const days=[];
-  const tmp=new Date();
-  while(days.length<5){
-    if(tmp.getDay()!==0&&tmp.getDay()!==6)days.unshift(new Date(tmp));
-    tmp.setDate(tmp.getDate()-1);
-  }
-  const dayNames=['Нд','Пн','Вт','Ср','Чт','Пт','Сб'];
-  const chipHtml=days.map((day,idx)=>{
-    const ds=day.toISOString().split('T')[0];
-    const lbl=idx===days.length-1?'Сьогодні':(dayNames[day.getDay()]+' '+day.getDate());
-    return`<button class="dchip${ds===reportDate?' active':''}" data-date="${ds}" onclick="setReportDate(this,'${ds}')">${lbl}</button>`;
+  const days=[];const tmp=new Date();
+  while(days.length<5){if(tmp.getDay()!==0&&tmp.getDay()!==6)days.unshift(new Date(tmp));tmp.setDate(tmp.getDate()-1);}
+  const dn=['Нд','Пн','Вт','Ср','Чт','Пт','Сб'];
+  const chips=days.map((d,i)=>{
+    const ds=d.toISOString().split('T')[0];
+    const lbl=i===days.length-1?'Сьогодні':dn[d.getDay()]+' '+d.getDate();
+    return`<button class="dchip${ds===reportDate?' active':''}" data-date="${ds}" onclick="setRDate(this,'${ds}')">${lbl}</button>`;
   }).join('');
-
-  const projChips=PROJECTS.filter(p=>p.status!=='done').map(p=>{
-    const isInt=p.type==='internal';
-    const isSel=selProjects.has(String(p.id));
-    return`<button class="rchip${isInt?' int':''}${isSel?' sel':''}" data-id="${p.id}" onclick="toggleReportProj(this,'${p.id}')">
-      <div class="rchip-dot"></div>${projLabel(p)}
-    </button>`;
+  const pChips=PROJECTS.filter(p=>p.status!=='done').map(p=>{
+    const isInt=p.type==='internal';const isSel=selProjects.has(String(p.id));
+    return`<button class="rchip${isInt?' int':''}${isSel?' sel':''}" data-id="${p.id}" onclick="toggleRP(this,'${p.id}')">
+      <div class="rchip-dot"></div>${projLabel(p)}</button>`;
   }).join('');
-
   return`
     <div class="sec-lbl">Дата</div>
     <div class="dchips">
-      ${chipHtml}
+      ${chips}
       <button class="dchip alt" id="btn-other" onclick="openOtherDate()">Інша дата</button>
       <input type="date" class="date-inp" id="other-date-inp" onchange="setOtherDate(this.value)" style="display:none">
     </div>
     <div class="sec-lbl">Над чим працював/ла</div>
-    <div class="rchips" id="proj-chips">${projChips}</div>
+    <div class="rchips">${pChips}</div>
     <div id="tblocks"></div>
     <div class="total-row" id="total-row"></div>
     <div class="sec-lbl">Коментар</div>
-    <div class="comment-wrap">
-      <textarea id="r-comment" placeholder="Що вийшло, що заблоковано, питання до команди..."></textarea>
-    </div>
+    <div class="comment-wrap"><textarea id="r-comment" placeholder="Що вийшло, що заблоковано, питання до команди..."></textarea></div>
     <button class="save-btn" id="save-btn" onclick="submitReport()">Зберегти звіт</button>`;
 }
 
-function initReport(){
-  selProjects=new Set();
-  tasksByProj={};
-  PROJECTS.filter(p=>p.status!=='done').forEach(p=>{
-    tasksByProj[String(p.id)]=[{id:uid2(),text:'',hours:1}];
-  });
-  renderTblocks();
-  document.addEventListener('click',closeDropdownsOutside,{capture:true});
-}
+function initReport(){selProjects=new Set();tasksByProj={};PROJECTS.filter(p=>p.status!=='done').forEach(p=>{tasksByProj[String(p.id)]=[newTask()];});renderTblocks();}
+function newTask(){return{id:uid2(),text:'',note:'',hours:1,group:'',subgroup:''}}
 
-function setReportDate(el,ds){
-  reportDate=ds;
-  document.querySelectorAll('.dchip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
+function setRDate(el,ds){
+  reportDate=ds;document.querySelectorAll('.dchip').forEach(c=>c.classList.remove('active'));el.classList.add('active');
   document.getElementById('other-date-inp').style.display='none';
-  const btn=document.getElementById('btn-other');
-  if(btn){btn.style.display='';btn.textContent='Інша дата';btn.classList.remove('active');}
+  const b=document.getElementById('btn-other');if(b){b.style.display='';b.textContent='Інша дата';b.classList.remove('active');}
 }
 function openOtherDate(){
-  const btn=document.getElementById('btn-other');
-  const inp=document.getElementById('other-date-inp');
-  btn.style.display='none';
-  inp.style.display='inline-block';
-  inp.value=reportDate;
-  inp.focus();inp.click();
+  document.getElementById('btn-other').style.display='none';
+  const inp=document.getElementById('other-date-inp');inp.style.display='inline-block';inp.value=reportDate;inp.focus();inp.click();
 }
 function setOtherDate(val){
-  if(val){
-    reportDate=val;
-    const d=new Date(val+'T00:00:00');
-    const dayNames=['Нд','Пн','Вт','Ср','Чт','Пт','Сб'];
-    const lbl=dayNames[d.getDay()]+' '+d.getDate()+'.'+String(d.getMonth()+1).padStart(2,'0');
-    const inp=document.getElementById('other-date-inp');
-    const btn=document.getElementById('btn-other');
-    inp.style.display='none';
-    btn.style.display='';
-    btn.textContent=lbl;
-    btn.classList.add('active');
-    document.querySelectorAll('.dchip:not(#btn-other)').forEach(c=>c.classList.remove('active'));
-  }
+  if(!val)return;reportDate=val;
+  const d=new Date(val+'T00:00:00');
+  const dn=['Нд','Пн','Вт','Ср','Чт','Пт','Сб'];
+  const lbl=dn[d.getDay()]+' '+d.getDate()+'.'+String(d.getMonth()+1).padStart(2,'0');
+  document.getElementById('other-date-inp').style.display='none';
+  const b=document.getElementById('btn-other');b.style.display='';b.textContent=lbl;b.classList.add('active');
+  document.querySelectorAll('.dchip:not(#btn-other)').forEach(c=>c.classList.remove('active'));
 }
-function toggleReportProj(el,pid){
-  const key=String(pid);
-  if(selProjects.has(key)){selProjects.delete(key);el.classList.remove('sel');}
-  else{selProjects.add(key);el.classList.add('sel');}
+function toggleRP(el,pid){
+  const k=String(pid);
+  if(selProjects.has(k)){selProjects.delete(k);el.classList.remove('sel');}
+  else{selProjects.add(k);el.classList.add('sel');}
   renderTblocks();
 }
+
 function renderTblocks(){
-  const area=document.getElementById('tblocks');
-  if(!area)return;
-  area.innerHTML='';
-  let total=0;
+  const area=document.getElementById('tblocks');if(!area)return;
+  area.innerHTML='';let total=0;
   selProjects.forEach(pid=>{
-    const proj=PROJECTS.find(p=>String(p.id)===String(pid));
-    if(!proj)return;
-    if(!tasksByProj[pid])tasksByProj[pid]=[{id:uid2(),text:'',hours:1}];
+    const proj=PROJECTS.find(p=>String(p.id)===String(pid));if(!proj)return;
+    if(!tasksByProj[pid])tasksByProj[pid]=[newTask()];
     const isInt=proj.type==='internal';
-    const rows=tasksByProj[pid].map(t=>{
-      total+=t.hours;
-      return`<div class="task-row" id="tr-${t.id}">
-        <div class="task-inp-wrap">
-          <input class="task-inp" id="ti-${t.id}" placeholder="Почни вводити або обери зі списку..." value="${esc(t.text)}"
-            oninput="onTaskInput('${pid}','${t.id}',this)"
-            onfocus="openDropdown('${pid}','${t.id}')" autocomplete="off">
-          <div class="task-dropdown" id="dd-${t.id}"></div>
-        </div>
-        <div class="hrs-ctrl">
-          <button class="hbtn" onclick="chHours('${pid}','${t.id}',-0.5)">−</button>
-          <div class="hval" id="hv-${t.id}">${t.hours}г</div>
-          <button class="hbtn" onclick="chHours('${pid}','${t.id}',+0.5)">+</button>
-        </div>
-        <button class="del-row" onclick="delTask('${pid}','${t.id}')">×</button>
-      </div>`;
-    }).join('');
+    const rows=tasksByProj[pid].map(t=>{total+=t.hours;return buildTaskRow(pid,t);}).join('');
     const block=document.createElement('div');
     block.className='tblock';block.id='tb-'+pid;
     block.innerHTML=`
@@ -754,102 +625,98 @@ function renderTblocks(){
   });
   updateTotal();
 }
-function deselectProj(pid){
-  selProjects.delete(String(pid));
-  document.querySelector(`.rchip[data-id="${pid}"]`)?.classList.remove('sel');
-  renderTblocks();
+
+function buildTaskRow(pid,t){
+  const groups=getGroups();
+  const subs=t.group?getSubgroups(t.group):[];
+  const noteHint=t.subgroup?getNoteForSub(t.group,t.subgroup):(t.group?getNoteForGroup(t.group):'');
+
+  const groupChips=groups.map(g=>
+    `<button class="gp-chip${t.group===g?' active':''}" onmousedown="pickGroup('${pid}','${t.id}','${esc(g)}')">${esc(g)}</button>`
+  ).join('');
+
+  const subChips=subs.length?subs.map(s=>
+    `<button class="gp-sub${t.subgroup===s.subgroup?' active':''}" onmousedown="pickSub('${pid}','${t.id}','${esc(s.subgroup)}')">${esc(s.subgroup)}</button>`
+  ).join(''):'';
+
+  return`<div class="group-picker" id="gp-${t.id}">
+    <div class="gp-label">Тип роботи</div>
+    <div class="gp-groups">${groupChips}</div>
+    ${subs.length?`<div class="gp-subs${t.group?' show':''}" id="gs-${t.id}">${subChips}</div>`:''}
+  </div>
+  <div class="task-row" id="tr-${t.id}">
+    <div class="task-inp-wrap" style="flex:1;min-width:0">
+      <input class="task-inp" id="ti-${t.id}" placeholder="${t.group?'Уточнення або залиш порожнім...':'Або введи вручну...'}"
+        value="${esc(t.text)}" oninput="updateTaskText('${pid}','${t.id}',this.value)">
+      ${noteHint?`<input class="task-note-inp" id="tn-${t.id}" placeholder="${esc(noteHint)}" value="${esc(t.note)}" oninput="updateTaskNote('${pid}','${t.id}',this.value)">`:''}
+    </div>
+    <div class="hrs-ctrl">
+      <button class="hbtn" onclick="chHours('${pid}','${t.id}',-0.5)">−</button>
+      <div class="hval" id="hv-${t.id}">${t.hours}г</div>
+      <button class="hbtn" onclick="chHours('${pid}','${t.id}',+0.5)">+</button>
+    </div>
+    <button class="del-row" onclick="delTask('${pid}','${t.id}')">×</button>
+  </div>`;
 }
-function addTask(pid){
-  const t={id:uid2(),text:'',hours:1};
-  tasksByProj[pid].push(t);
-  renderTblocks();
-  setTimeout(()=>document.getElementById('ti-'+t.id)?.focus(),30);
-}
-function delTask(pid,tid){
-  if(tasksByProj[pid]?.length<=1)return;
-  tasksByProj[pid]=tasksByProj[pid].filter(t=>t.id!==tid);
-  renderTblocks();
-}
-let activeDropdown=null;
-function openDropdown(pid,tid){
-  closeAllDropdowns();
-  const dd=document.getElementById('dd-'+tid);
-  if(!dd)return;
-  const q=(document.getElementById('ti-'+tid)?.value||'').toLowerCase();
-  populateDropdown(dd,pid,tid,q);
-  dd.classList.add('open');
-  activeDropdown=tid;
-}
-function populateDropdown(dd,pid,tid,q){
-  const filtered=q?TASKS.filter(t=>t.toLowerCase().includes(q)):TASKS;
-  let html=filtered.map(t=>`<div class="dd-item" onmousedown="pickTask('${pid}','${tid}','${esc(t)}')">${esc(t)}</div>`).join('');
-  if(q&&!TASKS.some(t=>t.toLowerCase()===q)){
-    const cur=document.getElementById('ti-'+tid)?.value||'';
-    html+=`<div class="dd-item custom" onmousedown="pickTask('${pid}','${tid}','${esc(cur)}',true)">+ Ввести вручну: "${esc(cur)}"</div>`;
-  }
-  if(!html)html='<div class="dd-item" style="color:#C7C7CC;cursor:default">Нічого не знайдено</div>';
-  dd.innerHTML=html;
-}
-function onTaskInput(pid,tid,inp){
-  const t=tasksByProj[pid]?.find(t=>t.id===tid);
-  if(t)t.text=inp.value;
-  const dd=document.getElementById('dd-'+tid);
-  if(dd){populateDropdown(dd,pid,tid,inp.value.toLowerCase());dd.classList.add('open');activeDropdown=tid;}
-}
-function pickTask(pid,tid,val,manual){
-  const t=tasksByProj[pid]?.find(t=>t.id===tid);
-  if(t)t.text=val;
-  const inp=document.getElementById('ti-'+tid);
-  if(inp)inp.value=val;
-  closeAllDropdowns();
-  if(manual)inp?.focus();
-}
-function closeAllDropdowns(){
-  document.querySelectorAll('.task-dropdown').forEach(d=>d.classList.remove('open'));
-  activeDropdown=null;
-}
-function closeDropdownsOutside(e){
-  if(!e.target.closest('.task-inp-wrap'))closeAllDropdowns();
-}
-function chHours(pid,tid,delta){
+
+function pickGroup(pid,tid,group){
   const t=tasksByProj[pid]?.find(t=>t.id===tid);
   if(!t)return;
+  if(t.group===group){t.group='';t.subgroup='';t.text='';}
+  else{t.group=group;t.subgroup='';t.text=group;}
+  renderTblocks();
+}
+function pickSub(pid,tid,sub){
+  const t=tasksByProj[pid]?.find(t=>t.id===tid);
+  if(!t)return;
+  if(t.subgroup===sub){t.subgroup='';t.text=t.group;}
+  else{t.subgroup=sub;t.text=t.group+' — '+sub;}
+  renderTblocks();
+  setTimeout(()=>{const inp=document.getElementById('ti-'+tid);if(inp){inp.focus();}},30);
+}
+function updateTaskText(pid,tid,val){const t=tasksByProj[pid]?.find(t=>t.id===tid);if(t)t.text=val;}
+function updateTaskNote(pid,tid,val){const t=tasksByProj[pid]?.find(t=>t.id===tid);if(t)t.note=val;}
+function deselectProj(pid){selProjects.delete(String(pid));document.querySelector(`.rchip[data-id="${pid}"]`)?.classList.remove('sel');renderTblocks();}
+function addTask(pid){const t=newTask();tasksByProj[pid].push(t);renderTblocks();}
+function delTask(pid,tid){if(tasksByProj[pid]?.length<=1)return;tasksByProj[pid]=tasksByProj[pid].filter(t=>t.id!==tid);renderTblocks();}
+function chHours(pid,tid,delta){
+  const t=tasksByProj[pid]?.find(t=>t.id===tid);if(!t)return;
   t.hours=Math.max(0.5,Math.min(16,+(t.hours+delta).toFixed(1)));
-  const hv=document.getElementById('hv-'+tid);
-  if(hv)hv.textContent=t.hours+'г';
+  const hv=document.getElementById('hv-'+tid);if(hv)hv.textContent=t.hours+'г';
   updateTotal();
 }
 function updateTotal(){
-  let total=0;
-  selProjects.forEach(pid=>tasksByProj[pid]?.forEach(t=>total+=t.hours));
+  let total=0;selProjects.forEach(pid=>tasksByProj[pid]?.forEach(t=>total+=t.hours));
   const el=document.getElementById('total-row');
   if(el)el.innerHTML=selProjects.size>0?`Всього за день: <strong>${total.toFixed(1)} год</strong>`:'';
 }
+
 async function submitReport(){
   const comment=document.getElementById('r-comment')?.value.trim()||'';
   const rows=[];
   for(const pid of selProjects){
     for(const t of(tasksByProj[pid]||[])){
-      if(t.text.trim()&&t.hours>0)
-        rows.push({date:reportDate,user:cur,project_id:pid,task:t.text.trim(),hours:t.hours,status:'wip',comment});
+      if(t.hours>0){
+        // Build task label: group — subgroup (note) or manual text
+        let label=t.text.trim();
+        if(!label&&t.group)label=t.group+(t.subgroup?' — '+t.subgroup:'');
+        if(!label)continue;
+        if(t.note.trim())label+=' ('+t.note.trim()+')';
+        rows.push({date:reportDate,user:cur,project_id:pid,task:label,hours:t.hours,status:'done',comment});
+      }
     }
   }
   if(!selProjects.size){alert('Обери хоча б один проект');return;}
-  if(!rows.length){alert('Додай хоча б одну задачу з описом');return;}
+  if(!rows.length){alert('Додай хоча б одну задачу');return;}
   const btn=document.getElementById('save-btn');
   btn.disabled=true;btn.textContent='Збереження...';
   try{
     const res=await apiPost({action:'addLogs',rows});
     if(res.ok){
-      await loadLogs();
-      btn.textContent='Збережено ✓';btn.style.background='#22C55E';
-      document.removeEventListener('click',closeDropdownsOutside,{capture:true});
+      await loadLogs();btn.textContent='Збережено ✓';btn.style.background='#22C55E';
       setTimeout(()=>switchTab('log'),1200);
     }else throw new Error();
-  }catch{
-    btn.disabled=false;btn.textContent='Зберегти звіт';btn.style.background='';
-    alert('Помилка збереження. Спробуй ще раз.');
-  }
+  }catch{btn.disabled=false;btn.textContent='Зберегти звіт';btn.style.background='';alert('Помилка збереження.');}
 }
 
 /* ── LOG ── */
@@ -860,12 +727,10 @@ function renderLog(){
     <thead><tr><th>Дата</th><th>Проект</th><th>Задача</th><th>Год</th></tr></thead><tbody>`;
   ml.forEach(l=>{
     const proj=PROJECTS.find(p=>String(p.id)===String(l.project_id));
-    h+=`<tr>
-      <td class="muted">${String(l.date).slice(0,10)}</td>
+    h+=`<tr><td class="muted">${String(l.date).slice(0,10)}</td>
       <td style="white-space:nowrap;font-weight:500">${proj?projLabel(proj):l.project_id}</td>
       <td>${esc(l.task)}${l.comment?`<div style="font-size:13px;color:#8E8E93;margin-top:3px">${esc(l.comment)}</div>`:''}</td>
-      <td style="white-space:nowrap;font-weight:700">${parseFloat(l.hours).toFixed(1)}</td>
-    </tr>`;
+      <td style="white-space:nowrap;font-weight:700">${parseFloat(l.hours).toFixed(1)}</td></tr>`;
   });
   return h+`</tbody></table></div>`;
 }
@@ -875,16 +740,13 @@ function renderOwner(){
   const filtered=filterLogsByDate(LOGS);
   const total=filtered.reduce((s,l)=>s+parseFloat(l.hours||0),0);
   const activeP=PROJECTS.filter(p=>p.status!=='done');
-  const clients=activeP.filter(p=>p.type==='client').length;
-
-  let h=renderDateFilterBar(dfMode);
+  let h=renderDateFilterBar();
   h+=`<div class="grid4">
     <div class="mcard"><div class="mlabel">Активних</div><div class="mval">${activeP.length}</div><div class="msub">проектів</div></div>
-    <div class="mcard"><div class="mlabel">Клієнтських</div><div class="mval">${clients}</div></div>
+    <div class="mcard"><div class="mlabel">Клієнтських</div><div class="mval">${activeP.filter(p=>p.type==='client').length}</div></div>
     <div class="mcard"><div class="mlabel">Годин за період</div><div class="mval">${total.toFixed(1)}</div></div>
     <div class="mcard"><div class="mlabel">Команда</div><div class="mval">${USERS.length}</div><div class="msub">дизайнери</div></div>
   </div>
-
   <div class="slbl">Рентабельність проектів</div>
   <div class="ogrid">`;
 
@@ -900,46 +762,35 @@ function renderOwner(){
       </div>
       ${budget>0
         ?`<div class="obar"><div class="obar-fill ${fc}" style="width:${pct}%"></div></div>
-          <div class="obar-info">
-            <span style="color:#8E8E93">${spent.toFixed(1)}г / ${budget}г (${pct}%)</span>
-            <span style="color:${sc.c};font-weight:600">${sc.t}</span>
-          </div>`
+          <div class="obar-info"><span style="color:#8E8E93">${spent.toFixed(1)}г / ${budget}г (${pct}%)</span>
+          <span style="color:${sc.c};font-weight:600">${sc.t}</span></div>`
         :`<div style="font-size:13px;color:#8E8E93;margin-top:8px">${spent.toFixed(1)}г витрачено</div>`}
       <div style="font-size:12px;color:#818CF8;margin-top:8px;font-weight:500">Натисни для деталей →</div>
     </div>`;
   });
   h+=`</div>`;
 
-  // Analytics by task type
   const taskMap={};
   filtered.forEach(l=>{
-    const k=l.task||'—';
-    if(!taskMap[k]){taskMap[k]={hours:0,count:0,projects:new Set()};}
-    taskMap[k].hours+=parseFloat(l.hours||0);
-    taskMap[k].count++;
-    taskMap[k].projects.add(l.project_id);
+    const k=l.task||'—';if(!taskMap[k]){taskMap[k]={hours:0,count:0,projects:new Set()};}
+    taskMap[k].hours+=parseFloat(l.hours||0);taskMap[k].count++;taskMap[k].projects.add(l.project_id);
   });
   const taskArr=Object.entries(taskMap).sort((a,b)=>b[1].hours-a[1].hours);
   const maxH=taskArr[0]?.[1]?.hours||1;
-
   if(taskArr.length){
     h+=`<div class="slbl" style="margin-top:8px">Аналітика по роботах</div>
     <div class="log-card" style="margin-bottom:24px"><table>
-      <thead><tr><th>Тип роботи</th><th>Годин</th><th>Записів</th><th>Проектів</th><th style="width:160px">Частка</th></tr></thead><tbody>`;
+      <thead><tr><th>Тип роботи</th><th>Годин</th><th>Записів</th><th>Проектів</th><th style="width:140px">Частка</th></tr></thead><tbody>`;
     taskArr.forEach(([task,d])=>{
       const pct=Math.round(d.hours/maxH*100);
-      h+=`<tr>
-        <td style="font-weight:500">${esc(task)}</td>
+      h+=`<tr><td style="font-weight:500">${esc(task)}</td>
         <td style="font-weight:700">${d.hours.toFixed(1)}</td>
-        <td style="color:#8E8E93">${d.count}</td>
-        <td style="color:#8E8E93">${d.projects.size}</td>
-        <td><div style="height:6px;background:#F2F2F7;border-radius:3px"><div style="height:100%;width:${pct}%;background:#6366F1;border-radius:3px"></div></div></td>
-      </tr>`;
+        <td style="color:#8E8E93">${d.count}</td><td style="color:#8E8E93">${d.projects.size}</td>
+        <td><div style="height:6px;background:#F2F2F7;border-radius:3px"><div style="height:100%;width:${pct}%;background:#6366F1;border-radius:3px"></div></div></td></tr>`;
     });
     h+=`</tbody></table></div>`;
   }
 
-  // Team workload
   h+=`<div class="slbl">Навантаження команди</div>
   <div class="log-card"><table>
     <thead><tr><th>Дизайнер</th><th>Годин за період</th><th>Всього годин</th><th>Проектів</th></tr></thead><tbody>`;
@@ -949,22 +800,16 @@ function renderOwner(){
     const utAll=LOGS.filter(l=>String(l.user)===String(u.id)).reduce((s,l)=>s+parseFloat(l.hours||0),0);
     const up=[...new Set(ul.map(l=>l.project_id))].length;
     h+=`<tr><td><div style="display:flex;align-items:center;gap:10px">
-      <div class="av ${avClass(u.id)}">${ini(u.name)}</div>
-      <span style="font-weight:500">${u.name}</span>
-    </div></td>
-    <td style="font-weight:700">${ut.toFixed(1)}</td>
-    <td style="color:#8E8E93">${utAll.toFixed(1)}</td>
-    <td>${up}</td></tr>`;
+      <div class="av ${avClass(u.id)}">${ini(u.name)}</div><span style="font-weight:500">${u.name}</span>
+    </div></td><td style="font-weight:700">${ut.toFixed(1)}</td><td style="color:#8E8E93">${utAll.toFixed(1)}</td><td>${up}</td></tr>`;
   });
   h+=`</tbody></table></div>`;
 
-  // Archive
   const doneP=PROJECTS.filter(p=>p.status==='done');
   if(doneP.length){
     h+=`<div style="margin-top:24px"></div>
-    <button class="arch-toggle" id="arch-btn2" onclick="toggleArchive2()">
-      <span>📁</span> Завершені проекти (${doneP.length})
-      <span class="arrow">▼</span>
+    <button class="arch-toggle" id="arch-btn2" onclick="toggleArch('arch-btn2','arch-list2')">
+      <span>📁</span> Завершені проекти (${doneP.length}) <span class="arrow">▼</span>
     </button>
     <div class="arch-list" id="arch-list2"><div class="ogrid">`;
     doneP.forEach(p=>{
@@ -981,12 +826,6 @@ function renderOwner(){
     h+=`</div></div>`;
   }
   return h;
-}
-
-function toggleArchive2(){
-  const btn=document.getElementById('arch-btn2');
-  const list=document.getElementById('arch-list2');
-  if(btn&&list){btn.classList.toggle('open');list.classList.toggle('open');}
 }
 
 init();
