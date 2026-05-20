@@ -281,8 +281,41 @@ function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/<
 function projLabel(p){if(!p)return'';return p.client&&p.client!==p.name?p.client+' — '+p.name:p.name}
 function hForP(pid,logs){return(logs||LOGS).filter(l=>String(l.project_id)===String(pid)).reduce((s,l)=>s+parseFloat(l.hours||0),0)}
 function hForUP(uid,pid,logs){return(logs||LOGS).filter(l=>String(l.user)===String(uid)&&String(l.project_id)===String(pid)).reduce((s,l)=>s+parseFloat(l.hours||0),0)}
-function daysSince(dateStr){if(!dateStr)return null;const d=new Date(dateStr);const now=new Date();const diff=Math.floor((now-d)/(1000*60*60*24));return diff>=0?diff:null;}
-function fmtDate(dateStr){if(!dateStr)return'';const d=new Date(dateStr+'T00:00:00');return d.getDate().toString().padStart(2,'0')+'.'+(d.getMonth()+1).toString().padStart(2,'0')+'.'+d.getFullYear();}
+function parseDate(dateStr){
+  if(!dateStr)return null;
+  // DD.MM.YYYY
+  if(/^\d{2}\.\d{2}\.\d{4}$/.test(String(dateStr).trim())){
+    const p=String(dateStr).trim().split('.');
+    return new Date(parseInt(p[2]),parseInt(p[1])-1,parseInt(p[0]));
+  }
+  // YYYY-MM-DD
+  if(/^\d{4}-\d{2}-\d{2}$/.test(String(dateStr).trim())){
+    const p=String(dateStr).trim().split('-');
+    return new Date(parseInt(p[0]),parseInt(p[1])-1,parseInt(p[2]));
+  }
+  // ISO string with time — extract date part only, ignore timezone
+  if(String(dateStr).includes('T')){
+    const datePart=String(dateStr).split('T')[0];
+    const p=datePart.split('-');
+    return new Date(parseInt(p[0]),parseInt(p[1])-1,parseInt(p[2]));
+  }
+  return null;
+}
+function daysSince(dateStr){
+  if(!dateStr)return null;
+  const d=parseDate(dateStr);
+  if(!d)return null;
+  const now=new Date();
+  const nowMidnight=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const diff=Math.floor((nowMidnight-d)/(1000*60*60*24));
+  return diff>=0?diff:null;
+}
+function fmtDate(dateStr){
+  if(!dateStr)return'';
+  const d=parseDate(dateStr);
+  if(!d)return'';
+  return d.getDate().toString().padStart(2,'0')+'.'+(d.getMonth()+1).toString().padStart(2,'0')+'.'+d.getFullYear();
+}
 function dayStatus(daysGone,daysPlanned){
   if(!daysPlanned)return null;
   const pct=Math.round(daysGone/daysPlanned*100);
