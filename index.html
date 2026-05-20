@@ -464,13 +464,13 @@ function renderOverview(){
   });
   h+=`</div>`;
 
-  const doneP=PROJECTS.filter(p=>p.status==='done');
-  if(doneP.length){
+  const donePArch=PROJECTS.filter(p=>p.status==='done');
+  if(donePArch.length){
     h+=`<button class="arch-toggle" id="arch-btn" onclick="toggleArch('arch-btn','arch-list')">
-      <span>📁</span> Завершені проекти (${doneP.length}) <span class="arrow">▼</span>
+      <span>📁</span> Завершені проекти (${donePArch.length}) <span class="arrow">▼</span>
     </button>
     <div class="arch-list" id="arch-list"><div class="pgrid">`;
-    doneP.forEach(p=>{
+    donePArch.forEach(p=>{
       const spent=hForP(p.id,LOGS);
       h+=`<div class="pcard" onclick="openProjectModal('${p.id}')" style="border-top:3px solid #D1D1D6;opacity:.85">
         <div class="prow"><div><div class="pname">${projLabel(p)}</div></div><span class="pbadge pbd">Завершено</span></div>
@@ -882,14 +882,14 @@ function renderOwner(){
   });
   h+=`</tbody></table></div>`;
 
-  const doneP=PROJECTS.filter(p=>p.status==='done');
-  if(doneP.length){
+  const donePArch2=PROJECTS.filter(p=>p.status==='done');
+  if(donePArch2.length){
     h+=`<div style="margin-top:24px"></div>
     <button class="arch-toggle" id="arch-btn2" onclick="toggleArch('arch-btn2','arch-list2')">
-      <span>📁</span> Завершені проекти (${doneP.length}) <span class="arrow">▼</span>
+      <span>📁</span> Завершені проекти (${donePArch2.length}) <span class="arrow">▼</span>
     </button>
     <div class="arch-list" id="arch-list2"><div class="ogrid">`;
-    doneP.forEach(p=>{
+    donePArch2.forEach(p=>{
       const spent=hForP(p.id,filtered);
       h+=`<div class="ocard" onclick="openProjectModal('${p.id}',true)" style="opacity:.85">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
