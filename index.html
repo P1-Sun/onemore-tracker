@@ -281,6 +281,15 @@ function esc(s){if(!s)return'';return String(s).replace(/&/g,'&amp;').replace(/<
 function projLabel(p){if(!p)return'';return p.client&&p.client!==p.name?p.client+' — '+p.name:p.name}
 function hForP(pid,logs){return(logs||LOGS).filter(l=>String(l.project_id)===String(pid)).reduce((s,l)=>s+parseFloat(l.hours||0),0)}
 function hForUP(uid,pid,logs){return(logs||LOGS).filter(l=>String(l.user)===String(uid)&&String(l.project_id)===String(pid)).reduce((s,l)=>s+parseFloat(l.hours||0),0)}
+function daysSince(dateStr){if(!dateStr)return null;const d=new Date(dateStr);const now=new Date();const diff=Math.floor((now-d)/(1000*60*60*24));return diff>=0?diff:null;}
+function fmtDate(dateStr){if(!dateStr)return'';const d=new Date(dateStr+'T00:00:00');return d.getDate().toString().padStart(2,'0')+'.'+(d.getMonth()+1).toString().padStart(2,'0')+'.'+d.getFullYear();}
+function dayStatus(daysGone,daysPlanned){
+  if(!daysPlanned)return null;
+  const pct=Math.round(daysGone/daysPlanned*100);
+  if(daysGone>daysPlanned)return{label:'Перевищення на '+(daysGone-daysPlanned)+'д',color:'#DC2626',pct:100,over:true};
+  if(pct>=85)return{label:daysPlanned-daysGone+'д залишилось',color:'#D97706',pct,over:false};
+  return{label:daysPlanned-daysGone+'д залишилось',color:'#059669',pct,over:false};
+}
 
 /* ── TASKS grouped ── */
 function getGroups(){return[...new Set(TASKS.map(t=>t.group).filter(Boolean))]}
@@ -440,6 +449,17 @@ function renderOverview(){
         ?`<div class="pbar"><div class="pfill ${isInt?'pfi':'pft'}" style="width:${pct}%"></div></div>
           <div class="pinfo"><span>${spentAll.toFixed(1)}г / ${budget}г</span><span>${isDana?'За період: '+spentF.toFixed(1)+'г':'Мій внесок: '+myHAll.toFixed(1)+'г'}</span></div>`
         :`<div class="pinfo"><span>${isDana?'За період: '+spentF.toFixed(1)+'г':'Мій внесок: '+myHAll.toFixed(1)+'г'}</span></div>`}
+      ${(()=>{
+        const dGone=daysSince(p.start_date);
+        const dPlan=parseFloat(p.days_planned)||0;
+        if(!dGone&&!dPlan)return'';
+        const ds=dPlan?dayStatus(dGone,dPlan):null;
+        return`<div style="display:flex;align-items:center;justify-content:space-between;font-size:12px;margin-top:6px;color:#8E8E93">
+          <span>${p.start_date?'Старт: '+fmtDate(p.start_date):''}</span>
+          ${ds?`<span style="color:${ds.color};font-weight:600">${ds.label}</span>`
+              :(dGone!==null?`<span>${dGone}д минуло</span>`:'')}
+        </div>`;
+      })()}
     </div>`;
   });
   h+=`</div>`;
@@ -467,10 +487,11 @@ function toggleArch(btnId,listId){
 }
 
 /* ── PROJECT MODAL ── */
-function openProjectModal(pid){
+function openProjectModal(pid,showBudget){
   const proj=PROJECTS.find(p=>String(p.id)===String(pid));
   if(!proj)return;
   const isDana=cur===USERS[0]?.id;
+  const canSeeBudget=showBudget&&isDana;
   const projLogs=LOGS.filter(l=>String(l.project_id)===String(pid));
   const myLogs=filterLogsByDate(projLogs.filter(l=>String(l.user)===String(cur)));
   const allFilt=filterLogsByDate(projLogs);
@@ -481,13 +502,24 @@ function openProjectModal(pid){
   const pct=budget>0?Math.min(100,Math.round(totalAllH/budget*100)):0;
 
   document.getElementById('modal-title').textContent=projLabel(proj);
-  document.getElementById('modal-sub').textContent=proj.client+(isDana&&proj.budget_usd?' · $'+proj.budget_usd:'');
+  document.getElementById('modal-sub').textContent=proj.client+(canSeeBudget&&proj.budget_usd?' · $'+proj.budget_usd:'');
+
+  const dGone=daysSince(proj.start_date);
+  const dPlan=parseFloat(proj.days_planned)||0;
+  const ds=dPlan&&dGone!==null?dayStatus(dGone,dPlan):null;
 
   let body=`<div class="modal-stats">
     <div class="modal-stat"><div class="modal-stat-lbl">${isDana?'Годин всіх':'Мої години'}</div><div class="modal-stat-val">${totalH.toFixed(1)}</div></div>
     <div class="modal-stat"><div class="modal-stat-lbl">Бюджет годин</div><div class="modal-stat-val">${budget||'—'}</div></div>
     <div class="modal-stat"><div class="modal-stat-lbl">Виконано</div><div class="modal-stat-val">${budget>0?pct+'%':'—'}</div></div>
-  </div>`;
+  </div>
+  ${(proj.start_date||dPlan)?`<div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;padding:14px 16px;background:#F7F7F7;border-radius:12px;font-size:14px">
+    ${proj.start_date?`<div><span style="color:#8E8E93">Старт:</span> <strong>${fmtDate(proj.start_date)}</strong></div>`:''}
+    ${dPlan?`<div><span style="color:#8E8E93">Планових днів:</span> <strong>${dPlan}</strong></div>`:''}
+    ${dGone!==null?`<div><span style="color:#8E8E93">Минуло:</span> <strong>${dGone}д</strong></div>`:''}
+    ${ds?`<div><span style="color:${ds.color};font-weight:700">${ds.label}</span></div>`:''}
+    ${canSeeBudget&&proj.budget_usd?`<div style="margin-left:auto"><span style="color:#8E8E93">Бюджет:</span> <strong>$${proj.budget_usd}</strong></div>`:''}
+  </div>`:''}`;
 
   if(isDana){
     const uniqU=[...new Set(allFilt.map(l=>l.user))];
@@ -749,12 +781,41 @@ function renderOwner(){
   const filtered=filterLogsByDate(LOGS);
   const total=filtered.reduce((s,l)=>s+parseFloat(l.hours||0),0);
   const activeP=PROJECTS.filter(p=>p.status!=='done');
+  const doneP=PROJECTS.filter(p=>p.status==='done');
+  const{from:dfFrom2,to:dfTo2}=getDateRange();
+
+  // Financial: active projects started in period
+  const activeBudget=activeP.filter(p=>p.type==='client'&&p.start_date&&p.start_date>=dfFrom2&&p.start_date<=dfTo2)
+    .reduce((s,p)=>s+parseFloat(p.budget_usd||0),0);
+  // Financial: done projects (all time and in period)
+  const doneBudgetAll=doneP.filter(p=>p.type==='client').reduce((s,p)=>s+parseFloat(p.budget_usd||0),0);
+  const doneBudgetPeriod=doneP.filter(p=>p.type==='client'&&p.start_date&&p.start_date>=dfFrom2&&p.start_date<=dfTo2)
+    .reduce((s,p)=>s+parseFloat(p.budget_usd||0),0);
+
   let h=renderDateFilterBar();
   h+=`<div class="grid4">
     <div class="mcard"><div class="mlabel">Активних</div><div class="mval">${activeP.length}</div><div class="msub">проектів</div></div>
     <div class="mcard"><div class="mlabel">Клієнтських</div><div class="mval">${activeP.filter(p=>p.type==='client').length}</div></div>
     <div class="mcard"><div class="mlabel">Годин за період</div><div class="mval">${total.toFixed(1)}</div></div>
     <div class="mcard"><div class="mlabel">Команда</div><div class="mval">${USERS.length}</div><div class="msub">дизайнери</div></div>
+  </div>
+  <div class="slbl">Фінанси</div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:28px">
+    <div class="mcard" style="border-top:3px solid #6366F1">
+      <div class="mlabel">Нові проекти за період</div>
+      <div class="mval" style="font-size:24px">$${activeBudget.toLocaleString()}</div>
+      <div class="msub">${activeP.filter(p=>p.type==='client'&&p.start_date&&p.start_date>=dfFrom2&&p.start_date<=dfTo2).length} проектів</div>
+    </div>
+    <div class="mcard" style="border-top:3px solid #34D399">
+      <div class="mlabel">Завершено за період</div>
+      <div class="mval" style="font-size:24px">$${doneBudgetPeriod.toLocaleString()}</div>
+      <div class="msub">${doneP.filter(p=>p.type==='client'&&p.start_date&&p.start_date>=dfFrom2&&p.start_date<=dfTo2).length} проектів</div>
+    </div>
+    <div class="mcard" style="border-top:3px solid #FBBF24">
+      <div class="mlabel">Завершено всього</div>
+      <div class="mval" style="font-size:24px">$${doneBudgetAll.toLocaleString()}</div>
+      <div class="msub">${doneP.filter(p=>p.type==='client').length} проектів</div>
+    </div>
   </div>
   <div class="slbl">Рентабельність проектів</div>
   <div class="ogrid">`;
@@ -764,7 +825,10 @@ function renderOwner(){
     const pct=budget>0?Math.min(100,Math.round(spent/budget*100)):0;
     const fc=pct<70?'obf-g':pct<90?'obf-a':'obf-r';
     const sc=pct<70?{c:'#059669',t:'В нормі'}:pct<90?{c:'#D97706',t:'Уважно'}:{c:'#DC2626',t:'Перевищення'};
-    h+=`<div class="ocard" onclick="openProjectModal('${p.id}')">
+    const dGoneP=daysSince(p.start_date);
+    const dPlanP=parseFloat(p.days_planned)||0;
+    const dsP=dPlanP&&dGoneP!==null?dayStatus(dGoneP,dPlanP):null;
+    h+=`<div class="ocard" onclick="openProjectModal('${p.id}',true)">
       <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
         <div><div class="ocard-name">${projLabel(p)}</div><div class="ocard-sub">${p.client}</div></div>
         ${p.budget_usd?`<div style="font-size:16px;font-weight:700">$${p.budget_usd}</div>`:''}
@@ -774,6 +838,10 @@ function renderOwner(){
           <div class="obar-info"><span style="color:#8E8E93">${spent.toFixed(1)}г / ${budget}г (${pct}%)</span>
           <span style="color:${sc.c};font-weight:600">${sc.t}</span></div>`
         :`<div style="font-size:13px;color:#8E8E93;margin-top:8px">${spent.toFixed(1)}г витрачено</div>`}
+      ${(p.start_date||dPlanP)?`<div style="display:flex;justify-content:space-between;font-size:12px;margin-top:8px">
+        <span style="color:#8E8E93">${p.start_date?'Старт: '+fmtDate(p.start_date):''}</span>
+        ${dsP?`<span style="color:${dsP.color};font-weight:600">${dsP.label}</span>`:(dGoneP!==null?`<span style="color:#8E8E93">${dGoneP}д минуло</span>`:'')}
+      </div>`:''}
       <div style="font-size:12px;color:#818CF8;margin-top:8px;font-weight:500">Натисни для деталей →</div>
     </div>`;
   });
@@ -823,7 +891,7 @@ function renderOwner(){
     <div class="arch-list" id="arch-list2"><div class="ogrid">`;
     doneP.forEach(p=>{
       const spent=hForP(p.id,filtered);
-      h+=`<div class="ocard" onclick="openProjectModal('${p.id}')" style="opacity:.85">
+      h+=`<div class="ocard" onclick="openProjectModal('${p.id}',true)" style="opacity:.85">
         <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px">
           <div><div class="ocard-name">${projLabel(p)}</div><div class="ocard-sub">${p.client}</div></div>
           ${p.budget_usd?`<div style="font-size:16px;font-weight:700">$${p.budget_usd}</div>`:''}
