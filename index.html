@@ -99,22 +99,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text','Helvetica Neue'
 .tblock-x:hover{background:#FFE4E4;color:#EF4444}
 
 /* TASK ROW */
-.task-row{padding:14px 20px;border-bottom:1px solid #F5F5F5}
+.task-row{padding:12px 20px;border-bottom:1px solid #F0F0F0;display:flex;align-items:center;gap:12px}
 .task-row:last-of-type{border-bottom:none}
 .task-row-top{display:flex;align-items:center;gap:10px}
 .task-inp-wrap{flex:1;position:relative;min-width:0}
 
 /* GROUP PICKER */
-.group-picker{padding:10px 20px 0;border-bottom:1px solid #F5F5F5}
+.group-picker{padding:14px 20px 14px;border-bottom:1px solid #EBEBEB;background:#F8F8FA;border-radius:0}
 .gp-label{font-size:11px;font-weight:600;color:#8E8E93;text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
 .gp-groups{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-.gp-chip{padding:6px 12px;border-radius:8px;border:1.5px solid #E5E5EA;background:#fff;font-size:13px;font-weight:500;color:#3C3C43;cursor:pointer;transition:all .15s;font-family:inherit;white-space:nowrap}
-.gp-chip:hover{border-color:#818CF8;color:#4338CA}
+.gp-chip{padding:6px 14px;border-radius:20px;border:1.5px solid #D1D1D6;background:#fff;font-size:13px;font-weight:600;color:#3C3C43;cursor:pointer;transition:all .15s;font-family:inherit;white-space:nowrap;letter-spacing:-.1px}
+.gp-chip:hover{border-color:#818CF8;color:#4338CA;background:#F5F3FF}
 .gp-chip.active{background:#1C1C1E;border-color:#1C1C1E;color:#fff}
-.gp-subs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;display:none}
-.gp-subs.show{display:flex}
-.gp-sub{padding:6px 12px;border-radius:8px;border:1.5px solid #E5E5EA;background:#FAFAFA;font-size:13px;font-weight:500;color:#3C3C43;cursor:pointer;transition:all .15s;font-family:inherit;white-space:nowrap}
-.gp-sub:hover{border-color:#6366F1;color:#4338CA;background:#EEF2FF}
+.gp-subs-wrap{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed #E0E0F0}
+.gp-subs-wrap.show{display:block}
+.gp-subs-lbl{font-size:10px;font-weight:700;color:#818CF8;text-transform:uppercase;letter-spacing:.6px;margin-bottom:8px}
+.gp-subs{display:flex;gap:6px;flex-wrap:wrap}
+.gp-sub{padding:5px 12px;border-radius:8px;border:1.5px solid #C7C7FF;background:#F0F0FF;font-size:13px;font-weight:500;color:#4338CA;cursor:pointer;transition:all .15s;font-family:inherit;white-space:nowrap}
+.gp-sub:hover{border-color:#6366F1;background:#EEF2FF;color:#3730A3}
 .gp-sub.active{background:#6366F1;border-color:#6366F1;color:#fff}
 
 .task-inp{width:100%;border:none;background:transparent;font-size:15px;color:#1C1C1E;outline:none;font-family:inherit;padding:0}
@@ -642,15 +644,22 @@ function buildTaskRow(pid,t){
   return`<div class="group-picker" id="gp-${t.id}">
     <div class="gp-label">Тип роботи</div>
     <div class="gp-groups">${groupChips}</div>
-    ${subs.length?`<div class="gp-subs${t.group?' show':''}" id="gs-${t.id}">${subChips}</div>`:''}
+    ${subs.length
+      ? `<div class="gp-subs-wrap${t.group?' show':''}" id="gs-${t.id}">
+           <div class="gp-subs-lbl">Підтип</div>
+           <div class="gp-subs">${subChips}</div>
+         </div>`
+      : ''}
   </div>
   <div class="task-row" id="tr-${t.id}">
-    <div class="task-inp-wrap" style="flex:1;min-width:0">
-      <input class="task-inp" id="ti-${t.id}" placeholder="${t.group?'Уточнення або залиш порожнім...':'Або введи вручну...'}"
-        value="${esc(t.text)}" oninput="updateTaskText('${pid}','${t.id}',this.value)">
-      ${noteHint?`<input class="task-note-inp" id="tn-${t.id}" placeholder="${esc(noteHint)}" value="${esc(t.note)}" oninput="updateTaskNote('${pid}','${t.id}',this.value)">`:''}
-    </div>
-    <div class="hrs-ctrl">
+    ${(t.group||t.text)
+      ? `<div style="flex:1;min-width:0">
+           <div style="font-size:15px;font-weight:600;color:#1C1C1E;line-height:1.3">${esc(t.text||(t.group+(t.subgroup?' — '+t.subgroup:'')))}</div>
+           ${noteHint?`<input class="task-note-inp" id="tn-${t.id}" placeholder="${esc(noteHint)}" value="${esc(t.note)}" oninput="updateTaskNote('${pid}','${t.id}',this.value)" style="margin-top:6px">`:''}
+         </div>`
+      : `<input class="task-inp" id="ti-${t.id}" placeholder="Або введи вручну..."
+           value="${esc(t.text)}" oninput="updateTaskText('${pid}','${t.id}',this.value)" style="flex:1;border:none;background:transparent;font-size:15px;color:#1C1C1E;outline:none;font-family:inherit">`}
+    <div class="hrs-ctrl" style="flex-shrink:0">
       <button class="hbtn" onclick="chHours('${pid}','${t.id}',-0.5)">−</button>
       <div class="hval" id="hv-${t.id}">${t.hours}г</div>
       <button class="hbtn" onclick="chHours('${pid}','${t.id}',+0.5)">+</button>
